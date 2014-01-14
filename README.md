@@ -1,4 +1,4 @@
-comp4350group1
+COMP 4350 - Group 1
 ==============
 
 Software Development 2 Project
