@@ -10,4 +10,4 @@ def home():
     return "You have logged in successfully.</br>Here's a list of your notes."
 
 if __name__ == "__main__":
-    app.run(port=80)
+    app.run()
