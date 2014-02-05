@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-COMP 4350 Software Development 2
+_Note
+COMP 4350 Software Development 2 Project
+Group 1: Lyndon Quigley, Graeme Peters, Harrison Mulder, 
+         Duong Nguyen, Tony Young, Mathias Eurich
 """
 
 from flask import Flask, request, session, redirect, url_for, abort, \
@@ -48,7 +51,12 @@ def get_db():
 @app.route('/')
 def home():
     if 'user' not in session:
-        return redirect(url_for('login'))
+        #TODO: generate some sort of id
+        username = '123'
+        db = get_db()
+        db.execute('INSERT OR IGNORE INTO users (username) VALUES (?)', [username])
+        db.commit()
+        session['user'] = username
     access_token = get_access_token()
     real_name = None
     app.logger.info('access token = %r', access_token)
@@ -57,22 +65,6 @@ def home():
         account_info = client.account_info()
         real_name = account_info["display_name"]
     return render_template('index.html', real_name=real_name)
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        username = request.form['username']
-        if username:
-            db = get_db()
-            db.execute('INSERT OR IGNORE INTO users (username) VALUES (?)', [username])
-            db.commit()
-            session['user'] = username
-            flash('You were logged in')
-            return redirect(url_for('home'))
-        else:
-            flash("You must provide a username")
-    return render_template('login.html', error=error)
 
 def get_access_token():
     username = session.get('user')
@@ -91,6 +83,7 @@ def dropbox_auth_start():
     return redirect(get_auth_flow().start())
 
 def get_auth_flow():
+    #TODO: redirect_uri has to use SSL (https://)
     redirect_uri = url_for('dropbox_auth_finish', _external=True)
     return DropboxOAuth2Flow(DROPBOX_APP_KEY, DROPBOX_APP_SECRET, redirect_uri,
                                        session, 'dropbox-auth-csrf-token')
