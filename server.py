@@ -7,6 +7,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
      render_template, flash, _app_ctx_stack
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
+import os
 
 # configuration
 DEBUG = True
@@ -16,6 +17,14 @@ DROPBOX_APP_KEY = 'uwjvcs6f8kegvt1'
 DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
 
 app = Flask(__name__)
+app.config.from_object(__name__)
+app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+
+# Ensure instance directory exists
+try:
+    os.makedirs(app.instance_path)
+except OSError:
+    pass
 
 def init_db():
     """Creates the database tables."""
