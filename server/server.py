@@ -26,8 +26,8 @@ app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 # setup SSL
 context = SSL.Context(SSL.SSLv23_METHOD)
-context.use_privatekey_file('ssl/_note.key')
-context.use_certificate_file('ssl/_note.crt')
+context.use_privatekey_file('ssl/server.key')
+context.use_certificate_file('ssl/server.crt')
 
 # Ensure instance directory exists
 try:
