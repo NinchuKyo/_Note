@@ -10,7 +10,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
      render_template, flash, _app_ctx_stack
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
-import os
+import os, uuid
 
 # configuration
 DEBUG = True
@@ -50,15 +50,18 @@ def get_db():
 
 @app.route('/')
 def home():
-    if 'user' not in session:
-        #TODO: generate some sort of id
-        username = '123'
+    if 'uid' not in session:
+        uid = str(uuid.uuid4())
         db = get_db()
-        db.execute('INSERT OR IGNORE INTO users (username) VALUES (?)', [username])
+        db.execute('INSERT OR IGNORE INTO users (uid) VALUES (?)', [uid])
         db.commit()
-        session['user'] = username
+        session['uid'] = uid
+    else:
+        uid = session['uid']
+    
     access_token = get_access_token()
     real_name = None
+    app.logger.info('uid = %s', uid)
     app.logger.info('access token = %r', access_token)
     if access_token is not None:
         client = DropboxClient(access_token)
@@ -67,31 +70,30 @@ def home():
     return render_template('index.html', real_name=real_name)
 
 def get_access_token():
-    username = session.get('user')
-    if username is None:
+    uid = session.get('uid')
+    if uid is None:
         return None
     db = get_db()
-    row = db.execute('SELECT access_token FROM users WHERE username = ?', [username]).fetchone()
+    row = db.execute('SELECT access_token FROM users WHERE uid = ?', [uid]).fetchone()
     if row is None:
         return None
     return row[0]
 
 @app.route('/dropbox-auth-start')
 def dropbox_auth_start():
-    if 'user' not in session:
+    if 'uid' not in session:
         abort(403)
     return redirect(get_auth_flow().start())
 
 def get_auth_flow():
     #TODO: redirect_uri has to use SSL (https://)
     redirect_uri = url_for('dropbox_auth_finish', _external=True)
-    return DropboxOAuth2Flow(DROPBOX_APP_KEY, DROPBOX_APP_SECRET, redirect_uri,
-                                       session, 'dropbox-auth-csrf-token')
+    return DropboxOAuth2Flow(DROPBOX_APP_KEY, DROPBOX_APP_SECRET, redirect_uri, session, 'dropbox-auth-csrf-token')
 
 @app.route('/dropbox-auth-finish')
 def dropbox_auth_finish():
-    username = session.get('user')
-    if username is None:
+    uid = session.get('uid')
+    if uid is None:
         abort(403)
     try:
         access_token, user_id, url_state = get_auth_flow().finish(request.args)
@@ -102,30 +104,26 @@ def dropbox_auth_finish():
     except DropboxOAuth2Flow.CsrfException, e:
         abort(403)
     except DropboxOAuth2Flow.NotApprovedException, e:
-        flash('Not approved?  Why not')
+        flash('Not approved?  Why not?')
         return redirect(url_for('home'))
     except DropboxOAuth2Flow.ProviderException, e:
         app.logger.exception("Auth error" + e)
         abort(403)
     db = get_db()
-    data = [access_token, username]
-    db.execute('UPDATE users SET access_token = ? WHERE username = ?', data)
+    data = [access_token, uid]
+    db.execute('UPDATE users SET access_token = ? WHERE uid = ?', data)
     db.commit()
     return redirect(url_for('home'))
 
 @app.route('/dropbox-logout')
 def dropbox_logout():
-    username = session.get('user')
-    if username is None:
+    uid = session.get('uid')
+    if uid is None:
         abort(403)
     db = get_db()
-    db.execute('UPDATE users SET access_token = NULL WHERE username = ?', [username])
+    db.execute('UPDATE users SET access_token = NULL WHERE uid = ?', [uid])
     db.commit()
-    return redirect(url_for('home'))
-
-@app.route('/logout')
-def logout():
-    session.pop('user', None)
+    session.pop('uid', None)
     flash('You were logged out')
     return redirect(url_for('home'))
 

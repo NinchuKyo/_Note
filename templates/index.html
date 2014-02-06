@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
   {% if real_name %}
-    <p>Welcome {{ real_name }}!
-    <p><a href="{{ url_for('dropbox_logout') }} " method="post">Log out</a>
+    <p>Welcome {{ real_name }}!</p>
+    <p><a href="{{ url_for('dropbox_logout') }} " method="post">Log out</a></p>
   {% else %}
-    <a href="{{ url_for('dropbox_auth_start') }}">Link</a>
+    <p>Please log in trough Dropbox.</br>
+    <a href="{{ url_for('dropbox_auth_start') }}">To Dropbox</a></p>
   {% endif %}  
 {% endblock %}
