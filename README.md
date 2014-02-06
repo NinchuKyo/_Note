@@ -17,6 +17,7 @@ Group Members:
 
 Requirements (to run server):
 ---
+- Python setuptools (https://pypi.python.org/pypi/setuptools#windows) for Windows users
 - Flask (http://flask.pocoo.org/) a Python microframework for web development
 - Dropbox (https://www.dropbox.com/developers/core) install the Python SDK
 - pyOpenSSL (https://pypi.python.org/pypi/pyOpenSSL) or 'sudo pip install pyOpenSSL'
