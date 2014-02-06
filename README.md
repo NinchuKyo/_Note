@@ -19,6 +19,7 @@ Requirements (to run server):
 ---
 - Flask (http://flask.pocoo.org/) a Python microframework for web development
 - Dropbox (https://www.dropbox.com/developers/core) install the Python SDK
+- pyOpenSSL (https://pypi.python.org/pypi/pyOpenSSL) or 'sudo pip install pyOpenSSL'
 - A Dropbox account (so you can authorize our system to create and store notes in your Dropbox)
 - Python v2.7.5 / v2.7.6
 
