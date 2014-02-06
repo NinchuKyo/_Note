@@ -10,6 +10,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
      render_template, flash, _app_ctx_stack
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
+from OpenSSL import SSL
 import os, uuid
 
 # configuration
@@ -22,6 +23,11 @@ DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+
+# setup SSL
+context = SSL.Context(SSL.SSLv23_METHOD)
+context.use_privatekey_file('ssl/_note.key')
+context.use_certificate_file('ssl/_note.crt')
 
 # Ensure instance directory exists
 try:
@@ -86,7 +92,6 @@ def dropbox_auth_start():
     return redirect(get_auth_flow().start())
 
 def get_auth_flow():
-    #TODO: redirect_uri has to use SSL (https://)
     redirect_uri = url_for('dropbox_auth_finish', _external=True)
     return DropboxOAuth2Flow(DROPBOX_APP_KEY, DROPBOX_APP_SECRET, redirect_uri, session, 'dropbox-auth-csrf-token')
 
@@ -129,4 +134,4 @@ def dropbox_logout():
 
 if __name__ == "__main__":
     init_db()
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, ssl_context=context)
