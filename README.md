@@ -19,16 +19,16 @@ Group Members:
 
 How to use _Note:
 ---
-Currently, _Note has very limited functionality.  To use, first you can visit the site at which located on the Trello board, and it will display a link.  This link will redirect you to a page that will ask you to give access to make an app folder within your Dropbox.  This is how we planto store, create and view notes across devices.
+Currently, _Note has very limited functionality.  To use, first you can visit the site at which located on the Trello board, and it will display a link.  This link will redirect you to a page that will ask you to give access to make an app folder within your Dropbox.  This is how we plan to store, create and view notes across devices.
 
 Requirements (to run server):
 ---
-- Flask (http://flask.pocoo.org/) a Python microframework for web development
-- Dropbox (https://www.dropbox.com/developers/core) install the Python SDK
+- Python v2.7.5 / v2.7.6
 - setuptools v2.1.2 (https://pypi.python.org/pypi/setuptools#installing-and-using-setuptools) [if using Windows]
 - pyOpenSSL (https://pypi.python.org/pypi/pyOpenSSL) or 'sudo pip install pyOpenSSL'
+- Flask (http://flask.pocoo.org/) a Python microframework for web development
+- Dropbox (https://www.dropbox.com/developers/core) install the Python SDK
 - A Dropbox account (so you can authorize our system to create and store notes in your Dropbox)
-- Python v2.7.5 / v2.7.6
 
 Optional:
 ---
