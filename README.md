@@ -23,7 +23,6 @@ Currently, _Note has very limited functionality.  To use, first you can visit th
 
 Requirements (to run server):
 ---
-- Python setuptools (https://pypi.python.org/pypi/setuptools#windows) for Windows users
 - Flask (http://flask.pocoo.org/) a Python microframework for web development
 - Dropbox (https://www.dropbox.com/developers/core) install the Python SDK
 - setuptools v2.1.2 (https://pypi.python.org/pypi/setuptools#installing-and-using-setuptools) [if using Windows]
