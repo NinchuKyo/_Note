@@ -41,4 +41,5 @@ Thumbs.db
 ###########
 public_html/
 venv/
-server/instance/
+instance/
+DerivedData/

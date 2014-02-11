@@ -1,392 +1,0 @@
-T_Note
-v6
-r1
-cCheck dependencies
-cProcessPCH /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch _Note/_Note-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-cLd /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note normal i386
-cCopyStringsFile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj/InfoPlist.strings _Note/en.lproj/InfoPlist.strings
-cCompileStoryboard /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Base.lproj/Main.storyboard
-cCompileAssetCatalog /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Images.xcassets
-cProcessInfoPlistFile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist
-cGenerateDSYMFile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note
-cTouch /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk
-c00000000525642F10000000000000176
-t1381384945
-s374
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/SDKSettings.plist
-c0000000052975D0C00000000000003B5
-t1385651468
-s949
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/CoreServices/SystemVersion.plist
-c0000000052975D2300000000000001A0
-t1385651491
-s416
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c0000000052975D2B0000000000445870
-t1385651499
-s4479088
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c0000000052975D32000000000088C680
-t1385651506
-s8963712
-
-N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c0000000052975D3F0000000001DB9910
-t1385651519
-s31168784
-
-N/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/include/module.map
-c0000000052975DE40000000000000AC9
-t1385651684
-s2761
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch
-t1391557736
-s108216
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o
-t1391557741
-s66980
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o
-t1391557742
-s55196
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o
-t1391557743
-s62768
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/_Note.LinkFileList
-c0000000052F17C2A000000000000028F
-t1391557674
-s655
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o
-t1391557742
-s3660
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_dependencies.txt
-t1391557919
-s295
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_generated_info.plist
-t1391557919
-s181
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app
-t1391557919
-s272
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM
-t2
-s0
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Base.lproj/Main.storyboardc
-t1391557916
-s204
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist
-t1391557919
-s1135
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/PkgInfo
-t1391557919
-s8
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note
-t1391557752
-s35904
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj/InfoPlist.strings
-t1391557753
-s42
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m
-c0000000052F1792400000000000008FA
-t1391556900
-s2298
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Base.lproj/Main.storyboard
-c0000000052F17C29000000000000282D
-t1391557673
-s10285
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m
-c0000000052F17924000000000000081A
-t1391556900
-s2074
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Images.xcassets
-c0000000052F179240000000000000088
-t1391556900
-s136
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m
-c0000000052F179240000000000000D7B
-t1391556900
-s3451
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist
-c0000000052F1792400000000000006B3
-t1391556900
-s1715
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Prefix.pch
-c0000000052F179240000000000000158
-t1391556900
-s344
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/en.lproj/InfoPlist.strings
-c0000000052F17924000000000000002D
-t1391556900
-s45
-
-N/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m
-c0000000052F179240000000000000156
-t1391556900
-s342
-
-CBuild AST from /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m
-r0
-
-CBuild AST from /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m
-r0
-
-CBuild AST from /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m
-r0
-
-CBuild AST from /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m
-r0
-
-CCheck dependencies
-r0
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies18"Check dependencies3a75b5a9b3a1b841^04c701aab3a1b841^---0#1#1#--18"Check dependencies36"E086BD18-C612-4BA6-BDA3-EB37A2561BC3-
-
-CCompileAssetCatalog /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Images.xcassets
-s413250716.432868
-e413250719.168962
-r1
-xCompileAssetCatalog
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Images.xcassets
-o/* com.apple.actool.compilation-results */
-o/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Assets.car
-o/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_generated_info.plist
-o
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"CompileAssetCatalog DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app _Note/Images.xcassets106"CompileAssetCatalog DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app _Note/Images.xcassets30f66e9cb4a1b841^68422b9fb4a1b841^-324"/* com.apple.actool.compilation-results *//Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Assets.car/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_generated_info.plist-0#0#1#-19%DVTDocumentLocation2@72"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Images.xcassets/0000000000000000^1212"CompileAssetCatalog DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app _Note/Images.xcassets    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/actool --output-format human-readable-text --notices --warnings --export-dependency-info /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_dependencies.txt --output-partial-info-plist /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_generated_info.plist --app-icon AppIcon --launch-image LaunchImage --platform iphonesimulator --minimum-deployment-target 7.0 --target-device ipad --compress-pngs --compile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Images.xcassets36"C8CE6493-9A38-4B34-B0B0-A30AB6A9FB9B-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s413250536.874708
-e413250541.907016
-r1
-xCompileC
-xDerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m214"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o _Note/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler4c19e0e8b3a1b841^8732e8edb3a1b841^---0#0#1#-19%DVTDocumentLocation2@69"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m0000000000000000^3879"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o _Note/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-generated-files.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-own-target-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-all-target-headers.hmap -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-project-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources/i386 -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources -F/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator -include /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch -MMD -MT dependencies -MF /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.dia -c /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.m -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o36"CEDA9BA4-D9C5-4A37-B87F-6810B4CE4B0A-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s413250542.598332
-e413250542.817450
-r1
-xCompileC
-xDerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m232"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o _Note/DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler975499eeb3a1b841^23f9eaeeb3a1b841^---0#0#1#-19%DVTDocumentLocation2@78"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m0000000000000000^3933"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o _Note/DetailViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-generated-files.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-own-target-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-all-target-headers.hmap -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-project-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources/i386 -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources -F/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator -include /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch -MMD -MT dependencies -MF /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.d --serialize-diagnostics /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.dia -c /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.m -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o36"BC0A7CEB-FC1D-4008-A099-906D836D9018-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s413250541.907705
-e413250543.627285
-r1
-xCompileC
-xDerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.h
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/DetailViewController.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection79"Compile /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m232"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o _Note/MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compileraf95e8edb3a1b841^4297a0efb3a1b841^---0#0#1#-19%DVTDocumentLocation2@78"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m0000000000000000^3933"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o _Note/MasterViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-generated-files.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-own-target-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-all-target-headers.hmap -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-project-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources/i386 -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources -F/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator -include /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch -MMD -MT dependencies -MF /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.d --serialize-diagnostics /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.dia -c /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/MasterViewController.m -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o36"45818EE0-5DC9-42E7-83E2-A82C0D0609F1-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CCompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s413250541.907734
-e413250542.597573
-r1
-xCompileC
-xDerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/AppDelegate.h
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection63"Compile /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m200"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o _Note/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler548fe8edb3a1b841^16fa98eeb3a1b841^---0#0#1#-19%DVTDocumentLocation2@62"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m0000000000000000^3837"CompileC DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o _Note/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-generated-files.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-own-target-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-all-target-headers.hmap -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-project-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources/i386 -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources -F/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator -include /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch -MMD -MT dependencies -MF /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.dia -c /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/main.m -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o36"F92E4B65-27F1-4EC5-8D5D-16EAC0DC384F-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CCompileStoryboard /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Base.lproj/Main.storyboard
-s413250553.062797
-e413250716.402362
-r1
-xCompileStoryboard
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Base.lproj/Main.storyboard
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection50"CompileStoryboard _Note/Base.lproj/Main.storyboard50"CompileStoryboard _Note/Base.lproj/Main.storyboarde42c10f9b3a1b841^c901679cb4a1b841^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Base.lproj/Main.storyboard0000000000000000^863"CompileStoryboard _Note/Base.lproj/Main.storyboard    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv IBSC_MINIMUM_COMPATIBILITY_VERSION 7.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --minimum-deployment-target 7.0 --output-format human-readable-text --compile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Base.lproj/Main.storyboardc /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/Base.lproj/Main.storyboard36"EFB72D08-1CD6-4D9C-B2B2-F138FDD13B52-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CCopyStringsFile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj/InfoPlist.strings _Note/en.lproj/InfoPlist.strings
-s413250552.841684
-e413250553.062193
-r1
-xCopyStringsFile
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj/InfoPlist.strings
-x_Note/en.lproj/InfoPlist.strings
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Copy _Note/en.lproj/InfoPlist.strings140"CopyStringsFile DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj/InfoPlist.strings _Note/en.lproj/InfoPlist.strings40df02f9b3a1b841^2e0110f9b3a1b841^---0#0#1#-19%DVTDocumentLocation2@82"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/en.lproj/InfoPlist.strings0000000000000000^629"CopyStringsFile DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj/InfoPlist.strings _Note/en.lproj/InfoPlist.strings    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/en.lproj -- _Note/en.lproj/InfoPlist.strings36"FB447FF2-AB33-4423-B3EE-22BB2DD5EC42-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CGenerateDSYMFile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note
-s413250719.270314
-e413250719.449321
-r1
-xGenerateDSYMFile
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection121"Generate /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM157"GenerateDSYMFile DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note7349459fb4a1b841^8908739fb4a1b841^---0#0#1#-19%DVTDocumentLocation2@119"file:///Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM0034f8fbdcffdf42^733"GenerateDSYMFile DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app.dSYM36"662817F8-446E-418E-9DED-06D707564A3C-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CLd /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note normal i386
-s413250543.628717
-e413250552.700861
-r1
-xLd
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note
-xnormal
-xi386
-d/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/_Note.LinkFileList
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/crt1.o
-d/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/AppDelegate.o
-d/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/MasterViewController.o
-d/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/main.o
-d/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/DetailViewController.o
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libobjc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libSystem.dylib
-d/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/lib/darwin/libclang_rt.ios.a
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreVideo.framework/CoreVideo
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreImage.framework/CoreImage
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/Security.framework/Security
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/OpenGLES.framework/OpenGLES
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/Frameworks/CoreText.framework/CoreText
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_override.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcache_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcommonCrypto_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcompiler_rt_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libcopyfile_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libdispatch.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libdyld_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libmacho_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libnotify_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libremovefile_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_blocks.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_c.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_dnssd.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_info.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_m.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_network.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libunwind_sim.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libxpc.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_configuration.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/libsystem_sim_asl.dylib
-d/usr/lib/libSystem.B.dylib
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/UIFoundation.framework/UIFoundation
-d/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/system/host/libdyld.dylib
-d/usr/lib/system/libcache.dylib
-d/usr/lib/system/libcommonCrypto.dylib
-d/usr/lib/system/libcompiler_rt.dylib
-d/usr/lib/system/libcopyfile.dylib
-d/usr/lib/system/libcorecrypto.dylib
-d/usr/lib/system/libkeymgr.dylib
-d/usr/lib/system/liblaunch.dylib
-d/usr/lib/system/libmacho.dylib
-d/usr/lib/system/libquarantine.dylib
-d/usr/lib/system/libremovefile.dylib
-d/usr/lib/system/libsystem_asl.dylib
-d/usr/lib/system/libsystem_blocks.dylib
-d/usr/lib/system/libsystem_c.dylib
-d/usr/lib/system/libsystem_configuration.dylib
-d/usr/lib/system/libsystem_dnssd.dylib
-d/usr/lib/system/libsystem_info.dylib
-d/usr/lib/system/libsystem_kernel.dylib
-d/usr/lib/system/libsystem_m.dylib
-d/usr/lib/system/libsystem_malloc.dylib
-d/usr/lib/system/libsystem_notify.dylib
-d/usr/lib/system/libsystem_platform.dylib
-d/usr/lib/system/libsystem_pthread.dylib
-d/usr/lib/system/libsystem_sandbox.dylib
-d/usr/lib/system/libunc.dylib
-d/usr/lib/system/libunwind.dylib
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Link /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note85"Ld DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note normal i386fe0ea1efb3a1b841^ad6cb3f8b3a1b841^---0#0#1#--1501"Ld DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note normal i386    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv IPHONEOS_DEPLOYMENT_TARGET 7.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -L/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator -F/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator -filelist /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/_Note.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=7.0 -framework CoreGraphics -framework UIKit -framework Foundation -Xlinker -dependency_info -Xlinker /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/Objects-normal/i386/_Note_dependency_info.dat -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/_Note36"E168D784-9ECC-4B53-97E7-D3C959241793-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CProcessInfoPlistFile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist
-s413250719.169784
-e413250719.269388
-r1
-xProcessInfoPlistFile
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist
-x/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection73"Process /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist119"ProcessInfoPlistFile DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist _Note/_Note-Info.plist7a8f2b9fb4a1b841^3676459fb4a1b841^---0#0#1#-19%DVTDocumentLocation2@72"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist0000000000000000^956"ProcessInfoPlistFile DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist _Note/_Note-Info.plist    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Info.plist -genpkginfo /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/assetcatalog_generated_info.plist -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app/Info.plist36"A6890A3F-6E9D-4DEE-8F0B-844B3C17D680-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CProcessPCH /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch _Note/_Note-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s413250474.097425
-e413250536.873128
-r1
-xProcessPCH
-x/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch
-x_Note/_Note-Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.llvm.clang.1_0.compiler
-d/Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Prefix.pch
-lSLF06#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection33"Precompile _Note/_Note-Prefix.pch221"ProcessPCH DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch _Note/_Note-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler1f671aaab3a1b841^9485dfe8b3a1b841^---0#0#1#-19%DVTDocumentLocation2@72"file:///Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Prefix.pch0000000000000000^3730"ProcessPCH DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch _Note/_Note-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Lyndon/Desktop/comp4350group1/_Note    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -fdiagnostics-show-note-include-stack -fmacro-backtrace-limit=0 -std=gnu99 -fobjc-arc -fmodules -fmodules-cache-path=/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/ModuleCache -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Werror=return-type -Wno-implicit-atomic-properties -Werror=deprecated-objc-isa-usage -Werror=objc-root-class -Wno-receiver-is-weak -Wno-arc-repeated-use-of-weak -Wduplicate-method-match -Wno-missing-braces -Wparentheses -Wswitch -Wunused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wbool-conversion -Wenum-conversion -Wshorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wundeclared-selector -Wno-deprecated-implementations -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=7.0 -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-generated-files.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-own-target-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-all-target-headers.hmap -iquote /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/_Note-project-headers.hmap -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources/i386 -I/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/_Note.build/Debug-iphonesimulator/_Note.build/DerivedSources -F/Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator --serialize-diagnostics /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.dia -MMD -MT dependencies -MF /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.d -c /Users/Lyndon/Desktop/comp4350group1/_Note/_Note/_Note-Prefix.pch -o /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Intermediates/PrecompiledHeaders/_Note-Prefix-daqopdjjznrltlbwcybtgxtgtoyk/_Note-Prefix.pch.pch36"37E7AC2F-66C1-4494-B291-05F0F327686C-
-bFE5B192B-0BAC-4DC6-9221-1265CF1D37C1
-
-CProcessPCH /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Index/PrecompiledHeaders/_Note-Prefix-fvsjydvxrzdptffduzmpbgdpztye_ast/_Note-Prefix.pch.pch _Note/_Note-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
-r0
-
-CTouch /Users/Lyndon/Desktop/comp4350group1/_Note/DerivedData/_Note/Build/Products/Debug-iphonesimulator/_Note.app
-r0
-
