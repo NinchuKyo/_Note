@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block body %}
+<script>
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist autolink lists link charmap print preview",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime table contextmenu paste"
+        ],
+        toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+    });
+
+    function ajaxSave() {
+        var note = {};
+        note["content"] = tinyMCE.activeEditor.getContent();
+        note["title"] = document.getElementById("title").value;
+
+        if(!note["title"])
+        {
+            document.getElementById("msg").innerHTML = "You're missing the title.";
+            document.getElementById("msg").className = "flash";
+        }
+        else
+        {
+            tinymce.util.XHR.send({
+                url : "{{ url_for('save_note') }}",
+                type : "POST",
+                content_type : "application/json",
+                data : tinymce.util.JSON.serialize(note),
+                success: function(response) {
+                    console.debug(response);
+                    document.getElementById("msg").innerHTML = response;
+                    document.getElementById("msg").className = "flash";
+                },
+                // error: function (text) {
+                //     console.debug(text);
+                //     document.getElementById("msg").innerHTML = "";
+                //     document.getElementById("msg").className = "";
+                // }
+            });
+        }
+    }
+</script>
+<div id="msg"></div>
+<p>
+    <input type="text" id="title" maxlength="30" placeholder="Title" required />
+    <textarea id="content" style="width:100%"></textarea>
+    <button onclick="ajaxSave()">Save</button>
+</p>
+{% endblock %}

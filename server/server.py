@@ -22,7 +22,7 @@ DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+# app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 # setup SSL
 context = SSL.Context(SSL.SSLv23_METHOD)
@@ -73,6 +73,7 @@ def home():
         client = DropboxClient(access_token)
         account_info = client.account_info()
         real_name = account_info["display_name"]
+        session['real_name'] = real_name
     return render_template('index.html', real_name=real_name)
 
 def get_access_token():
@@ -120,8 +121,27 @@ def dropbox_auth_finish():
     db.commit()
     return redirect(url_for('home'))
 
-@app.route('/dropbox-logout')
-def dropbox_logout():
+@app.route('/create')
+def create():
+    uid = session.get('uid')
+    if uid is None:
+        abort(403)
+
+    real_name = session['real_name']
+    return render_template('create.html', real_name=real_name)
+
+@app.route('/save_note', methods=['POST'])
+def save_note():
+    uid = session.get('uid')
+    real_name = session['real_name']
+    if uid is None:
+        abort(403)
+
+    print request.get_json()
+    return 'Your note was saved successfully.'
+
+@app.route('/logout')
+def logout():
     uid = session.get('uid')
     if uid is None:
         abort(403)
@@ -134,4 +154,4 @@ def dropbox_logout():
 
 if __name__ == "__main__":
     init_db()
-    app.run(host='0.0.0.0', debug=True, ssl_context=context)
+    app.run(host='0.0.0.0', ssl_context=context)
