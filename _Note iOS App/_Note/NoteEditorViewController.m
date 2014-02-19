@@ -6,14 +6,16 @@
 //  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "NoteEditorViewController.h"
 
-@interface DetailViewController ()
+#import "Note.h"
+
+@interface NoteEditorViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
 
-@implementation DetailViewController
+@implementation NoteEditorViewController
 
 #pragma mark - Managing the detail item
 

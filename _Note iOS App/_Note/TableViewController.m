@@ -6,22 +6,32 @@
 //  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
 //
 
-#import "MasterViewController.h"
+#import "TableViewController.h"
 
-#import "DetailViewController.h"
+#import "AppDelegate.h"
 
-@interface MasterViewController () {
+#import "NoteEditorViewController.h"
+
+#import "Note.h"
+
+@interface TableViewController () {
     NSMutableArray *_objects;
 }
 @end
 
-@implementation MasterViewController
+@implementation TableViewController
 
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
     self.preferredContentSize = CGSizeMake(320.0, 600.0);
     [super awakeFromNib];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    // Whenever this view controller appears, reload the table. This allows it to reflect any changes
+    // made whilst editing notes.
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
@@ -32,7 +42,7 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    self.noteEditorViewController = (NoteEditorViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,7 +117,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDate *object = _objects[indexPath.row];
-    self.detailViewController.detailItem = object;
+    self.
+    self.noteEditorViewController.detailItem = object;
 }
 
 @end
