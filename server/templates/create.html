@@ -11,18 +11,38 @@
         toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
     });
 
+    function keypresshandler(evt) {
+        evt = evt || window.event;
+
+        // exclude special keys in Gecko (Delete, Backspace, Arrow keys,... )
+        if (evt.which !== 0)
+        {
+            var charCode = evt.which === undefined ? evt.keyCode : evt.which;
+            var charTyped = String.fromCharCode(charCode);
+
+            if (/[\w\s\x08-]/.test(charTyped) === false)
+            {
+                document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, \
+                                                            hyphens, and underscores.";
+                // document.getElementById("msg").innerHTML = 'The character "' + charTyped + '" is not allowed in the title.';
+                document.getElementById("msg").className = "flash";
+                // document.getElementById("warning").innerHTML = '"' + charTyped + '" is not allowed.';
+                return false;
+            }
+            document.getElementById("warning").innerHTML = "";
+        }
+    }
+
     function ajaxSave() {
         var note = {};
         note["content"] = tinyMCE.activeEditor.getContent();
         note["title"] = document.getElementById("title").value;
 
-        if(!note["title"])
-        {
+        if(!note["title"]) {
             document.getElementById("msg").innerHTML = "You're missing the title.";
             document.getElementById("msg").className = "flash";
         }
-        else
-        {
+        else {
             tinymce.util.XHR.send({
                 url : "{{ url_for('save_note') }}",
                 type : "POST",
@@ -44,8 +64,11 @@
 </script>
 <div id="msg"></div>
 <p>
-    <!--TODO: restrict title to alpha-numeric characters only -->
-    <input type="text" id="title" maxlength="50" placeholder="Title" required />
+    <span>Title: </span>
+    <input type="text" id="title" maxlength="50" placeholder="please enter a title.." required onkeypress="return keypresshandler(event);"/>
+    <!--span>Allowed characters: "a-z", "A-Z", " ", "-", "_"</span-->
+</p>
+<p>
     <textarea id="content" style="width:100%"></textarea>
     <button onclick="ajaxSave()">Save</button>
 </p>

@@ -146,9 +146,11 @@ def save_note():
     
     try:
         json = request.get_json()
+        #TODO: Validate json['title']
     except:
         return 'Error: Unable to process data.'
 
+    #TODO: Move rest to separate function
     try:
         client = DropboxClient(access_token)
         response = client.put_file('/' + json['title'] + '.txt', request.data)
