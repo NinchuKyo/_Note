@@ -124,34 +124,41 @@ def dropbox_auth_finish():
 @app.route('/create')
 def create():
     uid = session.get('uid')
-    if uid is None:
-        abort(403)
+    if not uid:
+        return redirect(url_for('home'))
 
-    real_name = session['real_name']
+    access_token = get_access_token()
+    if not access_token:
+        return redirect(url_for('home'))
+
+    real_name = session.get('real_name', None)
     return render_template('create.html', real_name=real_name)
 
 @app.route('/save_note', methods=['POST'])
 def save_note():
     uid = session.get('uid')
-    if uid is None:
-        abort(403)
+    if not uid:
+        return 'Error: You are not currently logged in.'
 
     access_token = get_access_token()
-    if access_token is not None:
+    if not access_token:
+        return 'Error: You are not currently logged in through Dropbox.'
+    app.logger.info(dir(request))
+    
+    try:
         json = request.get_json()
+    except:
+        return 'Error: Unable to process data.'
 
-        try:
-            app.logger.info('/' + json['title'] + '.txt')
-            app.logger.info(request.data)
-            client = DropboxClient(access_token)
-            response = client.put_file('/' + json['title'] + '.txt', request.data)
-        except dropbox.rest.ErrorResponse as e:
-            app.logger.exception(e)
-            return e.user_error_msg
-        
-        return 'Your note was saved successfully.'
-    else:
-        return 'Error: You are not logged in through Dropbox.'
+    try:
+        client = DropboxClient(access_token)
+        response = client.put_file('/' + json['title'] + '.txt', request.data)
+    except dropbox.rest.ErrorResponse as e:
+        app.logger.exception(e)
+        return e.user_error_msg
+
+    return 'Your note was saved successfully.'
+
 
 @app.route('/logout')
 def logout():
