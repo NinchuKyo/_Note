@@ -143,7 +143,6 @@ def save_note():
     access_token = get_access_token()
     if not access_token:
         return 'Error: You are not currently logged in through Dropbox.'
-    app.logger.info(dir(request))
     
     try:
         json = request.get_json()
