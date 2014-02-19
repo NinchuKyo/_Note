@@ -33,18 +33,19 @@
                     document.getElementById("msg").innerHTML = response;
                     document.getElementById("msg").className = "flash";
                 },
-                // error: function (text) {
-                //     console.debug(text);
-                //     document.getElementById("msg").innerHTML = "";
-                //     document.getElementById("msg").className = "";
-                // }
+                error: function (text) {
+                    console.debug(text);
+                    document.getElementById("msg").innerHTML = "An unexpected error has occured. We apologize for the inconvenience.";
+                    document.getElementById("msg").className = "flash";
+                }
             });
         }
     }
 </script>
 <div id="msg"></div>
 <p>
-    <input type="text" id="title" maxlength="30" placeholder="Title" required />
+    <!--TODO: restrict title to alpha-numeric characters only -->
+    <input type="text" id="title" maxlength="50" placeholder="Title" required />
     <textarea id="content" style="width:100%"></textarea>
     <button onclick="ajaxSave()">Save</button>
 </p>

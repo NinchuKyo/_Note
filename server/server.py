@@ -11,7 +11,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
 from OpenSSL import SSL
-import os, uuid
+import os, uuid, dropbox
 
 # configuration
 DEBUG = True
@@ -133,12 +133,25 @@ def create():
 @app.route('/save_note', methods=['POST'])
 def save_note():
     uid = session.get('uid')
-    real_name = session['real_name']
     if uid is None:
         abort(403)
 
-    print request.get_json()
-    return 'Your note was saved successfully.'
+    access_token = get_access_token()
+    if access_token is not None:
+        json = request.get_json()
+
+        try:
+            app.logger.info('/' + json['title'] + '.txt')
+            app.logger.info(request.data)
+            client = DropboxClient(access_token)
+            response = client.put_file('/' + json['title'] + '.txt', request.data)
+        except dropbox.rest.ErrorResponse as e:
+            app.logger.exception(e)
+            return e.user_error_msg
+        
+        return 'Your note was saved successfully.'
+    else:
+        return 'Error: You are not logged in through Dropbox.'
 
 @app.route('/logout')
 def logout():
