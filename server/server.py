@@ -11,7 +11,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
 from OpenSSL import SSL
-import os, uuid, dropbox
+import os, uuid, dropbox, string
 
 # configuration
 DEBUG = True
@@ -28,6 +28,9 @@ app.config.from_object(__name__)
 context = SSL.Context(SSL.SSLv23_METHOD)
 context.use_privatekey_file('ssl/server.key')
 context.use_certificate_file('ssl/server.crt')
+
+# constants
+TITLE_ALLOWED_CHARS = set(string.ascii_letters + string.digits + '_' + '-' + ' ')
 
 # Ensure instance directory exists
 try:
@@ -134,8 +137,8 @@ def create():
     real_name = session.get('real_name', None)
     return render_template('create.html', real_name=real_name)
 
-@app.route('/save_note', methods=['POST'])
-def save_note():
+@app.route('/save', methods=['POST'])
+def save():
     uid = session.get('uid')
     if not uid:
         return 'Error: You are not currently logged in.'
@@ -143,14 +146,18 @@ def save_note():
     access_token = get_access_token()
     if not access_token:
         return 'Error: You are not currently logged in through Dropbox.'
-    
+
     try:
         json = request.get_json()
-        #TODO: Validate json['title']
     except:
         return 'Error: Unable to process data.'
 
-    #TODO: Move rest to separate function
+    return save_note(access_token, json)
+
+def save_note(access_token, json):
+    if set(json['title']) > TITLE_ALLOWED_CHARS:
+        return 'Error: Detected illegal characters in the title.'
+
     try:
         client = DropboxClient(access_token)
         response = client.put_file('/' + json['title'] + '.txt', request.data)
@@ -159,7 +166,6 @@ def save_note():
         return e.user_error_msg
 
     return 'Your note was saved successfully.'
-
 
 @app.route('/logout')
 def logout():
