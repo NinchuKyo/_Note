@@ -120,6 +120,19 @@ def dropbox_auth_finish():
     db.commit()
     return redirect(url_for('home'))
 
+@app.route('/view')
+def view():
+    uid = session.get('uid')
+    if not uid:
+        return redirect(url_for('home'))
+
+    access_token = get_access_token()
+    if not access_token:
+        return redirect(url_for('home'))
+
+    real_name = session.get('real_name', None)
+    return render_template('view.html', real_name=real_name)
+
 @app.route('/dropbox-logout')
 def dropbox_logout():
     uid = session.get('uid')

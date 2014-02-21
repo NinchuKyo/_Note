@@ -2,9 +2,10 @@
 {% block body %}
   {% if real_name %}
     <p>Welcome {{ real_name }}!</p>
+    <p><a href="{{ url_for('view') }}">View a Note</a></p>
     <p><a href="{{ url_for('dropbox_logout') }} " method="post">Log out</a></p>
   {% else %}
     <p>Please log in through Dropbox.</br>
     <a href="{{ url_for('dropbox_auth_start') }}">To Dropbox</a></p>
-  {% endif %}  
+  {% endif %}
 {% endblock %}
