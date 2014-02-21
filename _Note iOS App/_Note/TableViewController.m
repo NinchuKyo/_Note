@@ -121,4 +121,16 @@
     self.noteEditorViewController.detailItem = object;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NoteEditorViewController *editor = (NoteEditorViewController*)segue.destinationViewController;
+    
+    if ([segue.identifier isEqualToString:@"Selected"]){
+        
+    }
+    if ([segue.identifier isEqualToString:@"AddNewNote"]){
+        
+    }
+}
+
 @end
