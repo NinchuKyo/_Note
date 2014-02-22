@@ -103,10 +103,13 @@ def dropbox_auth_finish():
     try:
         access_token, user_id, url_state = get_auth_flow().finish(request.args)
     except DropboxOAuth2Flow.BadRequestException, e:
+        flash('Bad request')
         abort(400)
     except DropboxOAuth2Flow.BadStateException, e:
+        flash('Bad state')
         abort(400)
     except DropboxOAuth2Flow.CsrfException, e:
+        flash('csrf exception')
         abort(403)
     except DropboxOAuth2Flow.NotApprovedException, e:
         flash('Not approved?  Why not?')
@@ -119,6 +122,19 @@ def dropbox_auth_finish():
     db.execute('UPDATE users SET access_token = ? WHERE uid = ?', data)
     db.commit()
     return redirect(url_for('home'))
+
+@app.route('/list')
+def list():
+    uid = session.get('uid')
+    if not uid:
+        return redirect(url_for('home'))
+
+    access_token = get_access_token()
+    if not access_token:
+        return redirect(url_for('home'))
+
+    real_name = session.get('real_name', None)
+    return render_template('list.html', real_name=real_name)
 
 @app.route('/view')
 def view():
