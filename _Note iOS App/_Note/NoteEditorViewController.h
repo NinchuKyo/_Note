@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class Note;
+
 @interface NoteEditorViewController : UIViewController <UISplitViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+@property Note *note;
+
 @end

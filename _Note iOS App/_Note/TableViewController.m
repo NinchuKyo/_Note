@@ -21,6 +21,11 @@
 
 @implementation TableViewController
 
+-(NSMutableArray*) notes
+{
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return app.notes;
+}
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -39,12 +44,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    
+    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    //self.navigationItem.rightBarButtonItem = addButton;
     self.noteEditorViewController = (NoteEditorViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
-
+/*
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -60,7 +65,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
-
+*/
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -70,15 +75,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [self notes].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    static NSString *CellId = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
+                                                            forIndexPath:indexPath];
+    
+    Note *note = [self notes][indexPath.row];
+    cell.textLabel.text = note.title;
+    //change this if you have functionality for setting fonts
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     return cell;
 }
 
@@ -126,10 +135,12 @@
     NoteEditorViewController *editor = (NoteEditorViewController*)segue.destinationViewController;
     
     if ([segue.identifier isEqualToString:@"Selected"]){
-        
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        editor.note = [self notes][path.row];
     }
     if ([segue.identifier isEqualToString:@"AddNewNote"]){
-        
+        editor.note = [Note noteWithText:@" "];
+        [[self notes] addObject:editor.note];
     }
 }
 

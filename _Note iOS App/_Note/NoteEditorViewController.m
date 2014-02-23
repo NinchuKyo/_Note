@@ -10,8 +10,10 @@
 
 #import "Note.h"
 
-@interface NoteEditorViewController ()
+@interface NoteEditorViewController () <UITextViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextView *noteTitle;
 - (void)configureView;
 @end
 
@@ -46,8 +48,44 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.noteTitle.text = self.note.title;
+    self.noteTitle.delegate = self;
+    self.textView.text = self.note.contents;
+    self.textView.delegate = self;
+    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
     [self configureView];
 }
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    // copy the updated note text to the underlying model.
+    switch(textView.tag){
+        case 0:
+            _note.contents = textView.text;
+            break;
+        case 1:
+            if ((_noteTitle.text).length > 0){
+                _note.titleString = _noteTitle.text;
+                _note.setTitle = YES;
+            } else {
+                _noteTitle.text = _note.title;
+            }
+            break;
+    }
+}
+/*
+- (void)textFieldDidEndEditing:(UITextField *)noteTitle
+{
+    NSLog(@"Got here");
+    if ((noteTitle.text).length > 0){
+        _note.titleString = noteTitle.text;
+        _note.setTitle = YES;
+    } else {
+        noteTitle.text = _note.title;
+    }
+}
+*/
 
 - (void)didReceiveMemoryWarning
 {
@@ -59,7 +97,7 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    barButtonItem.title = NSLocalizedString(@"Your Notes", @"Your Notes");
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }
