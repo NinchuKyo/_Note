@@ -103,13 +103,10 @@ def dropbox_auth_finish():
     try:
         access_token, user_id, url_state = get_auth_flow().finish(request.args)
     except DropboxOAuth2Flow.BadRequestException, e:
-        flash('Bad request')
         abort(400)
     except DropboxOAuth2Flow.BadStateException, e:
-        flash('Bad state')
         abort(400)
     except DropboxOAuth2Flow.CsrfException, e:
-        flash('csrf exception')
         abort(403)
     except DropboxOAuth2Flow.NotApprovedException, e:
         flash('Not approved?  Why not?')
@@ -134,10 +131,12 @@ def list():
         return redirect(url_for('home'))
 
     real_name = session.get('real_name', None)
-    return render_template('list.html', real_name=real_name)
+    client = DropboxClient(access_token)
+    folder_metadata = client.metadata('/')
+    return render_template('list.html', real_name=real_name, contents=folder_metadata['contents'])
 
-@app.route('/view')
-def view():
+@app.route('/view/<note_title>')
+def view(note_title):
     uid = session.get('uid')
     if not uid:
         return redirect(url_for('home'))
@@ -146,8 +145,11 @@ def view():
     if not access_token:
         return redirect(url_for('home'))
 
+    client = DropboxClient(access_token)
+    f, metadata = client.get_file_and_metadata('/' + note_title)
+    note_content = f.read().replace('\n', '')
     real_name = session.get('real_name', None)
-    return render_template('view.html', real_name=real_name)
+    return render_template('view.html', real_name=real_name, note_title=note_title, note_content=note_content)
 
 @app.route('/dropbox-logout')
 def dropbox_logout():

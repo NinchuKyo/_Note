@@ -2,9 +2,9 @@
 {% block body %}
   <p>
     <span>Title: </span>
-    <input type="text" id="title" maxlength="50" placeholder="please enter a title.." />
+    <input type="text" id="title" maxlength="50" placeholder="please enter a title.." value="{{ note_title }}"/>
   </p>
   <p>
-    <textarea id="content" style="width:100%"></textarea>
+    <textarea id="content" style="width:100%">{{ note_content }}</textarea>
   </p>
 {% endblock %}
