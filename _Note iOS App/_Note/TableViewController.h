@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class DetailViewController;
+@class NoteEditorViewController;
 
-@interface MasterViewController : UITableViewController
+@interface TableViewController : UITableViewController
 
-@property (strong, nonatomic) DetailViewController *detailViewController;
+@property (strong, nonatomic) NoteEditorViewController *noteEditorViewController;
 
 @end

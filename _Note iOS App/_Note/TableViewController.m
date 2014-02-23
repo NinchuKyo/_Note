@@ -6,17 +6,26 @@
 //  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
 //
 
-#import "MasterViewController.h"
+#import "TableViewController.h"
 
-#import "DetailViewController.h"
+#import "AppDelegate.h"
 
-@interface MasterViewController () {
+#import "NoteEditorViewController.h"
+
+#import "Note.h"
+
+@interface TableViewController () {
     NSMutableArray *_objects;
 }
 @end
 
-@implementation MasterViewController
+@implementation TableViewController
 
+-(NSMutableArray*) notes
+{
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    return app.notes;
+}
 - (void)awakeFromNib
 {
     self.clearsSelectionOnViewWillAppear = NO;
@@ -24,17 +33,23 @@
     [super awakeFromNib];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    // Whenever this view controller appears, reload the table. This allows it to reflect any changes
+    // made whilst editing notes.
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    //self.navigationItem.rightBarButtonItem = addButton;
+    self.noteEditorViewController = (NoteEditorViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
-
+/*
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -50,7 +65,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
-
+*/
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -60,15 +75,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [self notes].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    static NSString *CellId = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
+                                                            forIndexPath:indexPath];
+    
+    Note *note = [self notes][indexPath.row];
+    cell.textLabel.text = note.title;
+    //change this if you have functionality for setting fonts
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     return cell;
 }
 
@@ -107,7 +126,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDate *object = _objects[indexPath.row];
-    self.detailViewController.detailItem = object;
+    self.
+    self.noteEditorViewController.detailItem = object;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NoteEditorViewController *editor = (NoteEditorViewController*)segue.destinationViewController;
+    
+    if ([segue.identifier isEqualToString:@"Selected"]){
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        editor.note = [self notes][path.row];
+    }
+    if ([segue.identifier isEqualToString:@"AddNewNote"]){
+        editor.note = [Note noteWithText:@" "];
+        [[self notes] addObject:editor.note];
+    }
 }
 
 @end
