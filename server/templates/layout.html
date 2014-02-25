@@ -3,6 +3,7 @@
         <title>_Note</title>
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
     </head>
     <body>
         <div class="page">
@@ -14,6 +15,5 @@
             {% block body %}{% endblock %}
         </div>
         <script type=text/javascript src="{{ url_for('static', filename='bootstrap.js') }}"></script>
-        <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
     </body>
 </html>
