@@ -11,7 +11,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
 from OpenSSL import SSL
-import os, uuid, dropbox, string
+import os, uuid, dropbox, string, json
 
 # configuration
 DEBUG = True
@@ -186,8 +186,11 @@ def view(note_title):
     client = DropboxClient(access_token)
     f, metadata = client.get_file_and_metadata('/' + note_title)
     note_content = f.read().replace('\n', '')
+    json_data = json.loads(note_content)
+    title = json_data['title']
+    content = json_data['content']
     real_name = session.get('real_name', None)
-    return render_template('view.html', real_name=real_name, note_title=note_title, note_content=note_content)
+    return render_template('view.html', real_name=real_name, note_title=title, note_content=content)
 
 @app.route('/logout')
 def logout():
