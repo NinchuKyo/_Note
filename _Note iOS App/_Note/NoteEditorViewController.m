@@ -66,8 +66,8 @@
             break;
         case 1:
             if ((_noteTitle.text).length > 0){
-                //_note.titleString = _noteTitle.text;
-                //_note.setTitle = YES;
+                _note.titleString = _noteTitle.text;
+                _note.setTitle = YES;
             } else {
                 _noteTitle.text = _note.title;
             }

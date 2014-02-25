@@ -11,7 +11,7 @@ from flask import Flask, request, session, redirect, url_for, abort, \
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
 from OpenSSL import SSL
-import os, uuid
+import os, uuid, dropbox, string
 
 # configuration
 DEBUG = True
@@ -22,12 +22,15 @@ DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+# app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 # setup SSL
 context = SSL.Context(SSL.SSLv23_METHOD)
 context.use_privatekey_file('ssl/server.key')
 context.use_certificate_file('ssl/server.crt')
+
+# constants
+TITLE_ALLOWED_CHARS = set(string.ascii_letters + string.digits + '_' + '-' + ' ')
 
 # Ensure instance directory exists
 try:
@@ -73,6 +76,7 @@ def home():
         client = DropboxClient(access_token)
         account_info = client.account_info()
         real_name = account_info["display_name"]
+        session['real_name'] = real_name
     return render_template('index.html', real_name=real_name)
 
 def get_access_token():
@@ -120,8 +124,8 @@ def dropbox_auth_finish():
     db.commit()
     return redirect(url_for('home'))
 
-@app.route('/list')
-def list():
+@app.route('/create')
+def create():
     uid = session.get('uid')
     if not uid:
         return redirect(url_for('home'))
@@ -131,6 +135,40 @@ def list():
         return redirect(url_for('home'))
 
     real_name = session.get('real_name', None)
+    return render_template('create.html', real_name=real_name)
+
+@app.route('/save', methods=['POST'])
+def save():
+    uid = session.get('uid')
+    if not uid:
+        return 'Error: You are not currently logged in.'
+
+    access_token = get_access_token()
+    if not access_token:
+        return 'Error: You are not currently logged in through Dropbox.'
+
+    try:
+        json = request.get_json()
+    except:
+        return 'Error: Unable to process data.'
+
+    return save_note(access_token, json)
+
+def save_note(access_token, json):
+    if set(json['title']) > TITLE_ALLOWED_CHARS:
+        return 'Error: Detected illegal characters in the title.'
+
+    try:
+        client = DropboxClient(access_token)
+        response = client.put_file('/' + json['title'] + '.txt', request.data)
+    except dropbox.rest.ErrorResponse as e:
+        app.logger.exception(e)
+        return e.user_error_msg
+
+    return 'Your note was saved successfully.'
+
+@app.route('/list')
+def list():
     client = DropboxClient(access_token)
     folder_metadata = client.metadata('/')
     return render_template('list.html', real_name=real_name, contents=folder_metadata['contents'])
@@ -140,19 +178,19 @@ def view(note_title):
     uid = session.get('uid')
     if not uid:
         return redirect(url_for('home'))
-
+    
     access_token = get_access_token()
     if not access_token:
         return redirect(url_for('home'))
-
+    
     client = DropboxClient(access_token)
     f, metadata = client.get_file_and_metadata('/' + note_title)
     note_content = f.read().replace('\n', '')
     real_name = session.get('real_name', None)
     return render_template('view.html', real_name=real_name, note_title=note_title, note_content=note_content)
 
-@app.route('/dropbox-logout')
-def dropbox_logout():
+@app.route('/logout')
+def logout():
     uid = session.get('uid')
     if uid is None:
         abort(403)
@@ -165,4 +203,4 @@ def dropbox_logout():
 
 if __name__ == "__main__":
     init_db()
-    app.run(host='0.0.0.0', debug=True, ssl_context=context)
+    app.run(host='0.0.0.0', ssl_context=context)
