@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473CBE5218B521390099F601 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 473CBE5118B521390099F601 /* Note.m */; };
+		47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47516DB018B2D73000824AC1 /* CoreText.framework */; };
 		4788E1BE18A1B0A4002FDA65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BD18A1B0A4002FDA65 /* Foundation.framework */; };
 		4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BF18A1B0A4002FDA65 /* CoreGraphics.framework */; };
 		4788E1C218A1B0A4002FDA65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1C118A1B0A4002FDA65 /* UIKit.framework */; };
@@ -14,8 +16,8 @@
 		4788E1CA18A1B0A4002FDA65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1C918A1B0A4002FDA65 /* main.m */; };
 		4788E1CE18A1B0A4002FDA65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */; };
 		4788E1D118A1B0A4002FDA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1CF18A1B0A4002FDA65 /* Main.storyboard */; };
-		4788E1D418A1B0A4002FDA65 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D318A1B0A4002FDA65 /* MasterViewController.m */; };
-		4788E1D718A1B0A4002FDA65 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D618A1B0A4002FDA65 /* DetailViewController.m */; };
+		4788E1D418A1B0A4002FDA65 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D318A1B0A4002FDA65 /* TableViewController.m */; };
+		4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */; };
 		4788E1D918A1B0A4002FDA65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1D818A1B0A4002FDA65 /* Images.xcassets */; };
 		4788E1E018A1B0A4002FDA65 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1DF18A1B0A4002FDA65 /* XCTest.framework */; };
 		4788E1E118A1B0A4002FDA65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BD18A1B0A4002FDA65 /* Foundation.framework */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		473CBE5018B521390099F601 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = "../../../TextKitNotepad-starter/TextKitNotepad/Note.h"; sourceTree = "<group>"; };
+		473CBE5118B521390099F601 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = "../../../TextKitNotepad-starter/TextKitNotepad/Note.m"; sourceTree = "<group>"; };
+		47516DB018B2D73000824AC1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4788E1BA18A1B0A4002FDA65 /* _Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4788E1BD18A1B0A4002FDA65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4788E1BF18A1B0A4002FDA65 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,10 +51,10 @@
 		4788E1CC18A1B0A4002FDA65 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4788E1D018A1B0A4002FDA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4788E1D218A1B0A4002FDA65 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		4788E1D318A1B0A4002FDA65 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		4788E1D518A1B0A4002FDA65 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		4788E1D618A1B0A4002FDA65 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		4788E1D218A1B0A4002FDA65 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		4788E1D318A1B0A4002FDA65 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		4788E1D518A1B0A4002FDA65 /* NoteEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
+		4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		4788E1D818A1B0A4002FDA65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4788E1DE18A1B0A4002FDA65 /* _NoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _NoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4788E1DF18A1B0A4002FDA65 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */,
 				4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */,
 				4788E1C218A1B0A4002FDA65 /* UIKit.framework in Frameworks */,
 				4788E1BE18A1B0A4002FDA65 /* Foundation.framework in Frameworks */,
@@ -104,6 +110,7 @@
 		4788E1BC18A1B0A4002FDA65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47516DB018B2D73000824AC1 /* CoreText.framework */,
 				4788E1BD18A1B0A4002FDA65 /* Foundation.framework */,
 				4788E1BF18A1B0A4002FDA65 /* CoreGraphics.framework */,
 				4788E1C118A1B0A4002FDA65 /* UIKit.framework */,
@@ -118,10 +125,12 @@
 				4788E1CC18A1B0A4002FDA65 /* AppDelegate.h */,
 				4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */,
 				4788E1CF18A1B0A4002FDA65 /* Main.storyboard */,
-				4788E1D218A1B0A4002FDA65 /* MasterViewController.h */,
-				4788E1D318A1B0A4002FDA65 /* MasterViewController.m */,
-				4788E1D518A1B0A4002FDA65 /* DetailViewController.h */,
-				4788E1D618A1B0A4002FDA65 /* DetailViewController.m */,
+				473CBE5018B521390099F601 /* Note.h */,
+				473CBE5118B521390099F601 /* Note.m */,
+				4788E1D218A1B0A4002FDA65 /* TableViewController.h */,
+				4788E1D318A1B0A4002FDA65 /* TableViewController.m */,
+				4788E1D518A1B0A4002FDA65 /* NoteEditorViewController.h */,
+				4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */,
 				4788E1D818A1B0A4002FDA65 /* Images.xcassets */,
 				4788E1C418A1B0A4002FDA65 /* Supporting Files */,
 			);
@@ -254,10 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473CBE5218B521390099F601 /* Note.m in Sources */,
 				4788E1CE18A1B0A4002FDA65 /* AppDelegate.m in Sources */,
-				4788E1D418A1B0A4002FDA65 /* MasterViewController.m in Sources */,
+				4788E1D418A1B0A4002FDA65 /* TableViewController.m in Sources */,
 				4788E1CA18A1B0A4002FDA65 /* main.m in Sources */,
-				4788E1D718A1B0A4002FDA65 /* DetailViewController.m in Sources */,
+				4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +478,7 @@
 				4788E1F118A1B0A4002FDA65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4788E1F218A1B0A4002FDA65 /* Build configuration list for PBXNativeTarget "_NoteTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +487,7 @@
 				4788E1F418A1B0A4002FDA65 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
