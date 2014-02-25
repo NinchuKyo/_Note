@@ -169,6 +169,14 @@ def save_note(access_token, json):
 
 @app.route('/list')
 def list():
+    uid = session.get('uid')
+    if not uid:
+        return redirect(url_for('home'))
+    
+    access_token = get_access_token()
+    if not access_token:
+        return redirect(url_for('home'))
+
     client = DropboxClient(access_token)
     folder_metadata = client.metadata('/')
     return render_template('list.html', real_name=real_name, contents=folder_metadata['contents'])
