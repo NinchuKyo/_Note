@@ -179,6 +179,7 @@ def list():
 
     client = DropboxClient(access_token)
     folder_metadata = client.metadata('/')
+    real_name = session.get('real_name', None)
     return render_template('list.html', real_name=real_name, contents=folder_metadata['contents'])
 
 @app.route('/view/<note_title>')
