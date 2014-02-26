@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block body %}
-  {% for file in contents %}
-    <p><a href="{{ url_for('view', note_title=file['path'][1:]) }}">{{ file['path'][1:] }}</a></p>
-  {% endfor %}
+  <p><a href="{{ url_for('home') }} " method="post">Home</a></p>
+  <p><a href="{{ url_for('create') }} " method="post">Create a new Note</a></p>
+  <p>Your notes:
+    {% for file in contents %}
+      <p><a href="{{ url_for('view', note_title=file['path'][1:]) }}">{{ file['path'][1:] }}</a></p>
+    {% endfor %}
+  </p>
 {% endblock %}

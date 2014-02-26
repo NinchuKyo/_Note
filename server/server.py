@@ -160,7 +160,7 @@ def save_note(access_token, json):
 
     try:
         client = DropboxClient(access_token)
-        response = client.put_file('/' + json['title'] + '.txt', request.data)
+        response = client.put_file('/' + json['title'], request.data)
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
         return e.user_error_msg
