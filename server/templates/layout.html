@@ -8,6 +8,14 @@
     <body>
         <div class="page">
             <h1><a href="{{ url_for('home') }}">Welcome to _Note!</a></h1>
+            {% if real_name %}
+                <div class='navbar-right navbar'>
+                    <a href="{{ url_for('list') }} ">My Notes</a>
+                    <a href="{{ url_for('logout') }} " method="post">Log out</a>
+                </div>
+            {% else %}
+                <div class='pull-right'><a href="{{ url_for('dropbox_auth_start') }}">Login</a></div>
+            {% endif %}
             <div class=metanav></div>
             {% for message in get_flashed_messages() %}
                 <div class="flash">{{ message }}</div>
