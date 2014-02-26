@@ -2,21 +2,36 @@
 //  AppDelegate.m
 //  _Note
 //
-//  Created by Lyndon Quigley on 2/4/2014.
-//  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import "AppDelegate.h"
-
 #import "Note.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Request server for JSON, url of server to request from
+    NSString *urlString = @"https://localhost:5000/";
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    // HTTP request to server
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setTimeoutInterval:10];
+    [urlRequest setHTTPMethod:@"GET"];
+    
+    //allocate a new operation queue
+    //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    // Establish connection
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    
+    
     // Override point for customization after application launch.
     self.notes = [NSMutableArray arrayWithArray: @[
-            [Note noteWithText: @"I'm testing out this thing that I'm doing. Yay"]]];
+            [Note noteWithText: @"Will load the list of notes in this area here."]]];
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
@@ -48,6 +63,47 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark NSURLConnectionDelegate
+
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+    NSLog(@"protectionSpace: %@", [protectionSpace authenticationMethod]);
+    
+    // We only know how to handle NTLM authentication.
+    if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodNTLM])
+        return YES;
+    
+    // Explicitly reject ServerTrust. This is occasionally sent by IIS.
+    if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust])
+        return NO;
+    
+    return NO;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"%@", response);
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"%@", data);
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
+}
+
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    [[challenge sender] useCredential:[NSURLCredential
+                                       credentialWithUser:@"user"
+                                       password:@"password"
+                                       persistence:NSURLCredentialPersistencePermanent] forAuthenticationChallenge:challenge];
+    
 }
 
 @end
