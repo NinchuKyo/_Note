@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		473CBE5218B521390099F601 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 473CBE5118B521390099F601 /* Note.m */; };
 		47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47516DB018B2D73000824AC1 /* CoreText.framework */; };
 		4788E1BE18A1B0A4002FDA65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BD18A1B0A4002FDA65 /* Foundation.framework */; };
 		4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BF18A1B0A4002FDA65 /* CoreGraphics.framework */; };
@@ -24,6 +23,7 @@
 		4788E1E218A1B0A4002FDA65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1C118A1B0A4002FDA65 /* UIKit.framework */; };
 		4788E1EA18A1B0A4002FDA65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1E818A1B0A4002FDA65 /* InfoPlist.strings */; };
 		4788E1EC18A1B0A4002FDA65 /* _NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */; };
+		C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D80D4818BE1CF200EEF35E /* Note.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		473CBE5018B521390099F601 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Note.h; path = "../../../TextKitNotepad-starter/TextKitNotepad/Note.h"; sourceTree = "<group>"; };
-		473CBE5118B521390099F601 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Note.m; path = "../../../TextKitNotepad-starter/TextKitNotepad/Note.m"; sourceTree = "<group>"; };
 		47516DB018B2D73000824AC1 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		4788E1BA18A1B0A4002FDA65 /* _Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = _Note.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4788E1BD18A1B0A4002FDA65 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +59,8 @@
 		4788E1E718A1B0A4002FDA65 /* _NoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "_NoteTests-Info.plist"; sourceTree = "<group>"; };
 		4788E1E918A1B0A4002FDA65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _NoteTests.m; sourceTree = "<group>"; };
+		C8D80D4718BE1CF200EEF35E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		C8D80D4818BE1CF200EEF35E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,11 +122,11 @@
 		4788E1C318A1B0A4002FDA65 /* _Note */ = {
 			isa = PBXGroup;
 			children = (
+				C8D80D4718BE1CF200EEF35E /* Note.h */,
+				C8D80D4818BE1CF200EEF35E /* Note.m */,
 				4788E1CC18A1B0A4002FDA65 /* AppDelegate.h */,
 				4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */,
 				4788E1CF18A1B0A4002FDA65 /* Main.storyboard */,
-				473CBE5018B521390099F601 /* Note.h */,
-				473CBE5118B521390099F601 /* Note.m */,
 				4788E1D218A1B0A4002FDA65 /* TableViewController.h */,
 				4788E1D318A1B0A4002FDA65 /* TableViewController.m */,
 				4788E1D518A1B0A4002FDA65 /* NoteEditorViewController.h */,
@@ -263,10 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				473CBE5218B521390099F601 /* Note.m in Sources */,
 				4788E1CE18A1B0A4002FDA65 /* AppDelegate.m in Sources */,
 				4788E1D418A1B0A4002FDA65 /* TableViewController.m in Sources */,
 				4788E1CA18A1B0A4002FDA65 /* main.m in Sources */,
+				C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */,
 				4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
