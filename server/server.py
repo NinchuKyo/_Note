@@ -157,10 +157,12 @@ def save():
 def save_note(access_token, json):
     if set(json['title']) > TITLE_ALLOWED_CHARS:
         return 'Error: Detected illegal characters in the title.'
+    if 'overwrite' not in json:
+        return 'Error: missing parameter.'
 
     try:
         client = DropboxClient(access_token)
-        response = client.put_file('/' + json['title'], request.data)
+        response = client.put_file('/' + json['title'], request.data, overwrite=json['overwrite'])
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
         return e.user_error_msg

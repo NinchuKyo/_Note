@@ -16,10 +16,11 @@
         var note = {};
         note["content"] = tinyMCE.activeEditor.getContent();
         note["title"] = document.getElementById("title").value;
+        note["overwrite"] = true;
 
         if(!note["title"]) {
             document.getElementById("msg").innerHTML = "You're missing the title.";
-            document.getElementById("msg").className = "flash";
+            document.getElementById("msg").className = "alert alert-warning";
         }
         else {
             tinymce.util.XHR.send({
@@ -30,12 +31,12 @@
                 success: function(response) {
                     console.debug(response);
                     document.getElementById("msg").innerHTML = response;
-                    document.getElementById("msg").className = "flash";
+                    document.getElementById("msg").className = "alert alert-success";
                 },
                 error: function (text) {
                     console.debug(text);
                     document.getElementById("msg").innerHTML = "An unexpected error has occured. We apologize for the inconvenience.";
-                    document.getElementById("msg").className = "flash";
+                    document.getElementById("msg").className = "alert alert-warning";
                 }
             });
         }
