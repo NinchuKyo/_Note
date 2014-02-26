@@ -193,13 +193,15 @@ def view(note_title):
         return redirect(url_for('home'))
     
     client = DropboxClient(access_token)
-    f, metadata = client.get_file_and_metadata('/' + note_title)
-    note_content = f.read().replace('\n', '')
-    json_data = json.loads(note_content)
-    title = json_data['title']
-    content = json_data['content']
+    try:
+        f, metadata = client.get_file_and_metadata('/' + note_title)
+        note_content = f.read().replace('\n', '')
+        json_content = json.loads(note_content)
+    except dropbox.rest.ErrorResponse:
+        flash('File not found.')
+        return redirect(url_for('home'))
     real_name = session.get('real_name', None)
-    return render_template('view.html', real_name=real_name, note_title=title, note_content=content)
+    return render_template('view.html', real_name=real_name, note_content=json_content)
 
 @app.route('/logout')
 def logout():
