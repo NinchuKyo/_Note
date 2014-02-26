@@ -25,7 +25,7 @@
                 document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, \
                                                             hyphens, and underscores.";
                 // document.getElementById("msg").innerHTML = 'The character "' + charTyped + '" is not allowed in the title.';
-                document.getElementById("msg").className = "flash";
+                document.getElementById("msg").className = "alert alert-warning";
                 // document.getElementById("warning").innerHTML = '"' + charTyped + '" is not allowed.';
                 return false;
             }
@@ -37,10 +37,11 @@
         var note = {};
         note["content"] = tinyMCE.activeEditor.getContent();
         note["title"] = document.getElementById("title").value;
+        note["overwrite"] = false;
 
         if(!note["title"]) {
             document.getElementById("msg").innerHTML = "You're missing the title.";
-            document.getElementById("msg").className = "flash";
+            document.getElementById("msg").className = "alert alert-warning";
         }
         else {
             tinymce.util.XHR.send({
@@ -51,18 +52,19 @@
                 success: function(response) {
                     console.debug(response);
                     document.getElementById("msg").innerHTML = response;
-                    document.getElementById("msg").className = "flash";
+                    document.getElementById("msg").className = "alert alert-success";
                 },
                 error: function (text) {
                     console.debug(text);
                     document.getElementById("msg").innerHTML = "An unexpected error has occured. We apologize for the inconvenience.";
-                    document.getElementById("msg").className = "flash";
+                    document.getElementById("msg").className = "alert alert-warning";
                 }
             });
         }
     }
 </script>
 <div id="msg"></div>
+<p><a href="{{ url_for('list') }}">Back</a></p>
 <p>
     <span>Title: </span>
     <input type="text" id="title" maxlength="50" placeholder="please enter a title.." required onkeypress="return keypresshandler(event);"/>
