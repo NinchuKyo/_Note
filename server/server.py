@@ -19,9 +19,6 @@ DATABASE = '_Note.db'
 SECRET_KEY = '[+[z>$pC6zpz"X[P2{TwY$.v'
 DROPBOX_APP_KEY = 'uwjvcs6f8kegvt1'
 DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
-access_token = None
-def set_access_token(token):
-    access_token = token
 
 app = Flask(__name__)
 app.config.from_object(__name__)

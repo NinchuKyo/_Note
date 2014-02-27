@@ -14,14 +14,35 @@ class ServerTestCase(unittest.TestCase):
         os.close(self.db_fd)
         os.unlink(server.app.config['DATABASE'])
 
-    def test_1(self):
-        #rv = self.app.get('/')
-        #print rv.data
-        #rv = self.app.get('/create')
-        #print rv.data
-        #rv = self.app.get('/view/asdf')
-        #print rv.data
-        assert True
+    def test_no_access_token(self):
+        rv = self.app.get('/')
+        assert 'ng-app="mainApp"' in rv.data
+
+        # without cookie
+        rv = self.app.get('/dropbox-auth-finish', follow_redirects=False)
+        assert '403 Forbidden' in rv.data
+
+        rv = self.app.get('/dropbox-auth-start', follow_redirects=False)
+        assert 'You should be redirected automatically to target URL: <a href="https://www.dropbox.com/' in rv.data
+
+        # with cookie
+        rv = self.app.get('/dropbox-auth-finish', follow_redirects=False)
+        assert '400 Bad Request' in rv.data
+
+        rv = self.app.get('/lists')
+        assert 'You are not currently logged in through Dropbox.' in rv.data
+
+        rv = self.app.get('/view_note/')
+        assert '404 Not Found' in rv.data
+
+        rv = self.app.get('/view_note/asdf')
+        assert 'You are not currently logged in through Dropbox.' in rv.data
+
+        rv = self.app.post('/save')
+        assert 'You are not currently logged in through Dropbox.' in rv.data
+
+        rv = self.app.get('/logout')
+        assert 'Your have been logged out.' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
