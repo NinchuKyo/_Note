@@ -8,11 +8,13 @@
 
 #import "AppDelegate.h"
 #import "Note.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /*
     // Request server for JSON, url of server to request from
     NSString *urlString = @"https://localhost:5000/";
     NSURL *url = [NSURL URLWithString:urlString];
@@ -27,7 +29,14 @@
     
     // Establish connection
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    */
     
+    // Authenticate to Dropbox
+    DBSession *dbSession = [[DBSession alloc]
+                            initWithAppKey:@"uwjvcs6f8kegvt1"
+                            appSecret:@"l8p42osw8uriwyj"
+                            root:kDBRootAppFolder]; // either kDBRootAppFolder or kDBRootDropbox
+    [DBSession setSharedSession:dbSession];
     
     // Override point for customization after application launch.
     self.notes = [NSMutableArray arrayWithArray: @[
@@ -37,7 +46,20 @@
     splitViewController.delegate = (id)navigationController.topViewController;
     return YES;
 }
-							
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+  sourceApplication:(NSString *)source annotation:(id)annotation {
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            NSLog(@"App linked successfully!");
+            // At this point you can start making API calls
+        }
+        return YES;
+    }
+    // Add whatever other url handling code your app requires here
+    return NO;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -65,6 +87,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+/*
 #pragma mark NSURLConnectionDelegate
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
@@ -105,5 +128,6 @@
                                        persistence:NSURLCredentialPersistencePermanent] forAuthenticationChallenge:challenge];
     
 }
+*/
 
 @end

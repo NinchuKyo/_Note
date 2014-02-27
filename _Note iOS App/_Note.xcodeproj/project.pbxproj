@@ -15,7 +15,6 @@
 		4788E1CA18A1B0A4002FDA65 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1C918A1B0A4002FDA65 /* main.m */; };
 		4788E1CE18A1B0A4002FDA65 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */; };
 		4788E1D118A1B0A4002FDA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1CF18A1B0A4002FDA65 /* Main.storyboard */; };
-		4788E1D418A1B0A4002FDA65 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D318A1B0A4002FDA65 /* TableViewController.m */; };
 		4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */; };
 		4788E1D918A1B0A4002FDA65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1D818A1B0A4002FDA65 /* Images.xcassets */; };
 		4788E1E018A1B0A4002FDA65 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1DF18A1B0A4002FDA65 /* XCTest.framework */; };
@@ -23,6 +22,8 @@
 		4788E1E218A1B0A4002FDA65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1C118A1B0A4002FDA65 /* UIKit.framework */; };
 		4788E1EA18A1B0A4002FDA65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1E818A1B0A4002FDA65 /* InfoPlist.strings */; };
 		4788E1EC18A1B0A4002FDA65 /* _NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */; };
+		C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C803372A18BF9AF70032AAC6 /* TableViewController.m */; };
+		C8BBB04218BFB4CE00E056D5 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8BBB04118BFB4CE00E056D5 /* DropboxSDK.framework */; };
 		C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D80D4818BE1CF200EEF35E /* Note.m */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +51,6 @@
 		4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4788E1D018A1B0A4002FDA65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4788E1D218A1B0A4002FDA65 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		4788E1D318A1B0A4002FDA65 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		4788E1D518A1B0A4002FDA65 /* NoteEditorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoteEditorViewController.h; sourceTree = "<group>"; };
 		4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		4788E1D818A1B0A4002FDA65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -59,6 +59,8 @@
 		4788E1E718A1B0A4002FDA65 /* _NoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "_NoteTests-Info.plist"; sourceTree = "<group>"; };
 		4788E1E918A1B0A4002FDA65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _NoteTests.m; sourceTree = "<group>"; };
+		C803372A18BF9AF70032AAC6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C8BBB04118BFB4CE00E056D5 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		C8D80D4718BE1CF200EEF35E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		C8D80D4818BE1CF200EEF35E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 				47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */,
 				4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */,
 				4788E1C218A1B0A4002FDA65 /* UIKit.framework in Frameworks */,
+				C8BBB04218BFB4CE00E056D5 /* DropboxSDK.framework in Frameworks */,
 				4788E1BE18A1B0A4002FDA65 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +113,7 @@
 		4788E1BC18A1B0A4002FDA65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8BBB04118BFB4CE00E056D5 /* DropboxSDK.framework */,
 				47516DB018B2D73000824AC1 /* CoreText.framework */,
 				4788E1BD18A1B0A4002FDA65 /* Foundation.framework */,
 				4788E1BF18A1B0A4002FDA65 /* CoreGraphics.framework */,
@@ -122,13 +126,13 @@
 		4788E1C318A1B0A4002FDA65 /* _Note */ = {
 			isa = PBXGroup;
 			children = (
+				C803372A18BF9AF70032AAC6 /* TableViewController.m */,
 				C8D80D4718BE1CF200EEF35E /* Note.h */,
 				C8D80D4818BE1CF200EEF35E /* Note.m */,
 				4788E1CC18A1B0A4002FDA65 /* AppDelegate.h */,
 				4788E1CD18A1B0A4002FDA65 /* AppDelegate.m */,
 				4788E1CF18A1B0A4002FDA65 /* Main.storyboard */,
 				4788E1D218A1B0A4002FDA65 /* TableViewController.h */,
-				4788E1D318A1B0A4002FDA65 /* TableViewController.m */,
 				4788E1D518A1B0A4002FDA65 /* NoteEditorViewController.h */,
 				4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */,
 				4788E1D818A1B0A4002FDA65 /* Images.xcassets */,
@@ -264,9 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4788E1CE18A1B0A4002FDA65 /* AppDelegate.m in Sources */,
-				4788E1D418A1B0A4002FDA65 /* TableViewController.m in Sources */,
 				4788E1CA18A1B0A4002FDA65 /* main.m in Sources */,
 				C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */,
+				C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */,
 				4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +400,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "_Note/_Note-Prefix.pch";
 				INFOPLIST_FILE = "_Note/_Note-Info.plist";
@@ -409,6 +417,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "_Note/_Note-Prefix.pch";
 				INFOPLIST_FILE = "_Note/_Note-Info.plist";
