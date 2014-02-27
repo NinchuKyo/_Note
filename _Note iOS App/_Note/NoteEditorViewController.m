@@ -9,6 +9,7 @@
 #import "NoteEditorViewController.h"
 
 #import "Note.h"
+#import <DropboxSDK/DropboxSDK.h>
 
 @interface NoteEditorViewController () <UITextViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -74,6 +75,13 @@
             break;
     }
 }
+
+- (IBAction)didPressLink {
+    if (![[DBSession sharedSession] isLinked]) {
+        [[DBSession sharedSession] linkFromController:self];
+    }
+}
+
 /*
 - (void)textFieldDidEndEditing:(UITextField *)noteTitle
 {
