@@ -11,10 +11,12 @@
 #import "Note.h"
 #import <DropboxSDK/DropboxSDK.h>
 
-@interface NoteEditorViewController () <UITextViewDelegate>
+@interface NoteEditorViewController () <UITextViewDelegate, DBRestClientDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITextView *noteTitle;
+@property (nonatomic, strong) DBRestClient *restClient;
+
 - (void)configureView;
 @end
 
@@ -54,6 +56,9 @@
     self.textView.text = self.note.contents;
     self.textView.delegate = self;
     self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
+    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+    self.restClient.delegate = self;
 
     [self configureView];
 }
@@ -76,10 +81,31 @@
     }
 }
 
-- (IBAction)didPressLink {
+/* Change button info
+- (IBAction)checkLink : (id) sender {
+    UIButton *button = (UIButton *) sender;
+    if (![[DBSession sharedSession] isLinked]) {
+        [button setTitle:@"Unlink" forState:UIControlStateNormal];
+    } else {
+        [button setTitle:@"Link to Dropbox" forState:UIControlStateNormal];
+    }
+}
+*/
+
+- (IBAction)didPressLink{
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:self];
+    } else {
+        [[DBSession sharedSession] unlinkAll];
     }
+}
+
+- (IBAction)viewNoteLink{
+    
+    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
+    self.restClient.delegate = self;
+    
+    [self.restClient loadMetadata:@"/"];
 }
 
 /*
@@ -94,6 +120,20 @@
     }
 }
 */
+
+- (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
+    if (metadata.isDirectory) {
+        NSLog(@"Folder '%@' contains:", metadata.path);
+        for (DBMetadata *file in metadata.contents) {
+            NSLog(@"	%@", file.filename);
+        }
+    }
+}
+
+- (void)restClient:(DBRestClient *)client
+loadMetadataFailedWithError:(NSError *)error {
+    NSLog(@"Error loading metadata: %@", error);
+}
 
 - (void)didReceiveMemoryWarning
 {
