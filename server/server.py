@@ -125,7 +125,7 @@ def dropbox_auth_finish():
 
     app.logger.info('access_token = %s', access_token)
 
-    return redirect(url_for('list'))
+    return redirect(url_for('home'))
 
 # @app.route('/list')
 # def list():
@@ -146,7 +146,7 @@ def lists():
     folder_metadata = client.metadata('/')['contents']
     note_titles = []
     for file in folder_metadata:
-        note_titles.append = { 'Title': file['path'][1:] }
+        note_titles.append({ 'Title': file['path'][1:] })
     return json_response(True, '', note_titles=note_titles)
 
 # @app.route('/view/<note_title>')
