@@ -1,0 +1,33 @@
+<!-- This div contains everything anchored on the left of the page -->
+<div class="pull-left" style="text-align:left">    
+    
+    <!-- The title -->
+    <h1>Welcome to _Note!</h1>
+
+    <!-- The item search filters -->
+    <span ng-show="loggedIn" ng-include="'static/partials/application/mainSearch-partial.html'"></span>
+
+    <!-- The pagination controls (next, prev, goToPage) -->
+    <span ng-show="loggedIn" ng-include="'static/partials/application/mainPageCtrl-partial.html'"></span>
+
+    <!-- The 'loading' animation (shown when updating the data from the BE) -->
+    <!--div style="height:12px;width:128px;background-color:transparent;" ng-show="doneLoading"></div>
+    <img style="margin-top:15px;" src="static/images/ajax-loader.gif" ng-show="!doneLoading"/-->
+
+    <!-- The drop-down for displaying # of items per page in the data table -->
+    <span ng-show="loggedIn" ng-include="'static/partials/application/mainResultsPerPage-partial.html'"></span>
+
+    <!-- The # of items in the data table -->
+    <label ng-show="loggedIn"><b>{{resultsCount['Main']}} results:</b></label>
+
+    <!-- The data table -->
+    <span ng-show="loggedIn" ng-include="'static/partials/application/mainTable-partial.html'"></span>
+
+    <!-- 'More' button to display 25 more items if 'All' is selected in resultsPerPage -->
+    <div ng-show="itemsPerPage.value == 0 && numItemsDisplayed < resultsCount['Main'] && loggedIn" style="margin-bottom:15px;">
+        <input class="EAControl" style="width:auto;" type="button" value="More" ng-click="increaseDisplayLimit()" />
+    </div>
+
+    <span ng-show="!loggedIn" ng-include="'static/partials/application/mainWelcome-partial.html'"></span>
+
+</div>

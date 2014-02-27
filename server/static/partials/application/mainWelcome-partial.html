@@ -1,0 +1,16 @@
+<div>
+    <div><a href="/dropbox_auth_start">Login</a></div>
+    <span>Feel free to try out our text editor.</span>
+    <textarea id="content" style="width:100%"></textarea>
+</div>
+<script>
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist autolink lists link charmap print preview",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime table contextmenu paste"
+        ],
+        toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+    });
+</script>

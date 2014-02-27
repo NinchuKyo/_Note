@@ -1,18 +1,19 @@
-{% extends "layout.html" %}
-{% block body %}
-    <div>
-        <span>Feel free to try out our text editor.</span>
-        <textarea id="content" style="width:100%"></textarea>
-    </div>
-    <script>
-        tinymce.init({
-            selector: "textarea",
-            plugins: [
-                "advlist autolink lists link charmap print preview",
-                "searchreplace visualblocks code fullscreen",
-                "insertdatetime table contextmenu paste"
-            ],
-            toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
-        });
-    </script>
-{% endblock %}
+<!doctype html>
+<html lang="en" ng-app="mainApp" ng-controller="MainCtrl">
+    <head>
+      <meta charset="utf-8">
+        <title>Welcome to _Note!</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
+        <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
+        <script src="{{ url_for('static', filename='lib/angular/angular-resource.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/mainController.js') }}"></script>
+        <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    </head>
+
+    <body>  
+        <!-- The main view -->
+        <div class="container-generic" ng-include="'{{ url_for('static', filename='partials/application/mainApp-partial.html') }}'"></div>
+    </body>
+</html>

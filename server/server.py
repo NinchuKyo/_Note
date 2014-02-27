@@ -127,17 +127,17 @@ def dropbox_auth_finish():
 
     return redirect(url_for('list'))
 
-@app.route('/list')
-def list():
-    access_token = get_access_token()
-    if not access_token:
-        return redirect(url_for('home'))
+# @app.route('/list')
+# def list():
+#     access_token = get_access_token()
+#     if not access_token:
+#         return redirect(url_for('home'))
 
-    real_name = session.get('real_name', None)
-    return render_template('list.html', real_name=real_name)
+#     real_name = session.get('real_name', None)
+#     return render_template('list.html', real_name=real_name)
 
-@app.route('/get_list')
-def get_list():
+@app.route('/lists')
+def lists():
     access_token = get_access_token()
     if not access_token:
         return json_response(False, 'You are not currently logged in through Dropbox.')
@@ -146,25 +146,25 @@ def get_list():
     folder_metadata = client.metadata('/')['contents']
     note_titles = []
     for file in folder_metadata:
-        note_titles.append = file['path'][1:]
+        note_titles.append = { 'Title': file['path'][1:] }
     return json_response(True, '', note_titles=note_titles)
 
-@app.route('/view/<note_title>')
-def view(note_title):
-    access_token = get_access_token()
-    if not access_token:
-        return redirect(url_for('home'))
+# @app.route('/view/<note_title>')
+# def view(note_title):
+#     access_token = get_access_token()
+#     if not access_token:
+#         return redirect(url_for('home'))
     
-    client = DropboxClient(access_token)
-    try:
-        f, metadata = client.get_file_and_metadata('/' + note_title)
-        note_content = f.read().replace('\n', '')
-        json_content = json.loads(note_content)
-    except dropbox.rest.ErrorResponse:
-        flash('File not found.')
-        return redirect(url_for('home'))
-    real_name = session.get('real_name', None)
-    return render_template('view.html', real_name=real_name, note_content=json_content)
+#     client = DropboxClient(access_token)
+#     try:
+#         f, metadata = client.get_file_and_metadata('/' + note_title)
+#         note_content = f.read().replace('\n', '')
+#         json_content = json.loads(note_content)
+#     except dropbox.rest.ErrorResponse:
+#         flash('File not found.')
+#         return redirect(url_for('home'))
+#     real_name = session.get('real_name', None)
+#     return render_template('view.html', real_name=real_name, note_content=json_content)
 
 @app.route('/view_note/<note_title>')
 def view_note(note_title):
@@ -184,14 +184,14 @@ def view_note(note_title):
     real_name = session.get('real_name', None)
     return json_response(True, '', note=json_content)
 
-@app.route('/create')
-def create():
-    access_token = get_access_token()
-    if not access_token:
-        return redirect(url_for('home'))
+# @app.route('/create')
+# def create():
+#     access_token = get_access_token()
+#     if not access_token:
+#         return redirect(url_for('home'))
 
-    real_name = session.get('real_name', None)
-    return render_template('create.html', real_name=real_name)
+#     real_name = session.get('real_name', None)
+#     return render_template('create.html', real_name=real_name)
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -238,8 +238,7 @@ def logout():
     db.commit()
     session.pop('uid', None)
     session.pop('real_name', None)
-    flash('You were logged out')
-    return redirect(url_for('home'))
+    return json_response(True, 'Your have been logged out.')
 
 if __name__ == "__main__":
     init_db()

@@ -1,0 +1,26 @@
+<ul class="unstyled" style="font-weight:bold;font-size:14px;">
+    <li style="margin:5px;" ng-show="showSearch['Main'][0]">
+        <input type="text" ng-model="query['Main'][0]" ng-change="search('Main')" class="input-large search-query" placeholder="Search"/>
+        <input class="EAControl" type="button" value="+" ng-disabled="searchesShown['Main'] == 5" ng-click="addSearch('Main')"/>
+    </li>
+    <li style="margin:5px;" ng-show="showSearch['Main'][1]">
+        <input type="text" ng-model="query['Main'][1]" ng-change="search('Main')" class="input-large search-query" placeholder="Search"/>
+        <input class="EAControl" type="button" value="+" ng-disabled="searchesShown['Main'] == 5" ng-click="addSearch('Main')"/>
+        <input class="EAControl" type="button" value="-" ng-click="removeSearch(1, 'Main')"/>
+    </li>
+    <li style="margin:5px;" ng-show="showSearch['Main'][2]">
+        <input type="text" ng-model="query['Main'][2]" ng-change="search('Main')" class="input-large search-query" placeholder="Search"/>
+        <input class="EAControl" id="Button2" type="button" value="+" ng-disabled="searchesShown['Main'] == 5" ng-click="addSearch('Main')"/>
+        <input class="EAControl" type="button" value="-" ng-click="removeSearch(2, 'Main')"/>
+    </li>
+    <li style="margin:5px;" ng-show="showSearch['Main'][3]">
+        <input type="text" ng-model="query['Main'][3]" ng-change="search('Main')" class="input-large search-query" placeholder="Search"/>
+        <input class="EAControl" id="Button3" type="button" value="+" ng-disabled="searchesShown['Main'] == 5" ng-click="addSearch('Main')"/>
+        <input class="EAControl" type="button" value="-" ng-click="removeSearch(3, 'Main')"/>
+    </li>
+    <li style="margin:5px;" ng-show="showSearch['Main'][4]">
+        <input type="text" ng-model="query['Main'][4]" ng-change="search('Main')" class="input-large search-query" placeholder="Search"/>
+        <input class="EAControl" id="Button4" type="button" value="+" ng-disabled="searchesShown['Main'] == 5" ng-click="addSearch('Main')"/>
+        <input class="EAControl" type="button" value="-" ng-click="removeSearch(4, 'Main')"/>
+    </li>
+</ul>
