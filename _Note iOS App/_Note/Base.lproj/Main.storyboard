@@ -64,6 +64,11 @@
                                     <action selector="didPressLink" destination="JEX-9P-axG" eventType="touchUpInside" id="aO8-Ch-nyA"/>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-Yq-dPw">
+                                <rect key="frame" x="35" y="126" width="641" height="587"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -73,6 +78,7 @@
                     <connections>
                         <outlet property="noteTitle" destination="Zct-dL-cU4" id="kkW-I9-KuQ"/>
                         <outlet property="textView" destination="Vku-yi-qwK" id="t94-ys-oKa"/>
+                        <outlet property="web" destination="nJt-Yq-dPw" id="isy-dg-V9W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -186,6 +192,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="e9P-mE-5I9"/>
+        <segue reference="GKi-kA-LjT"/>
     </inferredMetricsTieBreakers>
 </document>
