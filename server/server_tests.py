@@ -42,7 +42,7 @@ class ServerTestCase(unittest.TestCase):
         assert 'You are not currently logged in through Dropbox.' in rv.data
 
         rv = self.app.get('/logout')
-        assert 'Your have been logged out.' in rv.data
+        assert 'You have been logged out.' in rv.data
 
 if __name__ == '__main__':
     unittest.main()

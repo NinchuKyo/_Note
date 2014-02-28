@@ -235,7 +235,7 @@ def logout():
     db.commit()
     session.pop('uid', None)
     session.pop('real_name', None)
-    return json_response(True, 'Your have been logged out.')
+    return json_response(True, 'You have been logged out.')
 
 if __name__ == "__main__":
     init_db()
