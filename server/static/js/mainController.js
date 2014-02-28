@@ -33,8 +33,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             // Mapping column names to item attributes
             var mainAttributesMap = {
-                "Title": "Title",
-                "Description": "Description"
+                "Title": "Title"
             };
 
             // Sorting
@@ -58,8 +57,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             // Values from our config file
             var config = null;
 
-            $scope.newNote = {};
-            $scope.loggedIn = false;
+            $scope.loggedIn = { value: false };
 
             /********** On Startup **************************************************/
 
@@ -334,18 +332,9 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             /********** Items **************************/
 
-            // Sets up the editor for the clicked note
-            $scope.selectItem = function (title, description) {
-                $scope.newNote.editText = description;
-                $scope.newNote.editTitle = title;
-            };
-
-            // Saves the note
-            $scope.saveNote = function (newNote) {
-                $scope.data.push({ "Title": newNote.editTitle, "Description": newNote.editText });
-                $scope.selectItem(newNote.editTitle, newNote.editText);
-                $scope.search("Main");
-            };
+            $scope.logInOrOut = function () {
+                $scope.loggedIn.value = !$scope.loggedIn.value;
+            }
 
             $scope.keyPressed = function (evt) {
                 evt = evt || window.event;
@@ -357,14 +346,8 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
                     if (/[\w\s\x08-]/.test(charTyped) === false)
                     {
-                        // document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, \
-                        //                                             hyphens, and underscores.";
-                        // // document.getElementById("msg").innerHTML = 'The character "' + charTyped + '" is not allowed in the title.';
-                        // document.getElementById("msg").className = "alert alert-warning";
-                        // // document.getElementById("warning").innerHTML = '"' + charTyped + '" is not allowed.';
                         return false;
                     }
-                    // document.getElementById("warning").innerHTML = "";
                 }
             };
 

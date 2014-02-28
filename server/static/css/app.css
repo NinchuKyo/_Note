@@ -62,18 +62,13 @@ h1
   background-color: #D7D7D7;
 }
 
-input[type=button]
-{
-    width: 30px;
-}
-
-.EAControl
+.BlueBgCtrl
 {
     background-color:#0A75C7;
     color: white;
 }
 
-.EAControl:hover
+.BlueBgCtrl:hover
 {
     background-color: #EC8000;
 }

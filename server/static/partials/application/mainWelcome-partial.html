@@ -1,16 +1,10 @@
 <div>
-    <div><a href="/dropbox-auth-start">Login</a></div>
-    <span>Feel free to try out our text editor.</span>
-    <textarea id="content" style="width:100%"></textarea>
+    <span>Please Login to continue!</span>
+    <div ng-show="loggedIn.value == true"><a ng-click="loginOrOut()" href="/logout">Logout</a></div>
+    
+    <div ng-show="loggedIn.value == false">
+        <div><a ng-click="loginOrOut()" href="/dropbox-auth-start">Login</a></div>
+        <span>Feel free to try out our text editor.</span>
+        <textarea id="content" style="width:100%"></textarea>
+    </div>
 </div>
-<script>
-    tinymce.init({
-        selector: "textarea",
-        plugins: [
-            "advlist autolink lists link charmap print preview",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime table contextmenu paste"
-        ],
-        toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
-    });
-</script>
