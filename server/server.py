@@ -58,12 +58,12 @@ def get_db():
     return top.sqlite_db
 
 @app.route('/')
-def home():
+def splash():
     uid = session.get('uid', None)
     real_name = session.get('real_name', None)
     app.logger.info('uid = %s', uid)
     app.logger.info('real_name = %s', real_name)
-    return render_template('index.html', real_name=real_name)
+    return render_template('splash.html', real_name=real_name)
 
 def get_access_token():
     uid = session.get('uid')
@@ -106,7 +106,7 @@ def dropbox_auth_finish():
         abort(403)
     except DropboxOAuth2Flow.NotApprovedException, e:
         flash('Not approved?  Why not?')
-        return redirect(url_for('home'))
+        return redirect(url_for('splash'))
     except DropboxOAuth2Flow.ProviderException, e:
         app.logger.exception("Auth error" + e)
         abort(403)
@@ -123,6 +123,23 @@ def dropbox_auth_finish():
     app.logger.info('access_token = %s', access_token)
 
     return redirect(url_for('home'))
+
+@app.route('/home')
+def home():
+    uid = session.get('uid', None)
+    real_name = session.get('real_name', None)
+    app.logger.info('uid = %s', uid)
+    app.logger.info('real_name = %s', real_name)
+    return render_template('index.html', real_name=real_name)
+
+@app.route('/is-logged-in')
+def is_logged_in():
+    access_token = get_access_token()
+    if not access_token:
+        is_logged_in = False
+    else:
+        is_logged_in = True
+    return json_response(True, '', is_logged_in=is_logged_in)
 
 # @app.route('/list')
 # def list():

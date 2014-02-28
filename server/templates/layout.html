@@ -1,28 +1,18 @@
 <!doctype html>
     <head>
         <title>_Note</title>
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css') }}">
-        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='lib/bootstrap/bootstrap.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
         <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
     </head>
     <body>
         <div class="page">
             <h1><a href="{{ url_for('home') }}">Welcome to _Note!</a></h1>
-            {% if real_name %}
-                <div class='navbar-right navbar'>
-                    <a href="{{ url_for('list') }} ">My Notes</a>
-                    <a href="{{ url_for('logout') }} " method="post">Log out</a>
-                </div>
-            {% else %}
-                <div class='pull-right'><a href="{{ url_for('dropbox_auth_start') }}">Login</a></div>
-            {% endif %}
             <div class=metanav></div>
             {% for message in get_flashed_messages() %}
                 <div class="flash">{{ message }}</div>
             {% endfor %}
             {% block body %}{% endblock %}
         </div>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script type=text/javascript src="{{ url_for('static', filename='bootstrap.js') }}"></script>
     </body>
 </html>

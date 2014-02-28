@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% if real_name %}
+        <p>Welcome {{ real_name }}!</p>
+        <p><a href="{{ url_for('home') }}">View Notes</a></p>
+        <p><a href="{{ url_for('logout') }} " method="post">Log out</a></p>
+    {% else %}
+        <p>Please log in through Dropbox.</br>
+        <a href="{{ url_for('dropbox_auth_start') }}">To Dropbox</a></p>
+    {% endif %}
+    <div>
+        <span>Feel free to try the text editor.</span>
+        <textarea id="content" style="width:100%"></textarea>
+    </div>
+    <script>
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                "advlist autolink lists link charmap print preview",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime table contextmenu paste"
+            ],
+            toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+        });
+    </script>
+{% endblock %}

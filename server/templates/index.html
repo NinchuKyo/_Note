@@ -3,7 +3,7 @@
     <head>
       <meta charset="utf-8">
         <title>Welcome to _Note!</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/bootstrap/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
         <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
         <script src="{{ url_for('static', filename='lib/angular/angular-resource.js') }}"></script>
@@ -24,7 +24,7 @@
         </script>
     </head>
 
-    <body>  
+    <body>
         <!-- The main view -->
         <div class="container-generic" ng-include="'{{ url_for('static', filename='partials/application/mainApp-partial.html') }}'"></div>
     </body>
