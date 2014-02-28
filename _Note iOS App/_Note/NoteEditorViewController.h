@@ -12,10 +12,8 @@
 
 @interface NoteEditorViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *web;
-
+@property (strong, nonatomic) IBOutlet UIWebView *web;
 @property (strong, nonatomic) id detailItem;
-
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @property Note *note;

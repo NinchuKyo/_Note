@@ -14,9 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     /*
     // Request server for JSON, url of server to request from
-    NSString *urlString = @"https://localhost:5000/";
+    NSString *urlString = @"https://localhost:5000/lists";
     NSURL *url = [NSURL URLWithString:urlString];
     
     // HTTP request to server
@@ -30,7 +31,7 @@
     // Establish connection
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
     */
-    
+     
     // Authenticate to Dropbox
     DBSession *dbSession = [[DBSession alloc]
                             initWithAppKey:@"uwjvcs6f8kegvt1"
@@ -87,7 +88,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-/*
 #pragma mark NSURLConnectionDelegate
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
@@ -128,6 +128,5 @@
                                        persistence:NSURLCredentialPersistencePermanent] forAuthenticationChallenge:challenge];
     
 }
-*/
 
 @end

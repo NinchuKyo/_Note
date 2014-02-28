@@ -55,17 +55,6 @@
 {
     [super viewDidLoad];
     
-    NSString *urlString = @"https://localhost:5000/";
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // HTTP request to server
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
-    
-    [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
-    
-    [self.web loadRequest:requestObj];
-    
 	// Do any additional setup after loading the view, typically from a nib.
     self.noteTitle.text = self.note.title;
     self.noteTitle.delegate = self;
@@ -73,8 +62,19 @@
     self.textView.delegate = self;
     self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
+    // Dropbox Auth Session
     self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
     self.restClient.delegate = self;
+    
+    NSString *urlString = @"https://localhost:5000/dropbox-auth-start";
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+    
+    [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    [self.web loadRequest:requestObj];
+    _web.hidden = YES;
 
     [self configureView];
 }
@@ -97,23 +97,38 @@
     }
 }
 
-/* Change button info
+// Change button icon to reflect Dropbox Authentication Status
 - (IBAction)checkLink : (id) sender {
     UIButton *button = (UIButton *) sender;
-    if (![[DBSession sharedSession] isLinked]) {
-        [button setTitle:@"Unlink" forState:UIControlStateNormal];
+    if ([[DBSession sharedSession] isLinked]) {
+        [button setTitle:@"Unlinked. Relink?" forState:UIControlStateNormal];
     } else {
         [button setTitle:@"Link to Dropbox" forState:UIControlStateNormal];
     }
 }
-*/
 
+// Establish Dropbox Authentication
 - (IBAction)didPressLink{
     if (![[DBSession sharedSession] isLinked]) {
         [[DBSession sharedSession] linkFromController:self];
     } else {
         [[DBSession sharedSession] unlinkAll];
     }
+}
+
+// Get list of notes from server JSON
+- (IBAction)loadNotes{
+    
+    // HTTP request to server
+    NSString *urlString = @"https://localhost:5000/lists";
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+    
+    [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    [self.web loadRequest:requestObj];
+    _web.hidden = NO;
 }
 
 - (IBAction)viewNoteLink{
@@ -234,48 +249,4 @@ loadMetadataFailedWithError:(NSError *)error {
 {
     return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
 }
-    
-/*
-#pragma mark NSURLConnectionDelegate
-
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-    NSLog(@"protectionSpace: %@", [protectionSpace authenticationMethod]);
-    
-    // We only know how to handle NTLM authentication.
-    if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodNTLM])
-        return YES;
-    
-    // Explicitly reject ServerTrust. This is occasionally sent by IIS.
-    if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust])
-        return NO;
-    
-    return NO;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"%@", response);
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"%@", data);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-}
-
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[challenge sender] useCredential:[NSURLCredential
-                                       credentialWithUser:@"user"
-                                       password:@"password"
-                                       persistence:NSURLCredentialPersistencePermanent] forAuthenticationChallenge:challenge];
-    
-}
-*/
-
 @end
