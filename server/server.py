@@ -126,6 +126,10 @@ def dropbox_auth_finish():
 
 @app.route('/home')
 def home():
+    access_token = get_access_token()
+    if not access_token:
+        return redirect(url_for('splash'))
+
     uid = session.get('uid', None)
     real_name = session.get('real_name', None)
     app.logger.info('uid = %s', uid)
@@ -135,10 +139,7 @@ def home():
 @app.route('/is-logged-in')
 def is_logged_in():
     access_token = get_access_token()
-    if not access_token:
-        is_logged_in = False
-    else:
-        is_logged_in = True
+    is_logged_in = True if access_token else False
     return json_response(True, '', is_logged_in=is_logged_in)
 
 # @app.route('/list')
