@@ -223,7 +223,7 @@ def save():
 
 def save_note(access_token, json):
     if set(json['title']) > TITLE_ALLOWED_CHARS:
-        return json_response(False, 'Detected illegal characters in the title.')
+        return json_response(False, 'Allowed characters: A-Z, a-z, 0-9, -, _')
     if 'overwrite' not in json:
         return json_response(False, 'Missing parameter.')
 

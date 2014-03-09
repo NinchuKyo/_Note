@@ -3,7 +3,7 @@
     
     <!-- The title -->
     <h1>Welcome to _Note!</h1>
-
+    <span id="msg"></span>
     <!-- The item search filters -->
     <span ng-include="'static/partials/application/mainSearch-partial.html'"></span>
 
@@ -21,11 +21,18 @@
     <label><b>{{resultsCount['Main']}} results:</b></label>
 
     <!-- The data table -->
-    <span ng-include="'static/partials/application/mainTable-partial.html'"></span>
+    <span ng-show="viewingList" ng-include="'static/partials/application/mainTable-partial.html'"></span>
 
     <!-- 'More' button to display 25 more items if 'All' is selected in resultsPerPage -->
     <div ng-show="itemsPerPage.value == 0 && numItemsDisplayed < resultsCount['Main'] && loggedIn.value == true" style="margin-bottom:15px;">
         <input class="BlueBgCtrl" style="width:auto;" type="button" value="More" ng-click="increaseDisplayLimit()" />
+    </div>
+
+    <div ng-show="!viewingList">
+        <span>Title: </span>
+        <input title="Allowed characters: A-Z, a-z, 0-9, -, _" type="text" id="title" class="my-title" maxlength="50" placeholder="please enter a title.." ng-model="title" ng-pattern="/^[\w\s-]+$/"/>
+        <textarea id="content" ng-init="initEditor()" style="width:100%"></textarea>
+        <button ng-click="ajaxSave()">Save</button>
     </div>
 
 </div>

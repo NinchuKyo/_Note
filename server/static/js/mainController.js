@@ -58,17 +58,20 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             var config = null;
 
             $scope.loggedIn = { value: false };
+            $scope.title = "";
+            $scope.overwrite = false;
+            $scope.viewingList = true;
 
             /********** On Startup **************************************************/
 
             // Get values from config file and load initial list
             //$http.get('config/config.json').success(function (configResult) {
             //    config = configResult;
-            //    $scope.grabData();
+            //    $scope.grabLists();
             //});
 
             // Set up timer to update the list every 5 minutes
-            setInterval(scheduledUpdate, (1000 * 60 * 15));
+            setInterval(scheduledUpdate, (1000 * 60 * 5));
 
             /********** Functions ***************************************************/
 
@@ -78,68 +81,44 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             function scheduledUpdate() {
                 isUpdating = true;
                 $scope.doneLoading = false;
-                $scope.grabData();
+                $scope.grabLists();
             }
 
-            // Calls the BE API to get the data then displays them
-            // $scope.grabData = function () {
-            //     $scope.data = [
-            //         { "Title": 'Harrison Note #1', "Description": 'Hi, I\'m Harrison and this is my 1st note!' },
-            //         { "Title": 'Harrison Note #2', "Description": 'Hi, I\'m Harrison and this is my 2nd note!' },
-            //         { "Title": 'Harrison Note #3', "Description": 'Hi, I\'m Harrison and this is my 3rd note!' },
-            //         { "Title": 'Harrison Note #4', "Description": 'Hi, I\'m Harrison and this is my 4th note!' },
-            //         { "Title": 'Harrison Note #5', "Description": 'Hi, I\'m Harrison and this is my 5th note!' },
-            //         { "Title": 'David Note #1', "Description": 'Hi, I\'m David and this is my 1st note!' },
-            //         { "Title": 'David Note #2', "Description": 'Hi, I\'m David and this is my 2nd note!' },
-            //         { "Title": 'David Note #3', "Description": 'Hi, I\'m David and this is my 3rd note!' },
-            //         { "Title": 'David Note #4', "Description": 'Hi, I\'m David and this is my 4th note!' },
-            //         { "Title": 'David Note #5', "Description": 'Hi, I\'m David and this is my 5th note!' },
-            //         { "Title": 'Tony Note #1', "Description": 'Hi, I\'m Tony and this is my 1st note!' },
-            //         { "Title": 'Tony Note #2', "Description": 'Hi, I\'m Tony and this is my 2nd note!' },
-            //         { "Title": 'Tony Note #3', "Description": 'Hi, I\'m Tony and this is my 3rd note!' },
-            //         { "Title": 'Tony Note #4', "Description": 'Hi, I\'m Tony and this is my 4th note!' },
-            //         { "Title": 'Tony Note #5', "Description": 'Hi, I\'m Tony and this is my 5th note!' },
-            //         { "Title": 'Graeme Note #1', "Description": 'Hi, I\'m Graeme and this is my 1st note!' },
-            //         { "Title": 'Graeme Note #2', "Description": 'Hi, I\'m Graeme and this is my 2nd note!' },
-            //         { "Title": 'Graeme Note #3', "Description": 'Hi, I\'m Graeme and this is my 3rd note!' },
-            //         { "Title": 'Graeme Note #4', "Description": 'Hi, I\'m Graeme and this is my 4th note!' },
-            //         { "Title": 'Graeme Note #5', "Description": 'Hi, I\'m Graeme and this is my 5th note!' },
-            //         { "Title": 'Lyndon Note #1', "Description": 'Hi, I\'m Lyndon and this is my 1st note!' },
-            //         { "Title": 'Lyndon Note #2', "Description": 'Hi, I\'m Lyndon and this is my 2nd note!' },
-            //         { "Title": 'Lyndon Note #3', "Description": 'Hi, I\'m Lyndon and this is my 3rd note!' },
-            //         { "Title": 'Lyndon Note #4', "Description": 'Hi, I\'m Lyndon and this is my 4th note!' },
-            //         { "Title": 'Lyndon Note #5', "Description": 'Hi, I\'m Lyndon and this is my 5th note!' },
-            //         { "Title": 'Mathias Note #1', "Description": 'Hi, I\'m Mathias and this is my 1st note!' },
-            //         { "Title": 'Mathias Note #2', "Description": 'Hi, I\'m Mathias and this is my 2nd note!' },
-            //         { "Title": 'Mathias Note #3', "Description": 'Hi, I\'m Mathias and this is my 3rd note!' },
-            //         { "Title": 'Mathias Note #4', "Description": 'Hi, I\'m Mathias and this is my 4th note!' },
-            //         { "Title": 'Mathias Note #5', "Description": 'Hi, I\'m Mathias and this is my 5th note!' }
-            //     ];
+           $scope.grabLists = function () {
+               $http.get('/lists').success(function (response) {
 
-            //     filteredData = $scope.data;
-            //     $scope.search('Main');
+                   $scope.lists = angular.fromJson(response).note_titles;
 
-            //     if (isUpdating) {
-            //         isUpdating = false;
-            //     }
+                   filteredData = $scope.lists;
+                   $scope.search('Main');
 
-            //     $scope.doneLoading = true;
-            // }
+                   if (isUpdating) {
+                       isUpdating = false;
+                   }
+                   
+                   $scope.doneLoading = true;
+               }).error(function (response){
 
-           $scope.grabData = function () {
-               $http.get('/lists').success(function (data) {
+               });
+           }
 
-                       $scope.data = angular.fromJson(data).note_titles;
+           $scope.grabNote = function (title) {
+               $http.get('/view_note/' + title).success(function (response) {
+                    var response = angular.fromJson(response);
+                    if(response['success']) {
+                        $scope.overwrite = true;
+                        $scope.note = angular.fromJson(response.note);
+                        document.getElementById("title").value = $scope.note["title"];
+                        tinyMCE.activeEditor.setContent($scope.note["content"]);
+                        document.getElementById("msg").innerHTML = "";
+                    }
+                    else {
+                        document.getElementById("msg").innerHTML = response["msg"];
+                        document.getElementById("msg").className = "alert alert-danger";
+                    }
+               }).error(function (response){
 
-                       filteredData = $scope.data;
-                       $scope.search('Main');
-
-                       if (isUpdating) {
-                           isUpdating = false;
-                       }
-                       
-                       $scope.doneLoading = true;
-                   });
+               });
            }
 
             /********** Filtering **********************/
@@ -336,20 +315,74 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 $scope.loggedIn.value = !$scope.loggedIn.value;
             }
 
-            $scope.keyPressed = function (evt) {
-                evt = evt || window.event;
-                // exclude special keys in Gecko (Delete, Backspace, Arrow keys,... )
-                if (evt.which !== 0)
-                {
-                    var charCode = evt.which === undefined ? evt.keyCode : evt.which;
-                    var charTyped = String.fromCharCode(charCode);
+            $scope.keyPressed = function ($scope) {
 
-                    if (/[\w\s\x08-]/.test(charTyped) === false)
-                    {
-                        return false;
-                    }
+                if (/[^\w\s-]/.test($scope.title))
+                {
+                    //document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, \
+                    //                                    hyphens, and underscores.";
+                    // document.getElementById("msg").innerHTML = 'The character "' + charTyped + '" is not allowed in the title.';
+                    // document.getElementById("msg").className = "alert alert-warning";
+                    // document.getElementById("warning").innerHTML = '"' + charTyped + '" is not allowed.';
+                    $scope.isValid = false;
+                    return;
+                }
+                    //document.getElementById("warning").innerHTML = "";
+                $scope.isValid = true;
+                return;
+            };
+
+            $scope.initEditor = function() {
+                tinymce.init({
+                    selector: "textarea",
+                    plugins: [
+                        "advlist autolink lists link charmap print preview",
+                        "searchreplace visualblocks code fullscreen",
+                        "insertdatetime table contextmenu paste"
+                    ],
+                    toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
+                });
+            };
+
+            $scope.ajaxSave = function() {
+                var note = {};
+                note["content"] = tinyMCE.activeEditor.getContent();
+                note["title"] = document.getElementById("title").value;
+                note["overwrite"] = $scope.overwrite;
+
+                if(!note["title"]) {
+                    document.getElementById("msg").innerHTML = "You're missing the title.";
+                    document.getElementById("msg").className = "alert alert-danger";
+                }
+                else if(/^[\w\s-]+$/.test(note["title"]) === false) {
+                    document.getElementById("msg").innerHTML = "Allowed characters: A-Z, a-z, 0-9, -, _";
+                    document.getElementById("msg").className = "alert alert-danger";
+                }
+                else {
+                    tinymce.util.XHR.send({
+                        url : "/save",
+                        type : "POST",
+                        content_type : "application/json",
+                        data : tinymce.util.JSON.serialize(note),
+                        success: function(response) {
+                            console.debug(response);
+                            var r = tinymce.util.JSON.parse(response);
+                            document.getElementById("msg").innerHTML = r["msg"];
+                            if(r["success"]) {
+                                $scope.grabLists();
+                                document.getElementById("msg").className = "alert alert-success";
+                            }
+                            else
+                                document.getElementById("msg").className = "alert alert-danger";
+                        },
+                        error: function (text) {
+                            console.debug(text);
+                            document.getElementById("msg").innerHTML = "An unexpected error has occured.";
+                            document.getElementById("msg").className = "alert alert-danger";
+                        }
+                    });
                 }
             };
 
-            $scope.grabData();
+            $scope.grabLists();
         } ]);

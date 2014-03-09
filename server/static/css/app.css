@@ -20,6 +20,7 @@ table {
 
 .table td, .table th {
     text-align: center;
+    cursor: pointer;
 }
 
 .table th
@@ -109,4 +110,12 @@ select
     cursor: default;
     background-color: transparent !important;
     color:black !important;
+}
+.my-title {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+.my-title.ng-invalid {
+    /*border-color: red;*/
+    border: 2px solid red;
 }
