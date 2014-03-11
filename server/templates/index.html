@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="mainApp" ng-controller="MainCtrl">
     <head>
-      <meta charset="utf-8">
+        <meta charset="utf-8">
         <title>Welcome to _Note!</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/bootstrap/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
@@ -13,7 +13,28 @@
     </head>
 
     <body>
-        <!-- The main view -->
-        <div class="container-generic" ng-include="'{{ url_for('static', filename='partials/application/mainApp-partial.html') }}'"></div>
+        <div class="pull-left" style="text-align:left">    
+    
+            <h1>Welcome to _Note!</h1>
+            <br />
+            <br />
+            <span id="msg"></span>
+
+            <span>
+                <button ng-show="!viewingList.value" ng-click="switchView()">Go Back</button>
+                <button ng-show="viewingList.value" ng-click="switchView()">Create</button>
+            </span>
+
+            <div ng-include="'{{ url_for('static', filename='partials/mainTable-partial.html') }}'"></div>
+
+            <div ng-show="!viewingList.value">
+                <span>Title: </span>
+                <input title="Allowed characters: A-Z, a-z, 0-9, -, _" type="text" id="title" class="my-title" maxlength="50" placeholder="please enter a title.." ng-model="title" ng-pattern="/^[\w\s-]+$/"/>
+                <textarea id="content" ng-init="initEditor()" style="width:100%"></textarea>
+                <button ng-click="ajaxSave()">
+                    Save
+                </button>
+            </div>
+        </div>
     </body>
 </html>

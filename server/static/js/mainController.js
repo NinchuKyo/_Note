@@ -54,13 +54,9 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             $scope.numItemsDisplayed = 100;
             $scope.newPage = {};
 
-            // Values from our config file
-            var config = null;
-
-            $scope.loggedIn = { value: false };
             $scope.title = "";
             $scope.overwrite = false;
-            $scope.viewingList = true;
+            $scope.viewingList = { value: true };
 
             /********** On Startup **************************************************/
 
@@ -107,6 +103,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                     var response = angular.fromJson(response);
                     if(response['success']) {
                         $scope.overwrite = true;
+                        $scope.viewingList.value = false;
                         $scope.note = angular.fromJson(response.note);
                         document.getElementById("title").value = $scope.note["title"];
                         tinyMCE.activeEditor.setContent($scope.note["content"]);
@@ -309,25 +306,20 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 $scope.search('Main');
             };
 
-            /********** Items **************************/
-
-            $scope.logInOrOut = function () {
-                $scope.loggedIn.value = !$scope.loggedIn.value;
-            }
+            /********** _Note **************************/
 
             $scope.keyPressed = function ($scope) {
-
                 if (/[^\w\s-]/.test($scope.title))
                 {
-                    //document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, \
-                    //                                    hyphens, and underscores.";
+                    //document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, hyphens, and underscores.";
                     // document.getElementById("msg").innerHTML = 'The character "' + charTyped + '" is not allowed in the title.';
                     // document.getElementById("msg").className = "alert alert-warning";
                     // document.getElementById("warning").innerHTML = '"' + charTyped + '" is not allowed.';
                     $scope.isValid = false;
                     return;
                 }
-                    //document.getElementById("warning").innerHTML = "";
+
+                //document.getElementById("warning").innerHTML = "";
                 $scope.isValid = true;
                 return;
             };
@@ -382,6 +374,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         }
                     });
                 }
+            };
+
+            $scope.switchView = function () {
+                $scope.viewingList.value = !$scope.viewingList.value;
             };
 
             $scope.grabLists();
