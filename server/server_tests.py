@@ -16,7 +16,7 @@ class ServerTestCase(unittest.TestCase):
 
     def test_no_access_token(self):
         rv = self.app.get('/')
-        #assert 'ng-app="mainApp"' in rv.data
+        assert 'Please log in through Dropbox.' in rv.data
 
         # without cookie
         rv = self.app.get('/dropbox-auth-finish', follow_redirects=False)
@@ -47,8 +47,8 @@ class ServerTestCase(unittest.TestCase):
         rv = self.app.post('/save')
         assert 'You are not currently logged in through Dropbox.' in rv.data
 
-        rv = self.app.get('/logout')
-        assert 'You have been logged out.' in rv.data
+        rv = self.app.get('/logout', follow_redirects=True)
+        assert 'Please log in through Dropbox.' in rv.data
 
 if __name__ == '__main__':
     unittest.main()

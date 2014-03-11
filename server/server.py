@@ -253,7 +253,7 @@ def logout():
     db.commit()
     session.pop('uid', None)
     session.pop('real_name', None)
-    return json_response(True, 'You have been logged out.')
+    return redirect(url_for('splash'))
 
 if __name__ == "__main__":
     init_db()
