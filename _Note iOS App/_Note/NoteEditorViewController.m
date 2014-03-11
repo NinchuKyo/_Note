@@ -54,13 +54,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString *writeTest = @"<html>Writing <b>for</b> <i>testing</i><ul><li>Hey</li><li>Hey</li></ul></html>";
+    NSURL *htmlString = [[NSBundle mainBundle] URLForResource:@"temporary" withExtension:@"html"];
+    [writeTest writeToFile:htmlString atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    NSAttributedString *stringWithHTMLAttributes = [[NSAttributedString alloc]
+                                                    initWithFileURL:htmlString
+                                                    options:@{NSDocumentTypeDocumentAttribute:
+                                                                  NSHTMLTextDocumentType} documentAttributes:nil
+                                                    error:nil];
     
 	// Do any additional setup after loading the view, typically from a nib.
     self.noteTitle.text = self.note.title;
     self.noteTitle.delegate = self;
-    self.textView.text = self.note.contents;
+    //self.textView.text = self.note.contents;
+    self.textView.attributedText = stringWithHTMLAttributes;
     self.textView.delegate = self;
-    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    //self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     // Dropbox Auth Session
     self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];

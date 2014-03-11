@@ -22,6 +22,7 @@
 		4788E1E218A1B0A4002FDA65 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1C118A1B0A4002FDA65 /* UIKit.framework */; };
 		4788E1EA18A1B0A4002FDA65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1E818A1B0A4002FDA65 /* InfoPlist.strings */; };
 		4788E1EC18A1B0A4002FDA65 /* _NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */; };
+		51A0DA8318CF923E004786E3 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A0DA8218CF923E004786E3 /* DropboxSDK.framework */; };
 		C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C803372A18BF9AF70032AAC6 /* TableViewController.m */; };
 		C897AAD618CEDCFE00DB0FD5 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C897AAD518CEDCFE00DB0FD5 /* DropboxSDK.framework */; };
 		C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D80D4818BE1CF200EEF35E /* Note.m */; };
@@ -59,8 +60,9 @@
 		4788E1E718A1B0A4002FDA65 /* _NoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "_NoteTests-Info.plist"; sourceTree = "<group>"; };
 		4788E1E918A1B0A4002FDA65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _NoteTests.m; sourceTree = "<group>"; };
+		51A0DA8218CF923E004786E3 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		C803372A18BF9AF70032AAC6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		C897AAD518CEDCFE00DB0FD5 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
+		C897AAD518CEDCFE00DB0FD5 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = SOURCE_ROOT; };
 		C8D80D4718BE1CF200EEF35E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		C8D80D4818BE1CF200EEF35E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A0DA8318CF923E004786E3 /* DropboxSDK.framework in Frameworks */,
 				47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */,
 				4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */,
 				4788E1C218A1B0A4002FDA65 /* UIKit.framework in Frameworks */,
@@ -94,6 +97,7 @@
 		4788E1B118A1B0A3002FDA65 = {
 			isa = PBXGroup;
 			children = (
+				51A0DA8218CF923E004786E3 /* DropboxSDK.framework */,
 				4788E1C318A1B0A4002FDA65 /* _Note */,
 				4788E1E518A1B0A4002FDA65 /* _NoteTests */,
 				4788E1BC18A1B0A4002FDA65 /* Frameworks */,
@@ -404,6 +408,7 @@
 					"$(inherited)",
 					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
 					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App/_Note",
+					"/home/student/umpet424/Documents/test/comp4350group1/_Note\\ iOS\\ App",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "_Note/_Note-Prefix.pch";
@@ -422,6 +427,7 @@
 					"$(inherited)",
 					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
 					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App/_Note",
+					"/home/student/umpet424/Documents/test/comp4350group1/_Note\\ iOS\\ App",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "_Note/_Note-Prefix.pch";
