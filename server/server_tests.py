@@ -53,7 +53,7 @@ class ServerTestCase(unittest.TestCase):
 
             rv = self.app.get('/view_note/testing')
             response = json.loads(rv.data)
-            note == json.loads(response['note'])
+            note = json.loads(response['note'])
             assert response['success']
             assert 'This is a note.' in note['content']
             assert 'testing' in note['title']
