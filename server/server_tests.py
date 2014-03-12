@@ -63,8 +63,46 @@ class ServerTestCase(unittest.TestCase):
             assert not response['success']
             assert 'msg' in response
 
-            # rv = self.app.post('/save')
-            # assert 'You are not currently logged in through Dropbox.' in rv.data
+            data = dict(
+                overwrite=False,
+                note=dict(content='test content', title='test title')
+            )
+
+            # valid save
+            rv = self.app.post('/save', data=json.dumps(data), content_type='application/json')
+            response = json.loads(rv.data)
+            assert response['success']
+            assert response['msg'] == 'Your note was saved successfully.'
+
+            # save without title
+            data['note']['title'] = ''
+            rv = self.app.post('/save', data=json.dumps(data), content_type='application/json')
+            response = json.loads(rv.data)
+            assert not response['success']
+            assert response['msg'] == 'The title is missing.'
+
+            # save with invalid title
+            data['note']['title'] = 'inv@lid t!tle'
+            rv = self.app.post('/save', data=json.dumps(data), content_type='application/json')
+            response = json.loads(rv.data)
+            assert not response['success']
+            assert response['msg'] == 'Allowed characters in the title: A-Z, a-z, 0-9, -, _'
+
+            # save with missing overwrite parameter
+            data['note']['title'] = 'valid title'
+            del data['overwrite']
+            rv = self.app.post('/save', data=json.dumps(data), content_type='application/json')
+            response = json.loads(rv.data)
+            assert not response['success']
+            assert response['msg'] == 'An error occurred while processing the note.'
+
+            # save with invalid json
+            data['note']['title'] = 'valid title'
+            data['overwrite'] = False
+            rv = self.app.post('/save', data=json.dumps(data)+'{abc}', content_type='application/json')
+            response = json.loads(rv.data)
+            assert not response['success']
+            assert response['msg'] == 'Unable to process data.'
 
             rv = self.logout()
             assert 'Please log in through Dropbox.' in rv.data

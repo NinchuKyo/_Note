@@ -7,11 +7,11 @@ Group 1: Lyndon Quigley, Graeme Peters, Harrison Mulder,
 """
 
 from flask import Flask, request, session, redirect, url_for, abort, \
-     render_template, flash, _app_ctx_stack
+     render_template, _app_ctx_stack
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
 from OpenSSL import SSL
-import os, uuid, dropbox, string, json
+import os, uuid, dropbox, json, re
 
 # configuration
 DEBUG = True
@@ -29,7 +29,7 @@ context.use_privatekey_file('ssl/server.key')
 context.use_certificate_file('ssl/server.crt')
 
 # constants
-TITLE_ALLOWED_CHARS = set(string.ascii_letters + string.digits + '_' + '-' + ' ')
+TITLE_RE = re.compile(r'[\w -]+$')
 
 # Ensure instance directory exists
 try:
@@ -173,17 +173,21 @@ def save():
 
     try:
         data = request.get_json()
-        app.logger.info(data)
     except:
+        return json_response(False, 'Unable to process data.')
+
+    if not data:
         return json_response(False, 'Unable to process data.')
 
     return save_note(access_token, data)
 
 def save_note(access_token, data):
-    if set(data['note']['title']) > TITLE_ALLOWED_CHARS:
-        return json_response(False, 'Allowed characters: A-Z, a-z, 0-9, -, _')
+    if not data['note']['title']:
+        return json_response(False, 'The title is missing.')
+    if not TITLE_RE.match(data['note']['title']):
+        return json_response(False, 'Allowed characters in the title: A-Z, a-z, 0-9, -, _')
     if 'overwrite' not in data:
-        return json_response(False, 'Missing parameter.')
+        return json_response(False, 'An error occurred while processing the note.')
 
     try:
         client = DropboxClient(access_token)
