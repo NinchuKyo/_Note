@@ -338,9 +338,11 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             $scope.ajaxSave = function() {
                 var note = {};
+                var data = {};
                 note["content"] = tinyMCE.activeEditor.getContent();
                 note["title"] = document.getElementById("title").value;
-                note["overwrite"] = $scope.overwrite;
+                data["overwrite"] = $scope.overwrite;
+                data["note"] = note;
 
                 if(!note["title"]) {
                     document.getElementById("msg").innerHTML = "You're missing the title.";
@@ -355,7 +357,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         url : "/save",
                         type : "POST",
                         content_type : "application/json",
-                        data : tinymce.util.JSON.serialize(note),
+                        data : tinymce.util.JSON.serialize(data),
                         success: function(response) {
                             console.debug(response);
                             var r = tinymce.util.JSON.parse(response);

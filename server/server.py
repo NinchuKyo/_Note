@@ -135,12 +135,6 @@ def home():
     app.logger.info('real_name = %s', real_name)
     return render_template('index.html', real_name=real_name)
 
-@app.route('/is-logged-in')
-def is_logged_in():
-    access_token = get_access_token()
-    is_logged_in = True if access_token else False
-    return json_response(True, '', is_logged_in=is_logged_in)
-
 @app.route('/lists')
 def lists():
     access_token = get_access_token()
@@ -178,22 +172,23 @@ def save():
         return json_response(False, 'You are not currently logged in through Dropbox.')
 
     try:
-        json = request.get_json()
+        data = request.get_json()
+        app.logger.info(data)
     except:
         return json_response(False, 'Unable to process data.')
 
-    return save_note(access_token, json)
+    return save_note(access_token, data)
 
-def save_note(access_token, json):
-    if set(json['title']) > TITLE_ALLOWED_CHARS:
+def save_note(access_token, data):
+    if set(data['note']['title']) > TITLE_ALLOWED_CHARS:
         return json_response(False, 'Allowed characters: A-Z, a-z, 0-9, -, _')
-    if 'overwrite' not in json:
+    if 'overwrite' not in data:
         return json_response(False, 'Missing parameter.')
 
     try:
         client = DropboxClient(access_token)
         #TODO: determine if the title was changed, if so, remove old note
-        response = client.put_file('/' + json['title'], request.data, overwrite=json['overwrite'])
+        response = client.put_file('/' + data['note']['title'], json.dumps(data['note']), overwrite=data['overwrite'])
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
         return json_response(False, e.user_error_msg)

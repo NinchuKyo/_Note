@@ -1,8 +1,8 @@
 import os, server, unittest, tempfile, json
 
-TEST_UID = 'f3a2fcc4-52b4-4227-8196-752244a5ca5a'
-TEST_ACCESS_TOKEN = 'oI1wj7JzS7wAAAAAAAAAAT-MLePwbwhCDqIXC6uhFVCc6vu-f__PESTFQSDwn5Vf'
-TEST_REAL_NAME = '_Note Test User'
+TEST_UID = 'da4bf1db-b329-4935-84f3-3ca6e03380dd'
+TEST_ACCESS_TOKEN = 'ODQm6oZ6bsYAAAAAAAAAAWEsRklKccYwfD2dMz41J1NWuDbKqRuPN3kRaT6bbPJI'
+TEST_REAL_NAME = '_Note Test'
 
 class ServerTestCase(unittest.TestCase):
     def login(self):
@@ -30,12 +30,8 @@ class ServerTestCase(unittest.TestCase):
             with server.app.app_context():
                 self.login()
 
-            rv = self.app.get('/is-logged-in')
-            response = json.loads(rv.data)
-            assert response['success'] and response['is_logged_in']
-
             rv = self.app.get('/')
-            assert 'Welcome _Note Test User' in rv.data
+            assert 'Welcome _Note Test' in rv.data
             assert 'Please log in through Dropbox.' not in rv.data
 
             rv = self.app.get('/home')
@@ -49,18 +45,23 @@ class ServerTestCase(unittest.TestCase):
 
             rv = self.app.get('/lists')
             response = json.loads(rv.data)
-            assert response['success'] and 'note_titles' in response
+            assert response['success']
+            assert 'note_titles' in response
 
             rv = self.app.get('/view_note/')
             assert '404 Not Found' in rv.data
 
             rv = self.app.get('/view_note/testing')
             response = json.loads(rv.data)
-            assert response['success'] and 'note' in response
+            note == json.loads(response['note'])
+            assert response['success']
+            assert 'This is a note.' in note['content']
+            assert 'testing' in note['title']
 
             rv = self.app.get('/view_note/this_note_does_not_exist')
             response = json.loads(rv.data)
-            assert not response['success'] and 'msg' in response
+            assert not response['success']
+            assert 'msg' in response
 
             # rv = self.app.post('/save')
             # assert 'You are not currently logged in through Dropbox.' in rv.data
@@ -72,10 +73,6 @@ class ServerTestCase(unittest.TestCase):
     def test_no_access_token(self):
         self.app = server.app.test_client()
         server.init_db()
-
-        rv = self.app.get('/is-logged-in')
-        response = json.loads(rv.data)
-        assert not response['is_logged_in']
 
         rv = self.app.get('/')
         assert 'Please log in through Dropbox.' in rv.data
