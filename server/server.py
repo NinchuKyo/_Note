@@ -7,11 +7,11 @@ Group 1: Lyndon Quigley, Graeme Peters, Harrison Mulder,
 """
 
 from flask import Flask, request, session, redirect, url_for, abort, \
-     render_template, flash, _app_ctx_stack
+     render_template, _app_ctx_stack
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
 from OpenSSL import SSL
-import os, uuid, dropbox, string, json
+import os, uuid, dropbox, json, re
 
 # configuration
 DEBUG = True
@@ -22,7 +22,6 @@ DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-# app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 # setup SSL
 context = SSL.Context(SSL.SSLv23_METHOD)
@@ -30,7 +29,7 @@ context.use_privatekey_file('ssl/server.key')
 context.use_certificate_file('ssl/server.crt')
 
 # constants
-TITLE_ALLOWED_CHARS = set(string.ascii_letters + string.digits + '_' + '-' + ' ')
+TITLE_RE = re.compile(r'[\w -]+$')
 
 # Ensure instance directory exists
 try:
@@ -136,21 +135,6 @@ def home():
     app.logger.info('real_name = %s', real_name)
     return render_template('index.html', real_name=real_name)
 
-@app.route('/is-logged-in')
-def is_logged_in():
-    access_token = get_access_token()
-    is_logged_in = True if access_token else False
-    return json_response(True, '', is_logged_in=is_logged_in)
-
-# @app.route('/list')
-# def list():
-#     access_token = get_access_token()
-#     if not access_token:
-#         return redirect(url_for('home'))
-
-#     real_name = session.get('real_name', None)
-#     return render_template('list.html', real_name=real_name)
-
 @app.route('/lists')
 def lists():
     access_token = get_access_token()
@@ -164,23 +148,6 @@ def lists():
         note_titles.append({ 'Title': file['path'][1:] })
     return json_response(True, '', note_titles=note_titles)
 
-# @app.route('/view/<note_title>')
-# def view(note_title):
-#     access_token = get_access_token()
-#     if not access_token:
-#         return redirect(url_for('home'))
-    
-#     client = DropboxClient(access_token)
-#     try:
-#         f, metadata = client.get_file_and_metadata('/' + note_title)
-#         note_content = f.read().replace('\n', '')
-#         json_content = json.loads(note_content)
-#     except dropbox.rest.ErrorResponse:
-#         flash('File not found.')
-#         return redirect(url_for('home'))
-#     real_name = session.get('real_name', None)
-#     return render_template('view.html', real_name=real_name, note_content=json_content)
-
 @app.route('/view_note/<note_title>')
 def view_note(note_title):
     access_token = get_access_token()
@@ -190,23 +157,13 @@ def view_note(note_title):
     client = DropboxClient(access_token)
     try:
         f, metadata = client.get_file_and_metadata('/' + note_title)
-        #TODO: validate it's real json
         json_content = f.read().replace('\n', '')
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
-        return json_response(False, e.user_error_msg)
+        return json_response(False, 'An error occured while trying to retrieve your note from Dropbox.')
 
     real_name = session.get('real_name', None)
     return json_response(True, '', note=json_content)
-
-# @app.route('/create')
-# def create():
-#     access_token = get_access_token()
-#     if not access_token:
-#         return redirect(url_for('home'))
-
-#     real_name = session.get('real_name', None)
-#     return render_template('create.html', real_name=real_name)
 
 @app.route('/save', methods=['POST'])
 def save():
@@ -215,22 +172,27 @@ def save():
         return json_response(False, 'You are not currently logged in through Dropbox.')
 
     try:
-        json = request.get_json()
+        data = request.get_json()
     except:
         return json_response(False, 'Unable to process data.')
 
-    return save_note(access_token, json)
+    if not data:
+        return json_response(False, 'Unable to process data.')
 
-def save_note(access_token, json):
-    if set(json['title']) > TITLE_ALLOWED_CHARS:
-        return json_response(False, 'Allowed characters: A-Z, a-z, 0-9, -, _')
-    if 'overwrite' not in json:
-        return json_response(False, 'Missing parameter.')
+    return save_note(access_token, data)
+
+def save_note(access_token, data):
+    if not data['note']['title']:
+        return json_response(False, 'The title is missing.')
+    if not TITLE_RE.match(data['note']['title']):
+        return json_response(False, 'Allowed characters in the title: A-Z, a-z, 0-9, -, _')
+    if 'overwrite' not in data:
+        return json_response(False, 'An error occurred while processing the note.')
 
     try:
         client = DropboxClient(access_token)
         #TODO: determine if the title was changed, if so, remove old note
-        response = client.put_file('/' + json['title'], request.data, overwrite=json['overwrite'])
+        response = client.put_file('/' + data['note']['title'], json.dumps(data['note']), overwrite=data['overwrite'])
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
         return json_response(False, e.user_error_msg)
@@ -253,7 +215,7 @@ def logout():
     db.commit()
     session.pop('uid', None)
     session.pop('real_name', None)
-    return json_response(True, 'You have been logged out.')
+    return redirect(url_for('splash'))
 
 if __name__ == "__main__":
     init_db()

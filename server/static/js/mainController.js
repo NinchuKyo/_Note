@@ -57,6 +57,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             $scope.title = "";
             $scope.overwrite = false;
             $scope.viewingList = { value: true };
+            $scope.showMsg = { value: false };
 
             /********** On Startup **************************************************/
 
@@ -108,10 +109,12 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         document.getElementById("title").value = $scope.note["title"];
                         tinyMCE.activeEditor.setContent($scope.note["content"]);
                         document.getElementById("msg").innerHTML = "";
+                        $scope.showMsg.value = true;
                     }
                     else {
                         document.getElementById("msg").innerHTML = response["msg"];
                         document.getElementById("msg").className = "alert alert-danger";
+                        $scope.showMsg.value = true;
                     }
                }).error(function (response){
 
@@ -311,15 +314,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             $scope.keyPressed = function ($scope) {
                 if (/[^\w\s-]/.test($scope.title))
                 {
-                    //document.getElementById("msg").innerHTML = "The title can only contain alphanumeric characters as well as spaces, hyphens, and underscores.";
-                    // document.getElementById("msg").innerHTML = 'The character "' + charTyped + '" is not allowed in the title.';
-                    // document.getElementById("msg").className = "alert alert-warning";
-                    // document.getElementById("warning").innerHTML = '"' + charTyped + '" is not allowed.';
                     $scope.isValid = false;
                     return;
                 }
 
-                //document.getElementById("warning").innerHTML = "";
                 $scope.isValid = true;
                 return;
             };
@@ -338,28 +336,33 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             $scope.ajaxSave = function() {
                 var note = {};
+                var data = {};
                 note["content"] = tinyMCE.activeEditor.getContent();
                 note["title"] = document.getElementById("title").value;
-                note["overwrite"] = $scope.overwrite;
+                data["overwrite"] = $scope.overwrite;
+                data["note"] = note;
 
                 if(!note["title"]) {
                     document.getElementById("msg").innerHTML = "You're missing the title.";
                     document.getElementById("msg").className = "alert alert-danger";
+                    $scope.showMsg.value = true;
                 }
                 else if(/^[\w\s-]+$/.test(note["title"]) === false) {
                     document.getElementById("msg").innerHTML = "Allowed characters: A-Z, a-z, 0-9, -, _";
                     document.getElementById("msg").className = "alert alert-danger";
+                    $scope.showMsg.value = true;
                 }
                 else {
                     tinymce.util.XHR.send({
                         url : "/save",
                         type : "POST",
                         content_type : "application/json",
-                        data : tinymce.util.JSON.serialize(note),
+                        data : tinymce.util.JSON.serialize(data),
                         success: function(response) {
                             console.debug(response);
                             var r = tinymce.util.JSON.parse(response);
                             document.getElementById("msg").innerHTML = r["msg"];
+                            $scope.showMsg.value = true;
                             if(r["success"]) {
                                 $scope.grabLists();
                                 document.getElementById("msg").className = "alert alert-success";
@@ -371,6 +374,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                             console.debug(text);
                             document.getElementById("msg").innerHTML = "An unexpected error has occured.";
                             document.getElementById("msg").className = "alert alert-danger";
+                            $scope.showMsg.value = true;
                         }
                     });
                 }
@@ -378,6 +382,9 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             $scope.switchView = function () {
                 $scope.viewingList.value = !$scope.viewingList.value;
+                document.getElementById("title").value = "";
+                tinyMCE.activeEditor.setContent('', { format: 'raw' });
+                $scope.showMsg.value = false;
             };
 
             $scope.grabLists();
