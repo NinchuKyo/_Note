@@ -22,7 +22,6 @@ DROPBOX_APP_SECRET = 'l8p42osw8uriwyj'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-# app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 # setup SSL
 context = SSL.Context(SSL.SSLv23_METHOD)
@@ -142,15 +141,6 @@ def is_logged_in():
     is_logged_in = True if access_token else False
     return json_response(True, '', is_logged_in=is_logged_in)
 
-# @app.route('/list')
-# def list():
-#     access_token = get_access_token()
-#     if not access_token:
-#         return redirect(url_for('home'))
-
-#     real_name = session.get('real_name', None)
-#     return render_template('list.html', real_name=real_name)
-
 @app.route('/lists')
 def lists():
     access_token = get_access_token()
@@ -164,23 +154,6 @@ def lists():
         note_titles.append({ 'Title': file['path'][1:] })
     return json_response(True, '', note_titles=note_titles)
 
-# @app.route('/view/<note_title>')
-# def view(note_title):
-#     access_token = get_access_token()
-#     if not access_token:
-#         return redirect(url_for('home'))
-    
-#     client = DropboxClient(access_token)
-#     try:
-#         f, metadata = client.get_file_and_metadata('/' + note_title)
-#         note_content = f.read().replace('\n', '')
-#         json_content = json.loads(note_content)
-#     except dropbox.rest.ErrorResponse:
-#         flash('File not found.')
-#         return redirect(url_for('home'))
-#     real_name = session.get('real_name', None)
-#     return render_template('view.html', real_name=real_name, note_content=json_content)
-
 @app.route('/view_note/<note_title>')
 def view_note(note_title):
     access_token = get_access_token()
@@ -190,23 +163,13 @@ def view_note(note_title):
     client = DropboxClient(access_token)
     try:
         f, metadata = client.get_file_and_metadata('/' + note_title)
-        #TODO: validate it's real json
         json_content = f.read().replace('\n', '')
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
-        return json_response(False, e.user_error_msg)
+        return json_response(False, 'An error occured while trying to retrieve your note from Dropbox.')
 
     real_name = session.get('real_name', None)
     return json_response(True, '', note=json_content)
-
-# @app.route('/create')
-# def create():
-#     access_token = get_access_token()
-#     if not access_token:
-#         return redirect(url_for('home'))
-
-#     real_name = session.get('real_name', None)
-#     return render_template('create.html', real_name=real_name)
 
 @app.route('/save', methods=['POST'])
 def save():
