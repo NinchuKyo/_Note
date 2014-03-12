@@ -13,5 +13,9 @@
 @interface TableViewController : UITableViewController
 
 @property (strong, nonatomic) NoteEditorViewController *noteEditorViewController;
+@property NSDictionary *json;
+@property NSURLConnection *urlConnection;
+@property NSURLRequest *request;
+@property BOOL authenticated;
 
 @end

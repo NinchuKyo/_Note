@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @property Note *note;
+@property NSDictionary *json;
 
 @end

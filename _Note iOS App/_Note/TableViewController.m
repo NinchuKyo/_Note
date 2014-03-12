@@ -16,6 +16,7 @@
     NSMutableArray *_objects;
 }
 @property (nonatomic, strong) DBRestClient *restClient;
+
 @end
 
 @implementation TableViewController
@@ -112,10 +113,15 @@
 
 - (IBAction)viewNoteLink{
     
-    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-    self.restClient.delegate = self;
+    // HTTP request to server
+    NSString *urlString = @"https://localhost:5000/lists";
+    NSURL *url = [NSURL URLWithString:urlString];
     
-    [self.restClient loadMetadata:@"/"];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    
 }
 
 - (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
@@ -168,6 +174,55 @@ loadMetadataFailedWithError:(NSError *)error {
         editor.note = [Note noteWithText:@" "];
         [[self notes] addObject:editor.note];
     }
+}
+
+#pragma mark - NSURLConnection delegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
+{
+    NSLog(@"WebController Got auth challange via NSURLConnection");
+    
+    if ([challenge previousFailureCount] == 0)
+    {
+        _authenticated = YES;
+        
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        
+        [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
+        
+    } else
+    {
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    
+    // Load list of notes into table view once authentication to server has been completed
+    self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+
+    NSArray *titles = [_json objectForKey: @"note_titles"];
+    int size = [titles count];
+    
+    for (int i = 0; i < size; i++)
+    {
+        NSDictionary* title_name = [titles objectAtIndex:i];
+        NSString *name = [title_name objectForKey: @"Title"];
+        self.notes[i] = [Note noteWithText: [NSString stringWithFormat:@"%@", name]];
+    }
+    
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+{
+    NSLog(@"WebController received response via NSURLConnection");
+}
+
+// We use this method is to accept an untrusted site which unfortunately we need to do, as our PVM servers are self signed.
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
 }
 
 @end

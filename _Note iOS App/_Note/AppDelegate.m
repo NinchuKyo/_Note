@@ -14,24 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    /*
-    // Request server for JSON, url of server to request from
-    NSString *urlString = @"https://localhost:5000/lists";
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // HTTP request to server
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setTimeoutInterval:10];
-    [urlRequest setHTTPMethod:@"GET"];
-    
-    //allocate a new operation queue
-    //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    // Establish connection
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
-    */
-     
     // Authenticate to Dropbox
     DBSession *dbSession = [[DBSession alloc]
                             initWithAppKey:@"uwjvcs6f8kegvt1"
@@ -114,6 +96,8 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"%@", data);
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSLog(@"json data = %@",json);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {

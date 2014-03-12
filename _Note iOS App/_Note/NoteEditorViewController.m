@@ -83,7 +83,7 @@
     
     [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
     [self.web loadRequest:requestObj];
-    _web.hidden = YES;
+    _web.hidden = NO;
 
     [self configureView];
 }
@@ -135,9 +135,9 @@
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
     
-    [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    
     [self.web loadRequest:requestObj];
-    _web.hidden = NO;
 }
 
 - (IBAction)viewNoteLink{
@@ -221,7 +221,7 @@ loadMetadataFailedWithError:(NSError *)error {
 }
 
 
-#pragma mark - NURLConnection delegate
+#pragma mark - NSURLConnection delegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
 {
@@ -240,6 +240,13 @@ loadMetadataFailedWithError:(NSError *)error {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
     }
 }
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // NSLog(@"%@", data);
+    self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSLog(@"json data = %@", self.json);
+}
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 {
