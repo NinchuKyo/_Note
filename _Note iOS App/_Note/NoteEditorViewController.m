@@ -1,25 +1,19 @@
 //
-//  DetailViewController.m
+//  NoteEditorViewController.m
 //  _Note
 //
-//  Created by Lyndon Quigley on 2/4/2014.
-//  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import "NoteEditorViewController.h"
 
 #import "Note.h"
-#import <DropboxSDK/DropboxSDK.h>
 
-@interface NoteEditorViewController () <UITextViewDelegate, DBRestClientDelegate>
+@interface NoteEditorViewController () <UITextViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (weak, nonatomic) IBOutlet UITextView *noteTitle;
-@property (nonatomic, strong) DBRestClient *restClient;
-
-@property NSURLConnection *urlConnection;
-@property NSURLRequest *request;
-@property BOOL authenticated;
 
 - (void)configureView;
 @end
@@ -54,6 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*
     NSString *writeTest = @"<html>Writing <b>for</b> <i>testing</i><ul><li>Hey</li><li>Hey</li></ul></html>";
     NSURL *htmlString = [[NSBundle mainBundle] URLForResource:@"temporary" withExtension:@"html"];
     [writeTest writeToFile:htmlString atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -62,29 +58,27 @@
                                                     options:@{NSDocumentTypeDocumentAttribute:
                                                                   NSHTMLTextDocumentType} documentAttributes:nil
                                                     error:nil];
+     */
+    
+    //self.textView.attributedText = stringWithHTMLAttributes;
     
 	// Do any additional setup after loading the view, typically from a nib.
     self.noteTitle.text = self.note.title;
     self.noteTitle.delegate = self;
-    //self.textView.text = self.note.contents;
-    self.textView.attributedText = stringWithHTMLAttributes;
-    self.textView.delegate = self;
-    //self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
-    // Dropbox Auth Session
-    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-    self.restClient.delegate = self;
+    self.textView.text = self.note.contents;
+    self.textView.delegate = self;
+    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     NSString *urlString = @"https://localhost:5000/dropbox-auth-start";
     NSURL *url = [NSURL URLWithString:urlString];
+    _urlRequest = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
-    
-    [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
-    [self.web loadRequest:requestObj];
-    _web.hidden = YES;
+    [self.urlConnection = [NSURLConnection alloc] initWithRequest:_urlRequest delegate:self startImmediately:YES];
+    _web.hidden = NO;
 
+    
+    
     [self configureView];
 }
 
@@ -106,48 +100,6 @@
     }
 }
 
-// Change button icon to reflect Dropbox Authentication Status
-- (IBAction)checkLink : (id) sender {
-    UIButton *button = (UIButton *) sender;
-    if ([[DBSession sharedSession] isLinked]) {
-        [button setTitle:@"Unlinked. Relink?" forState:UIControlStateNormal];
-    } else {
-        [button setTitle:@"Link to Dropbox" forState:UIControlStateNormal];
-    }
-}
-
-// Establish Dropbox Authentication
-- (IBAction)didPressLink{
-    if (![[DBSession sharedSession] isLinked]) {
-        [[DBSession sharedSession] linkFromController:self];
-    } else {
-        [[DBSession sharedSession] unlinkAll];
-    }
-}
-
-// Get list of notes from server JSON
-- (IBAction)loadNotes{
-    
-    // HTTP request to server
-    NSString *urlString = @"https://localhost:5000/lists";
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
-    
-    [self.urlConnection = [NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
-    [self.web loadRequest:requestObj];
-    _web.hidden = NO;
-}
-
-- (IBAction)viewNoteLink{
-    
-    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-    self.restClient.delegate = self;
-    
-    [self.restClient loadMetadata:@"/"];
-}
-
 /*
 - (void)textFieldDidEndEditing:(UITextField *)noteTitle
 {
@@ -160,20 +112,6 @@
     }
 }
 */
-
-- (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
-    if (metadata.isDirectory) {
-        NSLog(@"Folder '%@' contains:", metadata.path);
-        for (DBMetadata *file in metadata.contents) {
-            NSLog(@"	%@", file.filename);
-        }
-    }
-}
-
-- (void)restClient:(DBRestClient *)client
-loadMetadataFailedWithError:(NSError *)error {
-    NSLog(@"Error loading metadata: %@", error);
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -197,7 +135,68 @@ loadMetadataFailedWithError:(NSError *)error {
     self.masterPopoverController = nil;
 }
 
-#pragma mark Webview delegate
+#pragma mark - NSURLConnection delegate
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
+{
+    NSLog(@"WebController Got auth challange via NSURLConnection");
+    
+    if ([challenge previousFailureCount] == 0)
+    {
+        _authenticated = YES;
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
+        
+    } else
+    {
+        [[challenge sender] cancelAuthenticationChallenge:challenge];
+    }
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"%@", data);
+}
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+{
+    NSLog(@"WebController received response via NSURLConnection");
+    NSString *homeURL = @"https://localhost:5000/home";
+    
+    // remake a webview call now that authentication has passed ok.
+    _authenticated = YES;
+    [_web loadRequest:_urlRequest];
+    //[_web.delegate webView:_web shouldStartLoadWithRequest:_urlRequest navigationType:1];
+    
+    if ([_urlRequest.URL  isEqual: homeURL])
+    {
+        // Close
+    }
+    else
+    {
+        
+    }
+    
+    // Cancel the URL connection otherwise we double up (webview + url connection, same url = no good!)
+    [_urlConnection cancel];
+}
+
+// We use this method is to accept an untrusted site which unfortunately we need to do, as our servers are self signed.
+- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
+{
+    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+}
+
+#pragma mark - UIWebView delegate
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    NSLog(@"HI");
+    
+}
+
+
+
 // Note: This method is particularly important. As the server is using a self signed certificate,
 // we cannot use just UIWebView - as it doesn't allow for using self-certs. Instead, we stop the
 // request in this method below, create an NSURLConnection (which can allow self-certs via the delegate methods
@@ -209,53 +208,12 @@ loadMetadataFailedWithError:(NSError *)error {
     
     if (!_authenticated) {
         _authenticated = NO;
-        
-        _urlConnection = [[NSURLConnection alloc] initWithRequest:_request delegate:self];
-        
+        _urlConnection = [[NSURLConnection alloc] initWithRequest:_urlRequest delegate:self];
         [_urlConnection start];
-        
         return NO;
     }
     
     return YES;
 }
 
-
-#pragma mark - NURLConnection delegate
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
-{
-    NSLog(@"WebController Got auth challange via NSURLConnection");
-    
-    if ([challenge previousFailureCount] == 0)
-    {
-        _authenticated = YES;
-        
-        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        
-        [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
-        
-    } else
-    {
-        [[challenge sender] cancelAuthenticationChallenge:challenge];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-{
-    NSLog(@"WebController received response via NSURLConnection");
-    
-    // remake a webview call now that authentication has passed ok.
-    _authenticated = YES;
-    [_web loadRequest:_request];
-    
-    // Cancel the URL connection otherwise we double up (webview + url connection, same url = no good!)
-    [_urlConnection cancel];
-}
-
-// We use this method is to accept an untrusted site which unfortunately we need to do, as our PVM servers are self signed.
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
-{
-    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
-}
 @end

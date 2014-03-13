@@ -8,57 +8,19 @@
 
 #import "AppDelegate.h"
 #import "Note.h"
-#import <DropboxSDK/DropboxSDK.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-    /*
-    // Request server for JSON, url of server to request from
-    NSString *urlString = @"https://localhost:5000/lists";
-    NSURL *url = [NSURL URLWithString:urlString];
-    
-    // HTTP request to server
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    [urlRequest setTimeoutInterval:10];
-    [urlRequest setHTTPMethod:@"GET"];
-    
-    //allocate a new operation queue
-    //NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    
-    // Establish connection
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
-    */
-     
-    // Authenticate to Dropbox
-    DBSession *dbSession = [[DBSession alloc]
-                            initWithAppKey:@"uwjvcs6f8kegvt1"
-                            appSecret:@"l8p42osw8uriwyj"
-                            root:kDBRootAppFolder]; // either kDBRootAppFolder or kDBRootDropbox
-    [DBSession setSharedSession:dbSession];
     
     // Override point for customization after application launch.
     self.notes = [NSMutableArray arrayWithArray: @[
-            [Note noteWithText: @"Will load the list of notes in this area here."]]];
+            [Note noteWithText: @"Default notes\nCurrently, creating notes is disabled until rich-text editting is implemented."]]];
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
     return YES;
-}
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
-  sourceApplication:(NSString *)source annotation:(id)annotation {
-    if ([[DBSession sharedSession] handleOpenURL:url]) {
-        if ([[DBSession sharedSession] isLinked]) {
-            NSLog(@"App linked successfully!");
-            // At this point you can start making API calls
-        }
-        return YES;
-    }
-    // Add whatever other url handling code your app requires here
-    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -114,6 +76,8 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
     NSLog(@"%@", data);
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSLog(@"json data = %@",json);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
