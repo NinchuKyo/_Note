@@ -10,23 +10,25 @@
 
 @implementation Note
 
-+ (Note *)noteWithText:(NSString *)text {
++ (Note *) noteTitle:(NSString *) title noteWithText:(NSString *)text{
     Note* note = [Note new];
     note.contents = text;
     note.htmlContents = text;
     note.timestamp = [NSDate date];
-    note.setTitle = NO;
-    note.titleString = @"";
+    note.titleString = title;
     return note;
 }
 
 - (NSString *)title {
     
+    /*
     // split into lines
     NSArray* lines = [self.contents componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
     
     // return the first
     return lines[0];
+     */
+    return self.titleString;
 }
 
 @end

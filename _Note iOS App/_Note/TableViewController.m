@@ -112,56 +112,55 @@
     
     int size;
     
-    if (_titles == nil)
+    // HTTP request to server for list of notes
+    //NSString *urlString = @"https://localhost:5000/lists";
+    NSString *urlString = @"https://54.201.79.223:5000/lists";
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURLResponse *urlResponse = nil;
+    NSError *error = nil;
+    
+    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                          returningResponse:&urlResponse
+                                                      error:&error];
+    
+    if (data != nil)
     {
-        // HTTP request to server for list of notes
-        //NSString *urlString = @"https://localhost:5000/lists";
-        NSString *urlString = @"https://54.201.79.223:5000/lists";
-        NSURL *url = [NSURL URLWithString:urlString];
-        NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-        NSURLResponse *urlResponse = nil;
-        NSError *error = nil;
+        // Receive note json list
+        self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        NSLog(@"%@", _json);
+        NSLog(@"Received JSON data from server in method");
         
-        NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
-                                              returningResponse:&urlResponse
-                                                          error:&error];
+        // Get list of note titles from received json
+        NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
+        NSString *success_criteria = @"1";
         
-        if (data != nil)
+        if ([success isEqualToString:success_criteria])
         {
-            // Receive note json list
-            self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            NSLog(@"%@", _json);
-            NSLog(@"Received JSON data from server in method");
-            
-            // Get list of note titles from received json
-            NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
-            NSString *success_criteria = @"1";
-            
-            if ([success isEqualToString:success_criteria])
-            {
-                _titles = [_json objectForKey: @"note_titles"];
-                NSLog(@"Parsed JSON note title data from server");
-            }
-            else
-            {
-                NSLog(@"Failed to parse JSON note title data from server");
-            }
+            _titles = [_json objectForKey: @"note_titles"];
+            NSLog(@"Parsed JSON note title data from server");
         }
-        
+        else
+        {
+            NSLog(@"Failed to parse JSON note title data from server");
+        }
     }
     
     if (_titles != nil)
     {
         // For each note in the list, get contents of notes
         size = [_titles count];
+        [self.notes removeAllObjects];
+        
         //NSString *baseURL = @"https://localhost:5000/view_note/";
         NSString *baseURL = @"https://54.201.79.223:5000/view_note/";
         for (int i = 0; i < size; i++)
         {
             NSDictionary* title_name = [_titles objectAtIndex:i];
             NSString *name = [title_name objectForKey: @"Title"];
+            NSString *replace_name = [name stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
             
-            NSString *urlString = [baseURL stringByAppendingString:name];
+            NSString *urlString = [baseURL stringByAppendingString:replace_name];
             
             NSLog(@"name = %@", name);
             NSLog(@"url = %@", urlString);
@@ -206,7 +205,7 @@
         editor.note = [self notes][path.row];
     }
     if ([segue.identifier isEqualToString:@"AddNewNote"]){
-        editor.note = [Note noteWithText:@" "];
+        editor.note = [Note noteTitle: @" " noteWithText:@" "];
         [[self notes] addObject:editor.note];
     }
 }
@@ -260,7 +259,7 @@
         NSLog(@"Content: %@", content);
         NSLog(@"Title: %@", title);
         
-        Note *new_note = [Note noteWithText: [NSString stringWithFormat:@"%@\n%@", title, content]];
+        Note *new_note = [Note noteTitle: [NSString stringWithFormat:@"%@", title] noteWithText: [NSString stringWithFormat:@"%@", content]];
         [self.notes addObject:new_note];
     }
     
