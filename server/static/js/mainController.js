@@ -109,7 +109,6 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         document.getElementById("title").value = $scope.note["title"];
                         tinyMCE.activeEditor.setContent($scope.note["content"]);
                         document.getElementById("msg").innerHTML = "";
-                        $scope.showMsg.value = true;
                     }
                     else {
                         document.getElementById("msg").innerHTML = response["msg"];
@@ -310,7 +309,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             };
 
             /********** _Note **************************/
-
+ 
             $scope.keyPressed = function ($scope) {
                 if (/[^\w\s-]/.test($scope.title))
                 {
