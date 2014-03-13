@@ -21,6 +21,17 @@ How to use _Note:
 ---
 Currently, _Note has very limited functionality.  To use, first you can visit the site at which located on the Trello board, and it will display a link.  This link will redirect you to a page that will ask you to give access to make an app folder within your Dropbox.  This is how we plan to store, create and view notes across devices.
 
+Using _Note for iOS:
+---
+In order to open the _Note.xcodeproj file and run the simulator for our iOS app, after opening it in XCode, you must include the DropboxSDK.framework folder in the project (For some reason, XCode does not recognize the framework even though it is there in the project).
+
+To do this you must:
+1. First, right-click on the _Note Project icon to the left (where it says something like _Note and below that it says 2 targets, iOS SDK 7.0)
+2. Select "Add Files to "_Note..." and select the DropboxSDK.framework folder
+3. Once you have done this, it should resolve any "cannot find DropboxSDK.h" type of errors
+
+Now the iOS simulator is ready to run, just click on the "play" button to the top-left hand corner.
+
 Requirements (to run server):
 ---
 - Python v2.7.5 / v2.7.6

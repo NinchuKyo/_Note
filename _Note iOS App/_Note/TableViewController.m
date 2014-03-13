@@ -1,9 +1,9 @@
 //
-//  MasterViewController.m
+//  TableViewController.m
 //  _Note
 //
-//  Created by Lyndon Quigley on 2/4/2014.
-//  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import "TableViewController.h"
@@ -90,6 +90,7 @@
     
     Note *note = [self notes][indexPath.row];
     cell.textLabel.text = note.title;
+    
     //change this if you have functionality for setting fonts
     cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     return cell;
@@ -98,7 +99,7 @@
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -111,6 +112,7 @@
     }
 }
 
+// Link to load list of notes from server
 - (IBAction)viewNoteLink{
     
     // HTTP request to server
@@ -118,9 +120,19 @@
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+    //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+    
+    [connection start];
+    
+    urlString = @"https://localhost:5000/view_note/NewNote.txt";
+    url = [NSURL URLWithString:urlString];
+    
+    urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+    
     
 }
 
@@ -180,27 +192,39 @@ loadMetadataFailedWithError:(NSError *)error {
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;
 {
-    NSLog(@"WebController Got auth challange via NSURLConnection");
+    NSLog(@"Authentication challenge received from connection.");
     
     if ([challenge previousFailureCount] == 0)
     {
         _authenticated = YES;
-        
         NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        
         [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
         
-    } else
+    }
+    else
     {
         [[challenge sender] cancelAuthenticationChallenge:challenge];
     }
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    
-    // Load list of notes into table view once authentication to server has been completed
-    self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+{
+    NSLog(@"Received response from server.");
+}
 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // Load json information into object
+    NSLog(@"Received JSON data from server");
+    self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSLog(@"%@", _json);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // Parse through json object for list of note titles and display in view
+    NSLog(@"Parsed JSON data from server");
+    
     NSArray *titles = [_json objectForKey: @"note_titles"];
     int size = [titles count];
     
@@ -208,18 +232,16 @@ loadMetadataFailedWithError:(NSError *)error {
     {
         NSDictionary* title_name = [titles objectAtIndex:i];
         NSString *name = [title_name objectForKey: @"Title"];
-        self.notes[i] = [Note noteWithText: [NSString stringWithFormat:@"%@", name]];
+        Note *new_note = [Note noteWithText: [NSString stringWithFormat:@"%@", name]];
+        self.notes[i] = new_note;
     }
+    
+    [self.tableView reloadData];
     
 }
 
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-{
-    NSLog(@"WebController received response via NSURLConnection");
-}
-
-// We use this method is to accept an untrusted site which unfortunately we need to do, as our PVM servers are self signed.
+// We use this method is to accept an untrusted site which unfortunately we need to do, as our servers are self signed.
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
 {
     return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];

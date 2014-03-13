@@ -1,9 +1,9 @@
 //
-//  CENote.m
-//  TextKitNotepad
+//  Note.m
+//  _Note
 //
-//  Created by Colin Eberhardt on 19/06/2013.
-//  Copyright (c) 2013 Colin Eberhardt. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import "Note.h"

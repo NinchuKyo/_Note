@@ -1,9 +1,9 @@
 //
-//  DetailViewController.m
+//  NoteEditorViewController.m
 //  _Note
 //
-//  Created by Lyndon Quigley on 2/4/2014.
-//  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import "NoteEditorViewController.h"
@@ -54,6 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*
     NSString *writeTest = @"<html>Writing <b>for</b> <i>testing</i><ul><li>Hey</li><li>Hey</li></ul></html>";
     NSURL *htmlString = [[NSBundle mainBundle] URLForResource:@"temporary" withExtension:@"html"];
     [writeTest writeToFile:htmlString atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -62,14 +64,17 @@
                                                     options:@{NSDocumentTypeDocumentAttribute:
                                                                   NSHTMLTextDocumentType} documentAttributes:nil
                                                     error:nil];
+     */
+    
+    //self.textView.attributedText = stringWithHTMLAttributes;
     
 	// Do any additional setup after loading the view, typically from a nib.
     self.noteTitle.text = self.note.title;
     self.noteTitle.delegate = self;
-    //self.textView.text = self.note.contents;
-    self.textView.attributedText = stringWithHTMLAttributes;
+    
+    self.textView.text = self.note.contents;
     self.textView.delegate = self;
-    //self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     // Dropbox Auth Session
     self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
@@ -129,7 +134,7 @@
 - (IBAction)loadNotes{
     
     // HTTP request to server
-    NSString *urlString = @"https://localhost:5000/lists";
+    NSString *urlString = @"https://localhost:5000/view_note/NewNote.txt";
     NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
@@ -230,9 +235,7 @@ loadMetadataFailedWithError:(NSError *)error {
     if ([challenge previousFailureCount] == 0)
     {
         _authenticated = YES;
-        
         NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        
         [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
         
     } else
@@ -242,7 +245,6 @@ loadMetadataFailedWithError:(NSError *)error {
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // NSLog(@"%@", data);
     self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     NSLog(@"json data = %@", self.json);
 }
