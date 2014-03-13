@@ -70,7 +70,8 @@
     self.textView.delegate = self;
     self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
-    NSString *urlString = @"https://localhost:5000/dropbox-auth-start";
+    //NSString *urlString = @"https://localhost:5000/dropbox-auth-start";
+    NSString *urlString = @"https://54.201.79.223:5000/dropbox-auth-start";
     NSURL *url = [NSURL URLWithString:urlString];
     _urlRequest = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
     
@@ -162,7 +163,8 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
 {
     NSLog(@"WebController received response via NSURLConnection");
-    NSString *homeURL = @"https://localhost:5000/home";
+    //NSString *homeURL = @"https://localhost:5000/home";
+    NSString *homeURL = @"https://54.201.79.223:5000/home";
     
     // remake a webview call now that authentication has passed ok.
     _authenticated = YES;

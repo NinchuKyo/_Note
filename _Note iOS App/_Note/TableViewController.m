@@ -115,7 +115,8 @@
     if (_titles == nil)
     {
         // HTTP request to server for list of notes
-        NSString *urlString = @"https://localhost:5000/lists";
+        //NSString *urlString = @"https://localhost:5000/lists";
+        NSString *urlString = @"https://54.201.79.223:5000/lists";
         NSURL *url = [NSURL URLWithString:urlString];
         NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
         NSURLResponse *urlResponse = nil;
@@ -153,8 +154,8 @@
     {
         // For each note in the list, get contents of notes
         size = [_titles count];
-        NSString *baseURL = @"https://localhost:5000/view_note/";
-    
+        //NSString *baseURL = @"https://localhost:5000/view_note/";
+        NSString *baseURL = @"https://54.201.79.223:5000/view_note/";
         for (int i = 0; i < size; i++)
         {
             NSDictionary* title_name = [_titles objectAtIndex:i];
