@@ -49,26 +49,23 @@
 {
     [super viewDidLoad];
     
-    /*
-    NSString *writeTest = @"<html>Writing <b>for</b> <i>testing</i><ul><li>Hey</li><li>Hey</li></ul></html>";
-    NSURL *htmlString = [[NSBundle mainBundle] URLForResource:@"temporary" withExtension:@"html"];
-    [writeTest writeToFile:htmlString atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    NSAttributedString *stringWithHTMLAttributes = [[NSAttributedString alloc]
-                                                    initWithFileURL:htmlString
-                                                    options:@{NSDocumentTypeDocumentAttribute:
-                                                                  NSHTMLTextDocumentType} documentAttributes:nil
-                                                    error:nil];
-     */
-    
-    //self.textView.attributedText = stringWithHTMLAttributes;
-    
 	// Do any additional setup after loading the view, typically from a nib.
     self.noteTitle.text = self.note.title;
     self.noteTitle.delegate = self;
     
-    self.textView.text = self.note.contents;
+    // Plain text view
+    //self.textView.text = self.note.contents;
+    
+    // HTML attributed text viewing
+    if (self.note.contents != nil)
+    {
+        NSData *data = [self.note.contents dataUsingEncoding:NSUTF8StringEncoding];
+        NSAttributedString *stringWithHTMLAttributes = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+        self.textView.attributedText = stringWithHTMLAttributes;
+    }
     self.textView.delegate = self;
-    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
+    //self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     //NSString *urlString = @"https://localhost:5000/dropbox-auth-start";
     NSString *urlString = @"https://54.201.79.223:5000/dropbox-auth-start";
@@ -78,8 +75,6 @@
     [self.urlConnection = [NSURLConnection alloc] initWithRequest:_urlRequest delegate:self startImmediately:YES];
     _web.hidden = NO;
 
-    
-    
     [self configureView];
 }
 

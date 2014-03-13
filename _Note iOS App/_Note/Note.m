@@ -13,6 +13,7 @@
 + (Note *)noteWithText:(NSString *)text {
     Note* note = [Note new];
     note.contents = text;
+    note.htmlContents = text;
     note.timestamp = [NSDate date];
     note.setTitle = NO;
     note.titleString = @"";
