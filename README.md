@@ -23,15 +23,10 @@ Currently, _Note has very limited functionality.  To use, first you can visit th
 
 Using _Note for iOS:
 ---
-In order to open the _Note.xcodeproj file and run the simulator for our iOS app, after opening it in XCode, you must include the DropboxSDK.framework folder in the project (For some reason, XCode does not recognize the framework even though it is there in the project).
+In order to open the _Note.xcodeproj file and run the simulator for our iOS app.  The iOS no longer uses the Dropbox SDK, it communicates with the server via NSURLConnections in order to get the notes.
 
-To do this you must:
-1. First, right-click on the _Note Project icon to the left (where it says something like _Note and below that it says 2 targets, iOS SDK 7.0)
-2. Select "Add Files to "_Note..." and select the DropboxSDK.framework folder
-3. Once you have done this, it should resolve any "cannot find DropboxSDK.h" type of errors
-
-Now the iOS simulator is ready to run, just click on the "play" button to the top-left hand corner.
-- In order for you to load your notes into our app, you must first authorize to Dropbox at the initial starting screen
+To run the iOS simulator, just click on the "play" button to the top-left hand corner.
+- In order for you to load your notes into our app, you must first authorize to Dropbox at the initial starting screen by clicking on the "Load from Dropbox"
 - After you have done that, you can either click "Your notes" or swipe to the right in the left area.  This will show a list of notes you currently have.
 - Click on "load notes" once you have authorized to Dropbox in order to load the notes that you have from _Note, from using our desktop browser version.
 
@@ -43,6 +38,12 @@ Requirements (to run server):
 - Flask (http://flask.pocoo.org/) a Python microframework for web development
 - Dropbox (https://www.dropbox.com/developers/core) install the Python SDK
 - A Dropbox account (so you can authorize our system to create and store notes in your Dropbox)
+
+Requirements (to run iOS/iPad app):
+---
+- An iPad/iPod device with a developer's certificate to put the _Note app on (if you want to try the app on a device)
+- XCode 5.0 or higher, in order to run the simulator and code
+- Internet connection (in order to retrieve notes from our server)
 
 Optional:
 ---

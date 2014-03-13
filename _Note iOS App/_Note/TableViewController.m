@@ -10,12 +10,11 @@
 #import "AppDelegate.h"
 #import "NoteEditorViewController.h"
 #import "Note.h"
-#import <DropboxSDK/DropboxSDK.h>
 
-@interface TableViewController () <DBRestClientDelegate>{
+@interface TableViewController () {
     NSMutableArray *_objects;
 }
-@property (nonatomic, strong) DBRestClient *restClient;
+
 @end
 
 @implementation TableViewController
@@ -48,10 +47,6 @@
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     //self.navigationItem.rightBarButtonItem = addButton;
     self.noteEditorViewController = (NoteEditorViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
-    self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
-    self.restClient.delegate = self;
-
 }
 /*
 - (void)didReceiveMemoryWarning
@@ -177,21 +172,6 @@
     }
     
 }
-
-- (void)restClient:(DBRestClient *)client loadedMetadata:(DBMetadata *)metadata {
-    if (metadata.isDirectory) {
-        NSLog(@"Folder '%@' contains:", metadata.path);
-        for (DBMetadata *file in metadata.contents) {
-            NSLog(@"	%@", file.filename);
-        }
-    }
-}
-
-- (void)restClient:(DBRestClient *)client
-loadMetadataFailedWithError:(NSError *)error {
-    NSLog(@"Error loading metadata: %@", error);
-}
-
 
 /*
 // Override to support rearranging the table view.

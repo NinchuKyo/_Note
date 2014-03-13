@@ -10,7 +10,7 @@
 
 @class Note;
 
-@interface NoteEditorViewController : UIViewController <UISplitViewControllerDelegate>
+@interface NoteEditorViewController : UIViewController <UISplitViewControllerDelegate, UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWebView *web;
 @property (strong, nonatomic) id detailItem;
@@ -18,5 +18,9 @@
 
 @property Note *note;
 @property NSDictionary *json;
+
+@property NSURLConnection *urlConnection;
+@property NSURLRequest *urlRequest;
+@property BOOL authenticated;
 
 @end

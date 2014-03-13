@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vku-yi-qwK">
-                                <rect key="frame" x="20" y="200" width="663" height="548"/>
+                                <rect key="frame" x="20" y="128" width="663" height="615"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,23 +61,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="checkLink:" destination="JEX-9P-axG" eventType="touchUpInside" id="1i3-z4-tj3"/>
-                                    <action selector="didPressLink" destination="JEX-9P-axG" eventType="touchUpInside" id="wJO-M9-xJU"/>
-                                </connections>
-                            </button>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJt-Yq-dPw">
-                                <rect key="frame" x="267" y="158" width="326" height="351"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EA-sg-Ej5">
-                                <rect key="frame" x="20" y="77" width="137" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Load Notes">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="loadNotes" destination="JEX-9P-axG" eventType="touchUpInside" id="ZLb-0O-zCU"/>
+                                    <segue destination="wPs-OP-YnW" kind="popover" popoverAnchorView="elJ-Mq-AEJ" id="wL0-4U-ua0">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,12 +75,40 @@
                     <connections>
                         <outlet property="noteTitle" destination="Zct-dL-cU4" id="kkW-I9-KuQ"/>
                         <outlet property="textView" destination="Vku-yi-qwK" id="t94-ys-oKa"/>
-                        <outlet property="web" destination="nJt-Yq-dPw" id="isy-dg-V9W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="471" y="278"/>
+            <point key="canvasLocation" x="467" y="302"/>
+        </scene>
+        <!--Note Editor View Controller-->
+        <scene sceneID="Y8v-ch-6nv">
+            <objects>
+                <viewController id="wPs-OP-YnW" customClass="NoteEditorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HVm-la-Qjm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ji8-es-qC1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jVp-Cq-Bey">
+                        <rect key="frame" x="0.0" y="0.0" width="703" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y34-WJ-TvJ">
+                                <rect key="frame" x="14" y="20" width="675" height="728"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="web" destination="y34-WJ-TvJ" id="lX2-SC-rvV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jir-I0-YQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1615" y="321"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">

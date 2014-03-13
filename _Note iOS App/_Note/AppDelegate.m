@@ -8,18 +8,11 @@
 
 #import "AppDelegate.h"
 #import "Note.h"
-#import <DropboxSDK/DropboxSDK.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Authenticate to Dropbox
-    DBSession *dbSession = [[DBSession alloc]
-                            initWithAppKey:@"uwjvcs6f8kegvt1"
-                            appSecret:@"l8p42osw8uriwyj"
-                            root:kDBRootAppFolder]; // either kDBRootAppFolder or kDBRootDropbox
-    [DBSession setSharedSession:dbSession];
     
     // Override point for customization after application launch.
     self.notes = [NSMutableArray arrayWithArray: @[
@@ -28,19 +21,6 @@
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
     return YES;
-}
-
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
-  sourceApplication:(NSString *)source annotation:(id)annotation {
-    if ([[DBSession sharedSession] handleOpenURL:url]) {
-        if ([[DBSession sharedSession] isLinked]) {
-            NSLog(@"App linked successfully!");
-            // At this point you can start making API calls
-        }
-        return YES;
-    }
-    // Add whatever other url handling code your app requires here
-    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
