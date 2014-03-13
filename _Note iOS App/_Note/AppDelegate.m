@@ -23,7 +23,7 @@
     
     // Override point for customization after application launch.
     self.notes = [NSMutableArray arrayWithArray: @[
-            [Note noteWithText: @"Will load the list of notes in this area here."]]];
+            [Note noteWithText: @"Default notes\nCurrently, creating notes is disabled until rich-text editting is implemented."]]];
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;

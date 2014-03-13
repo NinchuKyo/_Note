@@ -31,6 +31,9 @@ To do this you must:
 3. Once you have done this, it should resolve any "cannot find DropboxSDK.h" type of errors
 
 Now the iOS simulator is ready to run, just click on the "play" button to the top-left hand corner.
+- In order for you to load your notes into our app, you must first authorize to Dropbox at the initial starting screen
+- After you have done that, you can either click "Your notes" or swipe to the right in the left area.  This will show a list of notes you currently have.
+- Click on "load notes" once you have authorized to Dropbox in order to load the notes that you have from _Note, from using our desktop browser version.
 
 Requirements (to run server):
 ---

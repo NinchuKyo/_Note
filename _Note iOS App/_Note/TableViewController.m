@@ -16,7 +16,6 @@
     NSMutableArray *_objects;
 }
 @property (nonatomic, strong) DBRestClient *restClient;
-
 @end
 
 @implementation TableViewController
@@ -42,6 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
@@ -115,24 +115,66 @@
 // Link to load list of notes from server
 - (IBAction)viewNoteLink{
     
-    // HTTP request to server
-    NSString *urlString = @"https://localhost:5000/lists";
-    NSURL *url = [NSURL URLWithString:urlString];
+    int size;
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url    cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+    if (_titles == nil)
+    {
+        // HTTP request to server for list of notes
+        NSString *urlString = @"https://localhost:5000/lists";
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+        NSURLResponse *urlResponse = nil;
+        NSError *error = nil;
+        
+        NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                              returningResponse:&urlResponse
+                                                          error:&error];
+        
+        if (data != nil)
+        {
+            // Receive note json list
+            self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSLog(@"%@", _json);
+            NSLog(@"Received JSON data from server in method");
+            
+            // Get list of note titles from received json
+            NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
+            NSString *success_criteria = @"1";
+            
+            if ([success isEqualToString:success_criteria])
+            {
+                _titles = [_json objectForKey: @"note_titles"];
+                NSLog(@"Parsed JSON note title data from server");
+            }
+            else
+            {
+                NSLog(@"Failed to parse JSON note title data from server");
+            }
+        }
+        
+    }
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+    if (_titles != nil)
+    {
+        // For each note in the list, get contents of notes
+        size = [_titles count];
+        NSString *baseURL = @"https://localhost:5000/view_note/";
     
-    [connection start];
-    
-    urlString = @"https://localhost:5000/view_note/NewNote.txt";
-    url = [NSURL URLWithString:urlString];
-    
-    urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
-    
+        for (int i = 0; i < size; i++)
+        {
+            NSDictionary* title_name = [_titles objectAtIndex:i];
+            NSString *name = [title_name objectForKey: @"Title"];
+            
+            NSString *urlString = [baseURL stringByAppendingString:name];
+            
+            NSLog(@"name = %@", name);
+            NSLog(@"url = %@", urlString);
+            
+            NSURL *url = [NSURL URLWithString:urlString];
+            NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+            NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+        }
+    }
     
 }
 
@@ -215,25 +257,30 @@ loadMetadataFailedWithError:(NSError *)error {
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     // Load json information into object
-    NSLog(@"Received JSON data from server");
     self.json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     NSLog(@"%@", _json);
+    NSLog(@"Received JSON data from server");
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    // Parse through json object for list of note titles and display in view
-    NSLog(@"Parsed JSON data from server");
+    // Parse through json for note content
+    NSString *note_json = [_json objectForKey:@"note"];
+    NSLog(@"Note JSON: %@", note_json);
     
-    NSArray *titles = [_json objectForKey: @"note_titles"];
-    int size = [titles count];
-    
-    for (int i = 0; i < size; i++)
+    if (note_json != nil)
     {
-        NSDictionary* title_name = [titles objectAtIndex:i];
-        NSString *name = [title_name objectForKey: @"Title"];
-        Note *new_note = [Note noteWithText: [NSString stringWithFormat:@"%@", name]];
-        self.notes[i] = new_note;
+        NSData *data = [note_json dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *note_dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        
+        NSString *content = [note_dictionary objectForKey:@"content"];
+        NSString *title = [note_dictionary objectForKey:@"title"];
+        
+        NSLog(@"Content: %@", content);
+        NSLog(@"Title: %@", title);
+        
+        Note *new_note = [Note noteWithText: [NSString stringWithFormat:@"%@\n%@", title, content]];
+        [self.notes addObject:new_note];
     }
     
     [self.tableView reloadData];

@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NoteEditorViewController *noteEditorViewController;
 
 @property NSDictionary *json;
+@property NSArray *titles;
+
 @property NSURLConnection *urlConnection;
 @property NSURLRequest *request;
 @property BOOL authenticated;
