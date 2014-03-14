@@ -48,6 +48,7 @@ test( "search", function() {
     //test if able to add one more?
     //this.$scope.addSearch('Main');
     //equal(this.$scope.searchesShown['Main'], 5); //TODO: remove this test or make it consistent with view
+    //TODO: test $scope.showSearch
     
     //remove search
     equal(this.$scope.removeSearch(1, 'Main'), undefined);
@@ -59,6 +60,7 @@ test( "search", function() {
     this.$scope.removeSearch(1, 'Main');
     this.$scope.removeSearch(1, 'Main');
     //equal(this.$scope.searchesShown['Main'], 1); //TODO: remove this test or make it consistent with view
+    //TODO: test $scope.showSearch
     
     //testing search
     equal(this.$scope.search('Main'), undefined);
@@ -134,18 +136,23 @@ test( "paginate", function() {
     //TODO: test something about $scope.newPage
 });
 
-test( "increase display limit", function() {
-    //increaseDisplayLimit (test DOM) + 25
-    //increaseDisplayLimit (test DOM) + something >25
-    //increaseDisplayLimit (test DOM) + something <25
-    ok( 1 == "1", "Passed!" );
-});
-
-test( "change results per page", function() {
-    //changeResultsPerPage (test DOM) + 25
-    //changeResultsPerPage (test DOM) + something >25
-    //changeResultsPerPage (test DOM) + something <25
-    ok( 1 == "1", "Passed!" );
+test( "display limit and results per page", function() {
+    //increaseDisplayLimit
+    equal(this.$scope.numItemsDisplayed, 100);
+    equal(this.$scope.increaseDisplayLimit(), undefined);
+    equal(this.$scope.numItemsDisplayed, 125);
+    
+    //changeResultsPerPage
+    equal(this.$scope.changeResultsPerPage(), undefined);
+    equal(this.$scope.numItemsDisplayed, 100);
+    
+    //possible DOM tests?
+    //increaseDisplayLimit + 25
+    //increaseDisplayLimit + something >25
+    //increaseDisplayLimit + something <25
+    //changeResultsPerPage + 25
+    //changeResultsPerPage + something >25
+    //changeResultsPerPage + something <25
 });
 
 test( "tinymce init", function() {
@@ -155,18 +162,40 @@ test( "tinymce init", function() {
 
 test( "validation", function() {
     //keyPressed valid character
+    this.$scope.title = '%';
+    this.$scope.keyPressed(this.$scope);
+    equal(this.$scope.isValid, false);
+    
     //keyPressed invalid character
-    ok( 1 == "1", "Passed!" );
+    this.$scope.title = 's';
+    this.$scope.keyPressed(this.$scope);
+    equal(this.$scope.isValid, true);
 });
 
 test( "save", function() {
     //ajaxSave no title (test DOM?)
+    equal(this.$scope.ajaxSave(), undefined);
+    equal(document.getElementById("msg").innerHTML, "You're missing the title.");
+    equal(this.$scope.showMsg.value, true);
+    
     //ajaxSave invalid character (test DOM?)
+    document.getElementById("title").value = 'this is not a valid title!';
+    this.$scope.ajaxSave();
+    equal(document.getElementById("msg").innerHTML, "Allowed characters: A-Z, a-z, 0-9, -, _");
+    equal(this.$scope.showMsg.value, true);
+    
     //ajaxSave valid title (test DOM?)
-    ok( 1 == "1", "Passed!" );
+    document.getElementById("title").value = 'this is a valid title';
+    this.$scope.ajaxSave();
+    console.log(httpBackend.expectGET('/save'));
 });
 
-test( "switchview", function() {
+test( "switchView", function() {
     //switchView
-    ok( 1 == "1", "Passed!" );
+    equal(this.$scope.viewingList.value, true);
+    equal(this.$scope.switchView(), undefined);
+    equal(this.$scope.viewingList.value, false);
+    equal(this.$scope.showMsg.value, false);
+    
+    //DOM tests to come
 });
