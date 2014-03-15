@@ -22,7 +22,7 @@
         <!--Note Editor View Controller - Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="NoteEditorViewController" sceneMemberID="viewController">
+                <viewController title="Detail" definesPresentationContext="YES" id="JEX-9P-axG" customClass="NoteEditorViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j0t-K0-fHw"/>
                         <viewControllerLayoutGuide type="bottom" id="fHF-TM-SXR"/>
@@ -70,10 +70,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" id="Q2o-L5-63M">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AI4-6l-mf6">
+                                <rect key="frame" x="16" y="6" width="156" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Welcome to _Note!" id="mOI-FS-AaM">
                         <barButtonItem key="backBarButtonItem" title="Hi" id="GYL-i0-8nY"/>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="noteTitle" destination="Zct-dL-cU4" id="kkW-I9-KuQ"/>
                         <outlet property="textView" destination="Vku-yi-qwK" id="t94-ys-oKa"/>
@@ -83,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="455" y="278"/>
         </scene>
-        <!--Note Editor View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="Y8v-ch-6nv">
             <objects>
-                <viewController id="wPs-OP-YnW" customClass="NoteEditorViewController" sceneMemberID="viewController">
+                <viewController id="wPs-OP-YnW" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HVm-la-Qjm"/>
                         <viewControllerLayoutGuide type="bottom" id="Ji8-es-qC1"/>
@@ -195,7 +207,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="-653"/>
+            <point key="canvasLocation" x="1043" y="-809"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
@@ -210,7 +222,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-366" y="248"/>
+            <point key="canvasLocation" x="-526" y="200"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

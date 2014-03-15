@@ -23,6 +23,7 @@
 		4788E1EA18A1B0A4002FDA65 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1E818A1B0A4002FDA65 /* InfoPlist.strings */; };
 		4788E1EC18A1B0A4002FDA65 /* _NoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */; };
 		C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C803372A18BF9AF70032AAC6 /* TableViewController.m */; };
+		C872A4AD18D4226E00EFE9BC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C872A4AC18D4226E00EFE9BC /* WebViewController.m */; };
 		C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D80D4818BE1CF200EEF35E /* Note.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,9 @@
 		4788E1E918A1B0A4002FDA65 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4788E1EB18A1B0A4002FDA65 /* _NoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _NoteTests.m; sourceTree = "<group>"; };
 		C803372A18BF9AF70032AAC6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C872A4AB18D4226E00EFE9BC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		C872A4AC18D4226E00EFE9BC /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		C872A4AF18D42BFF00EFE9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = _Note/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8D80D4718BE1CF200EEF35E /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		C8D80D4818BE1CF200EEF35E /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +95,7 @@
 		4788E1B118A1B0A3002FDA65 = {
 			isa = PBXGroup;
 			children = (
+				C872A4AE18D42BFF00EFE9BC /* Main.storyboard */,
 				4788E1C318A1B0A4002FDA65 /* _Note */,
 				4788E1E518A1B0A4002FDA65 /* _NoteTests */,
 				4788E1BC18A1B0A4002FDA65 /* Frameworks */,
@@ -133,6 +138,8 @@
 				4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */,
 				4788E1D818A1B0A4002FDA65 /* Images.xcassets */,
 				4788E1C418A1B0A4002FDA65 /* Supporting Files */,
+				C872A4AB18D4226E00EFE9BC /* WebViewController.h */,
+				C872A4AC18D4226E00EFE9BC /* WebViewController.m */,
 			);
 			path = _Note;
 			sourceTree = "<group>";
@@ -264,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4788E1CE18A1B0A4002FDA65 /* AppDelegate.m in Sources */,
+				C872A4AD18D4226E00EFE9BC /* WebViewController.m in Sources */,
 				4788E1CA18A1B0A4002FDA65 /* main.m in Sources */,
 				C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */,
 				C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */,
@@ -312,6 +320,14 @@
 				4788E1E918A1B0A4002FDA65 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C872A4AE18D42BFF00EFE9BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C872A4AF18D42BFF00EFE9BC /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -396,12 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
-					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App/_Note",
-					"/home/student/umpet424/Documents/test/comp4350group1/_Note\\ iOS\\ App",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "_Note/_Note-Prefix.pch";
 				INFOPLIST_FILE = "_Note/_Note-Info.plist";
@@ -415,12 +426,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
-					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App/_Note",
-					"/home/student/umpet424/Documents/test/comp4350group1/_Note\\ iOS\\ App",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "_Note/_Note-Prefix.pch";
 				INFOPLIST_FILE = "_Note/_Note-Info.plist";

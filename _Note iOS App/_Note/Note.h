@@ -12,12 +12,12 @@
 
 @property NSString *contents;
 @property NSAttributedString *htmlContents;
+@property NSString *htmlContentsAsString;
+
 @property NSDate *timestamp;
 
 @property NSString *titleString;
-
-// an automatically generated not title, based on the first few words (readonly)
-@property NSString *title;
+@property (nonatomic) NSString *title;
 
 + (Note*) noteTitle:(NSString *) title noteWithText:(NSString*)text;
 

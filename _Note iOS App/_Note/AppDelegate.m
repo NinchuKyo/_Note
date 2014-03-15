@@ -16,7 +16,7 @@
     
     // Override point for customization after application launch.
     self.notes = [NSMutableArray arrayWithArray: @[
-            [Note noteTitle:@"Default Notes" noteWithText:@"Currently, creating notes is disabled until rich-text editting is implemented."]]];
+            [Note noteTitle:@"Default Notes" noteWithText:@"Currently, <b>creating notes</b> is disabled until rich-text editting is implemented."]]];
     UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
     UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
     splitViewController.delegate = (id)navigationController.topViewController;
@@ -48,49 +48,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark NSURLConnectionDelegate
-
-- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-    NSLog(@"protectionSpace: %@", [protectionSpace authenticationMethod]);
-    
-    // We only know how to handle NTLM authentication.
-    if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodNTLM])
-        return YES;
-    
-    // Explicitly reject ServerTrust. This is occasionally sent by IIS.
-    if([[protectionSpace authenticationMethod] isEqualToString:NSURLAuthenticationMethodServerTrust])
-        return NO;
-    
-    return NO;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"%@", response);
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    NSLog(@"%@", data);
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    NSLog(@"json data = %@",json);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
-    NSLog([NSString stringWithFormat:@"Connection failed: %@", [error description]]);
-}
-
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    [[challenge sender] useCredential:[NSURLCredential
-                                       credentialWithUser:@"user"
-                                       password:@"password"
-                                       persistence:NSURLCredentialPersistencePermanent] forAuthenticationChallenge:challenge];
-    
 }
 
 @end
