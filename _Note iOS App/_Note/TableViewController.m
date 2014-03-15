@@ -207,6 +207,7 @@
     if ([segue.identifier isEqualToString:@"AddNewNote"]){
         editor.note = [Note noteTitle: @" " noteWithText:@" "];
         [[self notes] addObject:editor.note];
+        [self.tableView reloadData];
     }
 }
 
