@@ -1,0 +1,2 @@
+PODS_QUNIT_M_FRAMEWORK_SEARCH_PATHS = $(inherited) "$(SDKROOT)/Developer/Library/Frameworks"
+PODS_QUNIT_M_OTHER_LDFLAGS = -framework SenTestingKit
