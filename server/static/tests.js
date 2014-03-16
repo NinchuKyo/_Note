@@ -36,32 +36,6 @@ test( "ajax", function() { //TODO: http://docs.angularjs.org/api/ngMock/service/
 });
 
 test( "search", function() {
-    //add search
-    equal(this.$scope.searchesShown['Main'], 1);
-    equal(this.$scope.addSearch('Main'), undefined);
-    equal(this.$scope.searchesShown['Main'], 2);
-    //having 5 searches disables adding more (TODO: DOM test, hard to do because buttons in ng-partial)
-    this.$scope.addSearch('Main');
-    this.$scope.addSearch('Main');
-    this.$scope.addSearch('Main');
-    equal(this.$scope.searchesShown['Main'], 5);
-    //test if able to add one more?
-    //this.$scope.addSearch('Main');
-    //equal(this.$scope.searchesShown['Main'], 5); //TODO: remove this test or make it consistent with view
-    //TODO: test $scope.showSearch
-    
-    //remove search
-    equal(this.$scope.removeSearch(1, 'Main'), undefined);
-    equal(this.$scope.searchesShown['Main'], 4);
-    this.$scope.removeSearch(1, 'Main');
-    equal(this.$scope.searchesShown['Main'], 3);
-    //test if able to have less than 1 search
-    this.$scope.removeSearch(1, 'Main');
-    this.$scope.removeSearch(1, 'Main');
-    this.$scope.removeSearch(1, 'Main');
-    //equal(this.$scope.searchesShown['Main'], 1); //TODO: remove this test or make it consistent with view
-    //TODO: test $scope.showSearch
-    
     //testing search
     equal(this.$scope.search('Main'), undefined);
     //TODO: more tests for search
