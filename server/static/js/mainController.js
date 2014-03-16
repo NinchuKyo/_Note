@@ -11,7 +11,6 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             /********** Members and Variables ***************************************/
 
             // Loading 
-            $scope.doneLoading = false;
             var isUpdating = false;
 
             // Filtering
@@ -22,10 +21,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 "Main": 1
             };
             $scope.showSearch = {
-                "Main": { 0: true, 1: false, 2: false, 3: false, 4: false }
+                "Main": { 0: true }
             };
             $scope.query = {
-                "Main": { 0: "", 1: "", 2: "", 3: "", 4: "" }
+                "Main": { 0: "" }
             };
             $scope.resultsCount = {
                 "Main": 0
@@ -59,27 +58,9 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             $scope.viewingList = { value: true };
             $scope.showMsg = { value: false };
 
-            /********** On Startup **************************************************/
-
-            // Get values from config file and load initial list
-            //$http.get('config/config.json').success(function (configResult) {
-            //    config = configResult;
-            //    $scope.grabLists();
-            //});
-
-            // Set up timer to update the list every 5 minutes
-            setInterval(scheduledUpdate, (1000 * 60 * 5));
-
             /********** Functions ***************************************************/
 
             /********** Loading **********************/
-
-            // Every time the timer elapses, updates the data from the BE
-            function scheduledUpdate() {
-                isUpdating = true;
-                $scope.doneLoading = false;
-                $scope.grabLists();
-            }
 
            $scope.grabLists = function () {
                $http.get('/lists').success(function (response) {
@@ -93,7 +74,6 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                        isUpdating = false;
                    }
                    
-                   $scope.doneLoading = true;
                }).error(function (response){
 
                });
@@ -121,25 +101,6 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
            }
 
             /********** Filtering **********************/
-
-            // Hides and disables a search
-            $scope.removeSearch = function (index, tableName) {
-                $scope.query[tableName][index] = "";
-                $scope.showSearch[tableName][index] = false;
-                $scope.search(tableName);
-                $scope.searchesShown[tableName]--;
-            }
-
-            // Adds and enables a search
-            $scope.addSearch = function (tableName) {
-                for (var visible in $scope.showSearch[tableName]) {
-                    if (!$scope.showSearch[tableName][visible]) {
-                        $scope.showSearch[tableName][visible] = true;
-                        break;
-                    }
-                }
-                $scope.searchesShown[tableName]++;
-            }
 
             // Returns true if any data member in item contains query
             var searchMatchAll = function (item, query) {
@@ -377,6 +338,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         }
                     });
                 }
+
+                isUpdating = true;
+                $scope.search('Main');
+                isUpdating = false;
             };
 
             $scope.switchView = function () {

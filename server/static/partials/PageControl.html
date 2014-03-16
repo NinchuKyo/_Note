@@ -1,23 +1,18 @@
 <ul ng-show="itemsPerPage.value != 0 && viewingList.value == true" class="pagination">
-
     <li ng-class="{disabled: currentPage.value == 0}">
-        <a class="BlueBgCtrl" href ng-click="prevPage()">Prev Page</a>
+        <a class="EasyControl" href ng-click="prevPage()">Prev Page</a>
     </li>
-
     <li>
-        <a class="BlueBgCtrl noOrange" >
+        <a class="EasyControl noOrange" >
             Page 
-
             <select title="Choose a page." class="buttonSelect" ng-init="newPage.value=1" ng-model="newPage.value" ng-change="goToPage(newPage.value)">
                 <option ng-repeat="page in pagedItems">{{$index + 1}}</option>
             </select>
-
             of 
             {{pagedItems.length}}
         </a>
     </li>
-
     <li ng-class="{disabled: currentPage.value == pagedItems.length - 1}">
-        <a class="BlueBgCtrl" href ng-click="nextPage()">Next Page</a>
+        <a class="EasyControl" href ng-click="nextPage()">Next Page</a>
     </li>
 </ul>

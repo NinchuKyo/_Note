@@ -1,0 +1,17 @@
+<div style="text-align:left;" ng-show="!viewingList.value">
+    <div>
+        <h4 style="margin-bottom:5px;">Title: </h4>
+        <input style="width:400px;margin-bottom:10px;"
+            title="Allowed characters: A-Z, a-z, 0-9, -, _" 
+            type="text" 
+            id="title" 
+            class="my-title input-large search-query" 
+            maxlength="50" 
+            placeholder="Please enter a title" 
+            ng-model="title" 
+            ng-pattern="/^[\w\s-]+$/"/>
+
+        <textarea id="Textarea1" ng-init="initEditor()" style="width:100%"></textarea>
+        <button style="width:80px;height:30px;margin-top:10px;" class="EasyControl" ng-click="ajaxSave()">Save</button>
+    </div>
+</div>

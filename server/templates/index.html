@@ -6,34 +6,54 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='lib/bootstrap/bootstrap.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
         <script src="{{ url_for('static', filename='lib/angular/angular.js') }}"></script>
-        <script src="{{ url_for('static', filename='lib/angular/angular-resource.js') }}"></script>
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>
         <script src="{{ url_for('static', filename='js/mainController.js') }}"></script>
         <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
     </head>
 
     <body>
-        <div class="pull-left" style="text-align:left">
+        <div id="header">
+            <table style="width:inherit;">
+                <tr>
+                    <td style="width:33%;"></td>
+                    
+                    <!-- The title -->
+                    <td style="width:33%;"><div ng-include="'static/partials/Title.html'"></div></td>
+                    
+                    <td style="width:33%;"></td>
+                </tr>
+            </table>
+        </div>
 
-            <h1>Welcome to _Note!</h1>
-            <br />
-            <br />
-            <span ng-show="showMsg.value" id="msg"></span>
+        <div id="body">
+            <div id="mainContent">
 
-            <span>
-                <button ng-show="!viewingList.value" ng-click="switchView()">Go Back</button>
-                <button ng-show="viewingList.value" ng-click="switchView()">Create</button>
-            </span>
+                <!-- The navigation buttons -->
+                <div style="text-align:center;" ng-include="'static/partials/Navigation.html'"></div>
 
-            <div ng-include="'{{ url_for('static', filename='partials/mainTable-partial.html') }}'"></div>
+                <!-- The status msg from the server -->
+                <div style="text-align:center;" ng-include="'static/partials/StatusMsg.html'"></div>
 
-            <div ng-show="!viewingList.value">
-                <span>Title: </span>
-                <input title="Allowed characters: A-Z, a-z, 0-9, -, _" type="text" id="title" class="my-title" maxlength="50" placeholder="please enter a title.." ng-model="title" ng-pattern="/^[\w\s-]+$/"/>
-                <textarea id="content" ng-init="initEditor()" style="width:100%"></textarea>
-                <button ng-click="ajaxSave()">
-                    Save
-                </button>
+                <!-- The item search filters -->
+                <div ng-include="'static/partials/Search.html'"></div>
+
+                <!-- The results per page control -->
+                <div style="margin-left:5px;" ng-include="'static/partials/ResultsPerPage.html'"></div>
+
+                <!-- The note editor -->
+                <div ng-include="'static/partials/Editor.html'"></div>
+
+                <!-- The # of search results in the table -->
+                <div ng-include="'static/partials/ResultsCount.html'"></div>
+
+                <!-- The data table -->
+                <div ng-include="'static/partials/Table.html'"></div>
+
+                <!-- 'More' button to load more results -->
+                <div ng-include="'static/partials/MoreButton.html'"></div>
+
+                <!-- The pagination controls (next, prev, goToPage) -->
+                <div style="width:50%;margin: 0 auto;" ng-include="'static/partials/PageControl.html'"></div>
             </div>
         </div>
     </body>
