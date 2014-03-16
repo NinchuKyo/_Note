@@ -35,6 +35,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 "Title": "Title"
             };
 
+            var columnNames = [
+                "Title"
+            ];
+
             // Sorting
             $scope.collapseChar = {
                 "Main": { "Title": '\u25b2' }
@@ -119,28 +123,44 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 return doesContain;
             };
 
+            var doesColumnExist = function (cName) {
+                for (var index in columnNames) {
+                    if (cName === columnNames[index]) {
+                        return true;
+                    }
+                }
+
+                return false;
+            };
+
             // Returns true if a specific data member in item contains query
             var searchMatchOne = function (item, query, attribute, attributeMap, matchWholeWord) {
-                var attributeMapping = attributeMap[attribute];
 
-                if (!query) {
-                    return true;
-                }
+                if(doesColumnExist(attribute)){
+                    var attributeMapping = attributeMap[attribute];
 
-                var doesContain = false;
-
-                if (!matchWholeWord) {
-                    if (item[attributeMapping].toString().toLowerCase().indexOf(query.toString().toLowerCase().trim()) !== -1) {
-                        doesContain = true;
+                    if (!query) {
+                        return true;
                     }
-                }
-                else {
-                    if (item[attributeMapping].toString().toLowerCase() === query.toString().toLowerCase().trim()) {
-                        doesContain = true;
-                    }
-                }
 
-                return doesContain;
+                    var doesContain = false;
+
+                    if (!matchWholeWord) {
+                        if (item[attributeMapping].toString().toLowerCase().indexOf(query.toString().toLowerCase().trim()) !== -1) {
+                            doesContain = true;
+                        }
+                    }
+                    else {
+                        if (item[attributeMapping].toString().toLowerCase() === query.toString().toLowerCase().trim()) {
+                            doesContain = true;
+                        }
+                    }
+
+                    return doesContain;
+                }
+                else{
+                    return false;
+                }
             };
 
             // Filters the list of data based on all enabled searches
