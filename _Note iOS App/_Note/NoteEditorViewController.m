@@ -59,6 +59,29 @@
     [self configureView];
 }
 
+- (IBAction)saveNote:(id)sender {
+    NSString *baseURL = @"https://54.201.79.223:5000/save";
+    NSString *content = @"<p>";
+    [content stringByAppendingString:self.textView.text];
+    [content stringByAppendingString:@"</p>"];
+    NSMutableDictionary* note = [[NSMutableDictionary alloc] init];
+    [note setObject:self.noteTitle.text forKey:@"title"];
+    [note setObject:content forKey:@"content"];
+    //Boolean* overwrite = NO;
+    //NSNumber* overwrite = NO;
+    //NSMutableDictionary* data = [[NSMutableDictionary alloc] init];
+    //[data setObject:overwrite forKey:@"overwrite"];
+    //[data setObject:note forKey:@"note"];
+    NSError* error = nil;
+    NSData* jsondata = [NSJSONSerialization dataWithJSONObject:note options:NSJSONReadingMutableContainers error:&error];
+    
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:baseURL]];
+    [urlRequest setHTTPMethod:@"POST"];
+    [urlRequest setHTTPBody:jsondata];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+
+}
+
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     self.note.htmlContents = textView.attributedText;

@@ -21,5 +21,6 @@
 @property NSURLConnection *urlConnection;
 @property NSURLRequest *urlRequest;
 @property BOOL authenticated;
+@property (weak, nonatomic) IBOutlet UIButton *saveNoteButton;
 
 @end
