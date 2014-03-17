@@ -8,40 +8,124 @@
 
 #import "Note.h"
 
-@implementation Note
+@implementation Note {
+    NSString *titleString;
+    NSString *contents;
+    NSAttributedString *htmlContents;
+    NSString *htmlContentsAsString;
+    NSDate *timestamp;
+}
 
-+ (Note *) noteTitle:(NSString *) title noteWithText:(NSString *)text{
+
++ (Note *) noteTitle:(NSString *) title noteWithText:(NSString *)text
+{
     
     Note* note = [Note new];
-    NSAttributedString *temp = [self formatHTMLString:text];
+    note->titleString = title;
+    note->contents = text;
     
-    note.titleString = title;
-    note.contents = text;
-    note.htmlContentsAsString = [self formatAttributedStringToHTMLString:temp];
-    note.htmlContents = [self formatHTMLString:note.htmlContentsAsString];
-    note.timestamp = [NSDate date];
+    [self setEmptyIfNil: note];
+    [self replaceInvalidCharactersInTitle: note];
+    NSAttributedString *temp = [self formatHTMLString:note->contents];
+    
+    note->htmlContentsAsString = [self formatAttributedStringToHTMLString:temp];
+    note->htmlContents = [self formatHTMLString:note->htmlContentsAsString];
+    note->timestamp = [NSDate date];
+    
     return note;
 }
 
-- (NSString *) title {
-    return self.titleString;
+// Accessor methods
+- (NSString *) title
+{
+    return self->titleString;
 }
 
-+ (NSAttributedString *) formatHTMLString: (NSString *) htmlString {
+- (NSString *) contents
+{
+    return self->contents;
+}
+
+- (NSAttributedString *) htmlContents
+{
+    return self->htmlContents;
+}
+
+// Mutator methods
+- (void) setTitle: (NSString *) newTitle
+{
+    self->titleString = newTitle;
+    [Note setEmptyIfNil:self];
+    [Note replaceInvalidCharactersInTitle:self];
+}
+
+- (void) setContents: (NSString *) newContent
+{
+    // This method is for plain-text notes
+    self->contents = newContent;
+    NSAttributedString *temp = [Note formatHTMLString:newContent];
+    self->htmlContentsAsString = [Note formatAttributedStringToHTMLString:temp];
+    self->htmlContents = [Note formatHTMLString:self->htmlContentsAsString];
+}
+
+- (void) setHTMLContents: (NSAttributedString *) newHTMLContents
+{
+    // Method for rich-text notes
+    self->htmlContents = newHTMLContents;
+    self->htmlContentsAsString = [Note formatAttributedStringToHTMLString:newHTMLContents];
+}
+
+// Formatting methods
++ (void) setEmptyIfNil: (Note *) note
+{
+    if (note->titleString == nil)
+    {
+        note->titleString = @"";
+    }
+    
+    if (note->contents == nil)
+    {
+        note->contents = @"";
+    }
+}
+
++ (void) replaceInvalidCharactersInTitle: (Note *) note
+{
+    NSString *pattern = @"[^a-zA-Z0-9\\_\\-]*";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
+    NSString *newString = [regex stringByReplacingMatchesInString:note->titleString options:0 range:NSMakeRange(0, [note->titleString length]) withTemplate:@""];
+    note->titleString = newString;
+}
+
++ (NSAttributedString *) formatHTMLString: (NSString *) htmlString
+{
     
     NSAttributedString *stringWithHTMLAttributes = nil;
-    if (htmlString != nil)
+    NSString *inputString = htmlString;
+    
+    if (inputString == nil)
     {
-        NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];
-        stringWithHTMLAttributes = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+        inputString = @"";
     }
+    
+    NSData *data = [inputString dataUsingEncoding:NSUTF8StringEncoding];
+    stringWithHTMLAttributes = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
     
     return stringWithHTMLAttributes;
 }
 
-+ (NSString *) formatAttributedStringToHTMLString: (NSAttributedString *) htmlAttributedString {
++ (NSString *) formatAttributedStringToHTMLString: (NSAttributedString *) htmlAttributedString
+{
+    
+    NSAttributedString *newAttributedString = htmlAttributedString;
+    
+    if (newAttributedString == nil)
+    {
+        newAttributedString = [Note formatHTMLString:@"Content"];
+    }
+    
     NSDictionary *exportParams = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
-    NSData *htmlData = [htmlAttributedString dataFromRange:NSMakeRange(0, htmlAttributedString.length) documentAttributes:exportParams error:nil];
+    NSData *htmlData = [newAttributedString dataFromRange:NSMakeRange(0, newAttributedString.length) documentAttributes:exportParams error:nil];
     return [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
 }
 

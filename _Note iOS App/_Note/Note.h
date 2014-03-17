@@ -10,15 +10,16 @@
 
 @interface Note : NSObject
 
-@property NSString *contents;
-@property NSAttributedString *htmlContents;
-@property NSString *htmlContentsAsString;
-
-@property NSDate *timestamp;
-
-@property NSString *titleString;
-@property (nonatomic) NSString *title;
-
 + (Note*) noteTitle:(NSString *) title noteWithText:(NSString*)text;
+
+// Accessor methods
+- (NSString *) title;
+- (NSString *) contents;
+- (NSAttributedString *) htmlContents;
+
+// Mutator methods
+- (void) setTitle: (NSString *) newTitle;
+- (void) setContents: (NSString *) newContents;
+- (void) setHTMLContents: (NSAttributedString *) newHTMLContents;
 
 @end

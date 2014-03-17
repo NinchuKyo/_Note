@@ -61,8 +61,7 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    self.note.htmlContents = textView.attributedText;
-    self.note.contents = textView.text;
+    [self.note setHTMLContents: textView.attributedText];
 }
 
 - (void)didReceiveMemoryWarning
