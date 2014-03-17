@@ -20,6 +20,20 @@
                ReferencedContainer = "container:_Note.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C82DD52B18D7103B000BE0A7"
+               BuildableName = "_NoteTests.xctest"
+               BlueprintName = "_NoteTests"
+               ReferencedContainer = "container:_Note.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -32,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4788E1DD18A1B0A4002FDA65"
+               BlueprintIdentifier = "C82DD52B18D7103B000BE0A7"
                BuildableName = "_NoteTests.xctest"
                BlueprintName = "_NoteTests"
                ReferencedContainer = "container:_Note.xcodeproj">

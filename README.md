@@ -23,12 +23,16 @@ Currently, _Note has very limited functionality.  To use, first you can visit th
 
 Using _Note for iOS:
 ---
-In order to open the _Note.xcodeproj file and run the simulator for our iOS app.  The iOS no longer uses the Dropbox SDK, it communicates with the server via NSURLConnections in order to get the notes.
+In order to open the _Note.xcworkspace file and run the simulator for our iOS app.  The iOS no longer uses the Dropbox SDK, it communicates with the server via NSURLConnection in order to get the notes.
 
 To run the iOS simulator, just click on the "play" button to the top-left hand corner.
 - In order for you to load your notes into our app, you must first authorize to Dropbox at the initial starting screen by clicking on the "Load from Dropbox"
 - After you have done that, you can either click "Your notes" or swipe to the right in the left area.  This will show a list of notes you currently have.
 - Click on "load notes" once you have authorized to Dropbox in order to load the notes that you have from _Note, from using our desktop browser version.
+
+Running tests for iOS:
+---
+To run the QUnit.m tests, you can open up the workspace file and in the pannel to the left, click on the diamond with a line icon.  Here is where all the tests are held, and you can run them by clicking the mini-play button that appears when you hover over the test name.
 
 Requirements (to run server):
 ---
