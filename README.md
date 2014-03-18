@@ -23,7 +23,7 @@ Currently, _Note has very limited functionality.  To use, first you can visit th
 
 Using _Note for iOS:
 ---
-In order to open the _Note.xcworkspace file and run the simulator for our iOS app.  The iOS no longer uses the Dropbox SDK, it communicates with the server via NSURLConnection in order to get the notes.
+In order to use our app, open the _Note.xcworkspace file and run the simulator for our iOS app.  The iOS no longer uses the Dropbox SDK, it communicates with the server via NSURLConnection in order to get the notes.
 
 To run the iOS simulator, just click on the "play" button to the top-left hand corner.
 - In order for you to load your notes into our app, you must first authorize to Dropbox at the initial starting screen by clicking on the "Load from Dropbox"
