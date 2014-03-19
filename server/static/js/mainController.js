@@ -83,8 +83,8 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                });
            }
 
-           $scope.grabNote = function (title) {
-               $http.get('/view_note/' + title).success(function (response) {
+           $scope.grabNote = function (item) {
+               $http.get('/view_note/' + item.Title).success(function (response) {
                     var response = angular.fromJson(response);
                     if(response['success']) {
                         $scope.overwrite = true;
