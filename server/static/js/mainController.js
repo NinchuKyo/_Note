@@ -66,43 +66,56 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             /********** Loading **********************/
 
-           $scope.grabLists = function () {
-               $http.get('/lists').success(function (response) {
+            $scope.grabLists = function () {
+                $http.get('/lists').success(function (response) {
 
-                   $scope.lists = angular.fromJson(response).note_titles;
+                    $scope.lists = angular.fromJson(response).note_titles;
 
-                   filteredData = $scope.lists;
-                   $scope.search('Main');
+                    filteredData = $scope.lists;
+                    $scope.search('Main');
 
-                   if (isUpdating) {
-                       isUpdating = false;
-                   }
+                    if (isUpdating) {
+                        isUpdating = false;
+                    }
                    
-               }).error(function (response){
+                }).error(function (response){
+                    document.getElementById("msg").innerHTML = "Cannot connect to server.";
+                    document.getElementById("msg").className = "alert alert-danger";
+                });
+            }
 
-               });
-           }
-
-           $scope.grabNote = function (title) {
-               $http.get('/view_note/' + title).success(function (response) {
+            $scope.grabNote = function (title) {
+                $http.get('/view_note/' + title).success(function (response) {
                     var response = angular.fromJson(response);
+                    var editor;
                     if(response['success']) {
                         $scope.overwrite = true;
                         $scope.viewingList.value = false;
                         $scope.note = angular.fromJson(response.note);
                         document.getElementById("title").value = $scope.note["title"];
-                        tinyMCE.activeEditor.setContent($scope.note["content"]);
-                        document.getElementById("msg").innerHTML = "";
+                        editor = tinyMCE.activeEditor;
+                        if(editor)
+                        {
+                            editor.setContent($scope.note["content"]);
+                            document.getElementById("msg").innerHTML = "Cannot initialize the text editor";
+                            document.getElementById("msg").className = "";
+                        }
+                        else
+                        {
+                            document.getElementById("msg").innerHTML = "";
+                            document.getElementById("msg").className = "alert alert-danger";
+                        }
                     }
                     else {
                         document.getElementById("msg").innerHTML = response["msg"];
                         document.getElementById("msg").className = "alert alert-danger";
                         $scope.showMsg.value = true;
                     }
-               }).error(function (response){
-
-               });
-           }
+                }).error(function (response){
+                    document.getElementById("msg").innerHTML = "Cannot connect to server.";
+                    document.getElementById("msg").className = "alert alert-danger";
+                });
+            }
 
             /********** Filtering **********************/
 
@@ -315,6 +328,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             };
 
             $scope.ajaxSave = function() {
+                var success = false;
                 var note = {};
                 var data = {};
                 note["content"] = tinyMCE.activeEditor.getContent();
@@ -346,6 +360,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                             if(r["success"]) {
                                 $scope.grabLists();
                                 document.getElementById("msg").className = "alert alert-success";
+                                success = true;
                             }
                             else
                                 document.getElementById("msg").className = "alert alert-danger";
@@ -362,6 +377,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 isUpdating = true;
                 $scope.search('Main');
                 isUpdating = false;
+                return success;
             };
 
             $scope.switchView = function () {
