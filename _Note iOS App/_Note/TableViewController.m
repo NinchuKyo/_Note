@@ -106,6 +106,26 @@
     }
 }
 
+- (NSString *)getTitlesFromJson:(NSDictionary *)j
+{
+    // Get list of note titles from received json
+    NSString *success = [NSString stringWithFormat:@"%@", [j objectForKey:@"success"]];
+    NSString *success_criteria = @"1";
+    NSString *result = (@"Failed to parse JSON note title data from server");
+    
+    if ([success isEqualToString:success_criteria])
+    {
+        _titles = [j objectForKey: @"note_titles"];
+        result = (@"Parsed JSON note title data from server");
+    }
+    else
+    {
+        result = (@"Failed to parse JSON note title data from server");
+    }
+    
+    return result;
+}
+
 // Link to load list of notes from server
 - (IBAction)viewNoteLink{
     
@@ -130,19 +150,21 @@
         NSLog(@"%@", _json);
         NSLog(@"Received JSON data from server in method");
         
-        // Get list of note titles from received json
-        NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
-        NSString *success_criteria = @"1";
+        NSLog(@"%@", [self getTitlesFromJson:_json]);
         
-        if ([success isEqualToString:success_criteria])
-        {
-            _titles = [_json objectForKey: @"note_titles"];
-            NSLog(@"Parsed JSON note title data from server");
-        }
-        else
-        {
-            NSLog(@"Failed to parse JSON note title data from server");
-        }
+//        // Get list of note titles from received json
+//        NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
+//        NSString *success_criteria = @"1";
+//        
+//        if ([success isEqualToString:success_criteria])
+//        {
+//            _titles = [_json objectForKey: @"note_titles"];
+//            NSLog(@"Parsed JSON note title data from server");
+//        }
+//        else
+//        {
+//            NSLog(@"Failed to parse JSON note title data from server");
+//        }
     }
     
     if (_titles != nil)
@@ -161,8 +183,8 @@
             
             NSString *urlString = [baseURL stringByAppendingString:replace_name];
             
-            NSLog(@"name = %@", name);
-            NSLog(@"url = %@", urlString);
+            //NSLog(@"name = %@", name);
+            //NSLog(@"url = %@", urlString);
             
             NSURL *url = [NSURL URLWithString:urlString];
             NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];

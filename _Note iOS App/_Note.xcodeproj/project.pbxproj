@@ -17,6 +17,7 @@
 		4788E1D118A1B0A4002FDA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1CF18A1B0A4002FDA65 /* Main.storyboard */; };
 		4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */; };
 		4788E1D918A1B0A4002FDA65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1D818A1B0A4002FDA65 /* Images.xcassets */; };
+		51C9C2BE18DC9FAA00AC2B43 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C9C2BD18DC9FAA00AC2B43 /* TestTableViewController.m */; };
 		C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C803372A18BF9AF70032AAC6 /* TableViewController.m */; };
 		C82DD52D18D7103B000BE0A7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1DF18A1B0A4002FDA65 /* XCTest.framework */; };
 		C82DD52E18D7103B000BE0A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BD18A1B0A4002FDA65 /* Foundation.framework */; };
@@ -56,6 +57,8 @@
 		4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		4788E1D818A1B0A4002FDA65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4788E1DF18A1B0A4002FDA65 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		51C9C2BD18DC9FAA00AC2B43 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		51C9C2BF18DCA02800AC2B43 /* TestTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
 		B63025B278D04DBCBC8ECF58 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C803372A18BF9AF70032AAC6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		C82DD52C18D7103B000BE0A7 /* _NoteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _NoteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +169,8 @@
 		C82DD53018D7103B000BE0A7 /* _NoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				51C9C2BF18DCA02800AC2B43 /* TestTableViewController.h */,
+				51C9C2BD18DC9FAA00AC2B43 /* TestTableViewController.m */,
 				C82DD54018D71562000BE0A7 /* TestNote.h */,
 				C82DD53E18D7106C000BE0A7 /* TestNote.m */,
 				C82DD53118D7103B000BE0A7 /* Supporting Files */,
@@ -330,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82DD53F18D7106C000BE0A7 /* TestNote.m in Sources */,
+				51C9C2BE18DC9FAA00AC2B43 /* TestTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
