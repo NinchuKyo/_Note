@@ -9,11 +9,11 @@
 #import "Note.h"
 
 @implementation Note {
-    NSString *titleString;
-    NSString *contents;
-    NSAttributedString *htmlContents;
-    NSString *htmlContentsAsString;
-    NSDate *timestamp;
+    @private NSString *titleString;
+    @private NSString *contents;
+    @private NSAttributedString *htmlContents;
+    @private NSString *htmlContentsAsString;
+    @private NSDate *timestamp;
 }
 
 
@@ -36,17 +36,17 @@
 }
 
 // Accessor methods
-- (NSString *) title
+- (NSString *) getTitle
 {
     return self->titleString;
 }
 
-- (NSString *) contents
+- (NSString *) getContents
 {
     return self->contents;
 }
 
-- (NSAttributedString *) htmlContents
+- (NSAttributedString *) getHTMLContents
 {
     return self->htmlContents;
 }
@@ -91,7 +91,7 @@
 
 + (void) replaceInvalidCharactersInTitle: (Note *) note
 {
-    NSString *pattern = @"[^a-zA-Z0-9\\_\\-]*";
+    NSString *pattern = @"[^a-zA-Z0-9\\_\\- ]*";
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:nil];
     NSString *newString = [regex stringByReplacingMatchesInString:note->titleString options:0 range:NSMakeRange(0, [note->titleString length]) withTemplate:@""];
     note->titleString = newString;

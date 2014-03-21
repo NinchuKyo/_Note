@@ -2,8 +2,8 @@
 //  WebViewController.h
 //  _Note
 //
-//  Created by David Nguyen on 3/15/2014.
-//  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import <UIKit/UIKit.h>

@@ -1,9 +1,9 @@
 //
-//  NoteTest_NoteTest.h
+//  TestNote.h
 //  _Note
 //
-//  Created by David Nguyen on 3/17/2014.
-//  Copyright (c) 2014 Lyndon Quigley. All rights reserved.
+//  COMP 4350 - Software Development 2
+//  Group 1: _Note
 //
 
 #import <SenTestingKit/SenTestingKit.h>

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F372C9B63D2948BF9B244319"
+               BlueprintIdentifier = "ACEDE8421DD844A99316C8DC"
                BuildableName = "libPods-QUnit.m.a"
                BlueprintName = "Pods-QUnit.m"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -28,16 +28,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C82DD52B18D7103B000BE0A7"
-               BuildableName = "_NoteTests.xctest"
-               BlueprintName = "_NoteTests"
-               ReferencedContainer = "container:../_Note.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

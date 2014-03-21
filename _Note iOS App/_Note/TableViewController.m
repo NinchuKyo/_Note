@@ -83,7 +83,7 @@
                                                             forIndexPath:indexPath];
     
     Note *note = [self notes][indexPath.row];
-    cell.textLabel.text = note.title;
+    cell.textLabel.text = note.getTitle;
     
     //change this if you have functionality for setting fonts
     cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
