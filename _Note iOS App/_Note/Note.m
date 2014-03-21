@@ -51,6 +51,7 @@
     return self->htmlContents;
 }
 
+
 // Mutator methods
 - (void) setTitle: (NSString *) newTitle
 {

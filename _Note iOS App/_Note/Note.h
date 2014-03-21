@@ -17,6 +17,7 @@
 - (NSString *) getContents;
 - (NSAttributedString *) getHTMLContents;
 
+
 // Mutator methods
 - (void) setTitle: (NSString *) newTitle;
 - (void) setContents: (NSString *) newContents;

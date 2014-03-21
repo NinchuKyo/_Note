@@ -56,4 +56,26 @@
     
 }
 
+- (void)testChangingTitle
+{
+    Note *newNote = [Note noteTitle:@"Old Title" noteWithText:@"This is the content"];
+    equal(newNote.getTitle, @"Old Title", @"Titles should be the same");
+    
+    [newNote setTitle:@"New Title"];
+    
+    equal(newNote.getTitle, @"New Title", @"Titles should be the same");
+    equal(newNote.getContents, @"This is the content", @"Contents should not change");
+}
+
+- (void)testChangingContent
+{
+    Note *newNote = [Note noteTitle:@"Title" noteWithText:@"This is the old content"];
+    equal(newNote.getContents, @"This is the old content", @"Content should be the same");
+    
+    [newNote setContents:@"This is the new content"];
+    
+    equal(newNote.getContents, @"This is the new content", @"Content should be the same");
+    equal(newNote.getTitle, @"Title", @"The title should not change");
+}
+
 @end
