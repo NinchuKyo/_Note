@@ -151,20 +151,6 @@
         NSLog(@"Received JSON data from server in method");
         
         NSLog(@"%@", [self getTitlesFromJson:_json]);
-        
-//        // Get list of note titles from received json
-//        NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
-//        NSString *success_criteria = @"1";
-//        
-//        if ([success isEqualToString:success_criteria])
-//        {
-//            _titles = [_json objectForKey: @"note_titles"];
-//            NSLog(@"Parsed JSON note title data from server");
-//        }
-//        else
-//        {
-//            NSLog(@"Failed to parse JSON note title data from server");
-//        }
     }
     
     if (_titles != nil)
@@ -183,8 +169,8 @@
             
             NSString *urlString = [baseURL stringByAppendingString:replace_name];
             
-            //NSLog(@"name = %@", name);
-            //NSLog(@"url = %@", urlString);
+            NSLog(@"name = %@", name);
+            NSLog(@"url = %@", urlString);
             
             NSURL *url = [NSURL URLWithString:urlString];
             NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
@@ -263,6 +249,19 @@
     NSLog(@"Received JSON data from server");
 }
 
+- (Note *)getNoteFromJson:(NSData *)j
+{
+    NSDictionary *note_dictionary = [NSJSONSerialization JSONObjectWithData:j options:kNilOptions error:nil];
+    
+    NSString *content = [note_dictionary objectForKey:@"content"];
+    NSString *title = [note_dictionary objectForKey:@"title"];
+    
+    NSLog(@"Content: %@", content);
+    NSLog(@"Title: %@", title);
+    
+    return [Note noteTitle: [NSString stringWithFormat:@"%@", title] noteWithText: [NSString stringWithFormat:@"%@", content]];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     // Parse through json for note content
@@ -272,15 +271,8 @@
     if (note_json != nil)
     {
         NSData *data = [note_json dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *note_dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         
-        NSString *content = [note_dictionary objectForKey:@"content"];
-        NSString *title = [note_dictionary objectForKey:@"title"];
-        
-        NSLog(@"Content: %@", content);
-        NSLog(@"Title: %@", title);
-        
-        Note *new_note = [Note noteTitle: [NSString stringWithFormat:@"%@", title] noteWithText: [NSString stringWithFormat:@"%@", content]];
+        Note *new_note = [self getNoteFromJson:data];
         [self.notes addObject:new_note];
     }
     
