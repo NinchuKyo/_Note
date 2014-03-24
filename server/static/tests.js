@@ -1,7 +1,7 @@
 var ListsResponse = {
     'success': true,
     'msg': '',
-    'note_titles': ['my_note', 'your_note']
+    'note_titles': [{'Title': 'my_note'}, {'Title': 'your_note'}]
 };
 
 var emptyListsResponse = {
@@ -89,55 +89,43 @@ test( "empty list response", function() {
 });
 
 test( "search", function() {
-    //testing search
+    httpBackend.flush();
+    equal(ctrlScope.resultsCount['Main'], 2);
+    equal(ctrlScope.pagedItems[0].length, 2);
     
     //empty query
-    httpBackend.flush();
-    equal(ctrlScope.search('Main'), undefined);
+    ctrlScope.query['Main'][0] = "";
+    ctrlScope.search('Main');
     equal(ctrlScope.resultsCount['Main'], 2);
+    equal(ctrlScope.pagedItems[0].length, 2);
     
-//    //query that returns all notes
-//    ctrlScope.query = {
-//        "Main": { 0: "_note" }
-//    };
-//    ctrlScope.search('Main');
-//    equal(ctrlScope.resultsCount['Main'], 2);
+    //query that returns all notes
+    ctrlScope.query['Main'][0] = "_note";
+    ctrlScope.search('Main'); /////
+    equal(ctrlScope.resultsCount['Main'], 2);
+    equal(ctrlScope.pagedItems[0].length, 2);
     
-//    //query that returns one note
-//    ctrlScope.query = {
-//        "Main": { 0: "my" }
-//    };
-//    ctrlScope.search('Main');
-//    equal(ctrlScope.resultsCount['Main'], 1);
-//    
-//    //query that returns one note
-//    ctrlScope.query = {
-//        "Main": { 0: "their_note" }
-//    };
-//    ctrlScope.search('Main');
-//    equal(ctrlScope.resultsCount['Main'], 0);
+    //query that returns 1 note
+    ctrlScope.query['Main'][0] = "my";
+    ctrlScope.search('Main');
+    equal(ctrlScope.resultsCount['Main'], 1);
+    equal(ctrlScope.pagedItems[0].length, 1);
 });
 
 test( "sort", function() {
-//    httpBackend.flush();
-//    equal(ctrlScope.displayedData[0], 'my_note');
-//    equal(ctrlScope.displayedData[1], 'your_note');
+    httpBackend.flush();
     
     //check that icon changes
     equal(ctrlScope.sort_by('Title', 'Main'), undefined);
     equal(ctrlScope.predicate['Main'], 'Title');
     equal(ctrlScope.setChar, '\u25bc');
-    //TODO: check items are sorted
-//    equal(ctrlScope.displayedData[0], 'my_note');
-//    equal(ctrlScope.displayedData[1], 'your_note');
+    equal(ctrlScope.reverse['Main'], true);
 
     //reverse
     ctrlScope.sort_by('Title', 'Main');
     equal(ctrlScope.predicate['Main'], 'Title');
     equal(ctrlScope.setChar, '\u25b2');
-    //TODO: check items sorted in reverse
-//    equal(ctrlScope.displayedData[1], 'my_note');
-//    equal(ctrlScope.displayedData[0], 'your_note');
+    equal(ctrlScope.reverse['Main'], false);
 
     //not a column
     equal(ctrlScope.sort_by('notAnActualColumn', 'Main'), undefined);

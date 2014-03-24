@@ -14,7 +14,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             var isUpdating = false;
 
             // Filtering
-            $scope.displayedData = [];
+            var displayedData = [];
             var filteredData = [];
 
             $scope.searchesShown = {
@@ -177,7 +177,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             // Filters the list of data based on all enabled searches
             $scope.search = function (tableName) {
                 if (tableName === 'Main') {
-                    $scope.displayedData = $filter('filter')(filteredData, function (data) {
+                    displayedData = $filter('filter')(filteredData, function (data) {
                         var result = true;
                         for (var word in $scope.query['Main']) {
                             var tokens = $scope.query['Main'][word].split(":");
@@ -199,10 +199,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
                     // Take care of the sorting order
                     if ($scope.predicate['Main'] !== '') {
-                        $scope.displayedData = $filter('orderBy')($scope.displayedData, $scope.predicate['Main'], $scope.reverse['Main']);
+                        displayedData = $filter('orderBy')(displayedData, $scope.predicate['Main'], $scope.reverse['Main']);
                     }
 
-                    $scope.resultsCount['Main'] = $scope.displayedData.length;
+                    $scope.resultsCount['Main'] = displayedData.length;
 
                     if (!isUpdating) {
                         $scope.currentPage.value = 0;
@@ -253,17 +253,17 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 $scope.pagedItems = [];
 
                 if ($scope.itemsPerPage.value != 0) {
-                    for (var i = 0; i < $scope.displayedData.length; i++) {
+                    for (var i = 0; i < displayedData.length; i++) {
                         if (i % $scope.itemsPerPage.value == 0) {
-                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)] = [$scope.displayedData[i]];
+                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)] = [displayedData[i]];
                         }
                         else {
-                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)].push($scope.displayedData[i]);
+                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)].push(displayedData[i]);
                         }
                     }
                 }
                 else {
-                    $scope.pagedItems[0] = $scope.displayedData;
+                    $scope.pagedItems[0] = displayedData;
                 }
             };
 
