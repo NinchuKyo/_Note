@@ -129,7 +129,7 @@
 // Link to load list of notes from server
 - (IBAction)viewNoteLink{
     
-    int size;
+    NSUInteger size;
     
     // HTTP request to server for list of notes
     //NSString *urlString = @"https://localhost:5000/lists";
