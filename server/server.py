@@ -203,16 +203,14 @@ def delete_note(access_token, data):
         return json_response(False, 'Allowed characters in the title: A-Z, a-z, 0-9, -, _')
     if 'overwrite' not in data:
         return json_response(False, 'An error occurred while processing the note.')
-		
-	print (data['note']['title'])
-	try:
-		client = DropboxClient(access_token)
-		#if data['overwrite']:
-		response = client.file_delete('/' + data['note']['title'])
-	except dropbox.rest.ErrorResponse as e:
+        
+    try:
+    	client = DropboxClient(access_token)
+    	response = client.file_delete('/' + data['note']['title'])
+    except dropbox.rest.ErrorResponse as e:
 		app.logger.exception(e)
-        return json_response(False, e.user_error_msg)
-
+		return json_response(False, e.user_error_msg)
+        
     return json_response(True, 'Your note was deleted successfully.')
 
 @app.route('/save', methods=['POST'])
