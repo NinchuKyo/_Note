@@ -97,12 +97,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         if(editor)
                         {
                             editor.setContent($scope.note["content"]);
-                            document.getElementById("msg").innerHTML = "Cannot initialize the text editor";
-                            document.getElementById("msg").className = "";
                         }
                         else
                         {
-                            document.getElementById("msg").innerHTML = "";
+                            document.getElementById("msg").innerHTML = "Cannot initialize the text editor";
                             document.getElementById("msg").className = "alert alert-danger";
                         }
                     }
@@ -111,7 +109,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         document.getElementById("msg").className = "alert alert-danger";
                         $scope.showMsg.value = true;
                     }
-                }).error(function (response){
+                }).error(function (response) {
                     document.getElementById("msg").innerHTML = "Cannot connect to server.";
                     document.getElementById("msg").className = "alert alert-danger";
                 });
@@ -288,7 +286,9 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             // Navigates to a specific page
             $scope.goToPage = function (number) {
                 var page = parseInt(number);
-                $scope.currentPage.value = (page - 1);
+                if (page > 0 && page < $scope.pagedItems.length - 1) {
+                    $scope.currentPage.value = (page - 1);
+                }
             }
 
             // Reveals 25 more items when the 'More' button is pressed
@@ -328,10 +328,16 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             };
 
             $scope.ajaxSave = function() {
-                var success = false;
                 var note = {};
                 var data = {};
-                note["content"] = tinyMCE.activeEditor.getContent();
+                var editor = tinyMCE.activeEditor;
+                if(editor) {
+                    note["content"] = tinyMCE.activeEditor.getContent();
+                }
+                else {
+                    document.getElementById("msg").innerHTML = "Encountered an error with the editor.";
+                    document.getElementById("msg").className = "alert alert-danger";
+                }
                 note["title"] = document.getElementById("title").value;
                 data["overwrite"] = $scope.overwrite;
                 data["note"] = note;
@@ -347,37 +353,29 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                     $scope.showMsg.value = true;
                 }
                 else {
-                    tinymce.util.XHR.send({
-                        url : "/save",
-                        type : "POST",
-                        content_type : "application/json",
-                        data : tinymce.util.JSON.serialize(data),
-                        success: function(response) {
-                            console.debug(response);
-                            var r = tinymce.util.JSON.parse(response);
-                            document.getElementById("msg").innerHTML = r["msg"];
-                            $scope.showMsg.value = true;
-                            if(r["success"]) {
-                                $scope.grabLists();
-                                document.getElementById("msg").className = "alert alert-success";
-                                success = true;
-                            }
-                            else
-                                document.getElementById("msg").className = "alert alert-danger";
-                        },
-                        error: function (text) {
-                            console.debug(text);
-                            document.getElementById("msg").innerHTML = "An unexpected error has occured.";
-                            document.getElementById("msg").className = "alert alert-danger";
-                            $scope.showMsg.value = true;
+                    $http.post('save', angular.toJson(data)).success(function (response) {
+                        console.debug(response);
+                        var r = angular.fromJson(response);
+                        document.getElementById("msg").innerHTML = r["msg"];
+                        $scope.showMsg.value = true;
+                        if(r["success"]) {
+                            $scope.grabLists();
+                            document.getElementById("msg").className = "alert alert-success";
                         }
+                        else {
+                            document.getElementById("msg").className = "alert alert-danger";
+                        }
+                    }).error(function (text) {
+                        console.debug(text);
+                        document.getElementById("msg").innerHTML = "An unexpected error has occured.";
+                        document.getElementById("msg").className = "alert alert-danger";
+                        $scope.showMsg.value = true;
                     });
                 }
 
                 isUpdating = true;
                 $scope.search('Main');
                 isUpdating = false;
-                return success;
             };
 
             $scope.switchView = function () {
