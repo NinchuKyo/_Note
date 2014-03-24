@@ -313,6 +313,71 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                     toolbar: "undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link"
                 });
             };
+			
+			$scope.deleteNote = function() {
+                var note = {};
+                var data = {};
+                note["content"] = tinyMCE.activeEditor.getContent();
+                note["title"] = document.getElementById("title").value;
+                data["overwrite"] = $scope.overwrite;
+                data["note"] = note;
+				
+                //document.getElementById("title").value = "";
+                //tinyMCE.activeEditor.setContent('', { format: 'raw' });
+				
+				$http.get('/delete_note/' + document.getElementById("title").value).success(function (response) {
+                    var response = angular.fromJson(response);
+                    if(response['success']) {
+                        isUpdating = true;
+						$scope.search('Main');
+						isUpdating = false;
+						
+						$scope.switchView();
+                    }
+                    else {
+                        document.getElementById("msg").innerHTML = response["msg"];
+                        document.getElementById("msg").className = "alert alert-danger";
+                        $scope.showMsg.value = true;
+                    }
+               }).error(function (response){
+
+               });
+				
+				/*
+				if(!(!note["title"] || (/^[\w\s-]+$/.test(note["title"]) === false))) {
+					tinymce.util.XHR.send({
+						url : "/delete",
+						type : "POST",
+						content_type : "application/json",
+                        data : tinymce.util.JSON.serialize(data),
+						success : function(response) {
+							console.debug(response);
+							var r = tinymce.util.JSON.parse(response);
+							document.getElementById("msg").innerHTML = r["msg"];
+                            $scope.showMsg.value = true;
+                            if(r["success"]) {
+                                $scope.grabLists();
+                                document.getElementById("msg").className = "alert alert-success";
+                            }
+                            else
+                                document.getElementById("msg").className = "alert alert-danger";
+                        },
+                        error: function (text) {
+                            console.debug(text);
+                            document.getElementById("msg").innerHTML = "An unexpected error has occured.";
+                            document.getElementById("msg").className = "alert alert-danger";
+                            $scope.showMsg.value = true;
+                        }
+                    });
+				}
+
+                isUpdating = true;
+                $scope.search('Main');
+                isUpdating = false;*/
+				
+				//$scope.grabLists();
+				//$scope.switchView();
+			}
 
             $scope.ajaxSave = function() {
                 var note = {};

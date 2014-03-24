@@ -165,6 +165,56 @@ def view_note(note_title):
     real_name = session.get('real_name', None)
     return json_response(True, '', note=json_content)
 
+@app.route('/delete_note/<note_title>')
+def delete_note2(note_title):
+    access_token = get_access_token()
+    if not access_token:
+        return json_response(False, 'You are not currently logged in through Dropbox.')
+    
+	client = DropboxClient(access_token)
+	try:
+		response = client.file_delete('/' + note_title)
+	except dropbox.rest.ErrorResponse as e:
+		app.logger.exception(e)
+        return json_response(False, 'An error occured while trying to retrieve your note from Dropbox.')
+	
+    return json_response(True, '', note=json_content)
+		
+@app.route('/delete', methods=['POST'])
+def delete():
+    access_token = get_access_token()
+    if not access_token:
+        return json_response(False, 'You are not currently logged in through Dropbox.')
+
+    try:
+        data = request.get_json()
+    except:
+        return json_response(False, 'Unable to process data.')
+
+    if not data:
+        return json_response(False, 'Unable to process data.')
+
+    return delete_note(access_token, data)
+	
+def delete_note(access_token, data):
+    if not data['note']['title']:
+        return json_response(False, 'The title is missing.')
+    if not TITLE_RE.match(data['note']['title']):
+        return json_response(False, 'Allowed characters in the title: A-Z, a-z, 0-9, -, _')
+    if 'overwrite' not in data:
+        return json_response(False, 'An error occurred while processing the note.')
+		
+	print (data['note']['title'])
+	try:
+		client = DropboxClient(access_token)
+		#if data['overwrite']:
+		response = client.file_delete('/' + data['note']['title'])
+	except dropbox.rest.ErrorResponse as e:
+		app.logger.exception(e)
+        return json_response(False, e.user_error_msg)
+
+    return json_response(True, 'Your note was deleted successfully.')
+
 @app.route('/save', methods=['POST'])
 def save():
     access_token = get_access_token()
