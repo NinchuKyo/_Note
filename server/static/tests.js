@@ -4,6 +4,12 @@ var ListsResponse = {
     'note_titles': ['my_note', 'your_note']
 };
 
+var emptyListsResponse = {
+    'success': true,
+    'msg': '',
+    'note_titles': []
+};
+
 var ViewResponse = {
     'success': true,
     'msg': '',
@@ -75,6 +81,13 @@ test( "ajax", function() {
     equal(ctrlScope.note['content'], '<p>test content</p>', 'The note content was updated.');
 });
 
+test( "empty list response", function() {
+    httpBackend.expectGET('/lists').respond(angular.toJson(emptyListsResponse));
+    ctrlScope.grabLists();
+    httpBackend.flush();
+    equal(ctrlScope.resultsCount['Main'], 0);
+});
+
 test( "search", function() {
     //testing search
     
@@ -83,13 +96,13 @@ test( "search", function() {
     equal(ctrlScope.search('Main'), undefined);
     equal(ctrlScope.resultsCount['Main'], 2);
     
-    //query that returns all notes
+//    //query that returns all notes
 //    ctrlScope.query = {
 //        "Main": { 0: "_note" }
 //    };
 //    ctrlScope.search('Main');
 //    equal(ctrlScope.resultsCount['Main'], 2);
-//    
+    
 //    //query that returns one note
 //    ctrlScope.query = {
 //        "Main": { 0: "my" }
@@ -106,18 +119,25 @@ test( "search", function() {
 });
 
 test( "sort", function() {
+//    httpBackend.flush();
+//    equal(ctrlScope.displayedData[0], 'my_note');
+//    equal(ctrlScope.displayedData[1], 'your_note');
+    
     //check that icon changes
     equal(ctrlScope.sort_by('Title', 'Main'), undefined);
     equal(ctrlScope.predicate['Main'], 'Title');
     equal(ctrlScope.setChar, '\u25bc');
     //TODO: check items are sorted
-    console.log(ctrl.displayedData);
+//    equal(ctrlScope.displayedData[0], 'my_note');
+//    equal(ctrlScope.displayedData[1], 'your_note');
 
     //reverse
     ctrlScope.sort_by('Title', 'Main');
     equal(ctrlScope.predicate['Main'], 'Title');
     equal(ctrlScope.setChar, '\u25b2');
     //TODO: check items sorted in reverse
+//    equal(ctrlScope.displayedData[1], 'my_note');
+//    equal(ctrlScope.displayedData[0], 'your_note');
 
     //not a column
     equal(ctrlScope.sort_by('notAnActualColumn', 'Main'), undefined);
@@ -221,14 +241,15 @@ test( "save", function() {
     equal(ctrlScope.showMsg.value, true);
     
     //ajaxSave valid title
-//    var note = angular.toJson({"content":"","title":"this is a valid title"});
-//    var postRequest = angular.toJson({"overwrite":false,"note":note});
-//    document.getElementById("title").value = 'this is a valid title';
-//    httpBackend.flush();
-//    httpBackend.expectPOST('/save', postRequest).respond(angular.toJson({'success': true, 'msg': 'Your note was saved successfully.'}));
-//    ctrlScope.ajaxSave();
-//    httpBackend.flush();
-//    equal(document.getElementById("msg").innerHTML, "Your note was saved successfully.");
+    ctrlScope.initEditor();
+    var note = angular.toJson({"content":"","title":"this is a valid title"});
+    var postRequest = angular.toJson({"overwrite":false,"note":note});
+    document.getElementById("title").value = 'this is a valid title';
+    httpBackend.expectPOST('/save').respond(angular.toJson({'success': true, 'msg': 'Your note was saved successfully.'}));
+    httpBackend.expectGET('/lists').respond(jsonResponse);
+    ctrlScope.ajaxSave();
+    httpBackend.flush();
+    equal(document.getElementById("msg").innerHTML, "Your note was saved successfully.");
 });
 
 test( "switchView", function() {

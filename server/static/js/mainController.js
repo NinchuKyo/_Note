@@ -14,7 +14,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             var isUpdating = false;
 
             // Filtering
-            var displayedData = [];
+            $scope.displayedData = [];
             var filteredData = [];
 
             $scope.searchesShown = {
@@ -177,7 +177,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             // Filters the list of data based on all enabled searches
             $scope.search = function (tableName) {
                 if (tableName === 'Main') {
-                    displayedData = $filter('filter')(filteredData, function (data) {
+                    $scope.displayedData = $filter('filter')(filteredData, function (data) {
                         var result = true;
                         for (var word in $scope.query['Main']) {
                             var tokens = $scope.query['Main'][word].split(":");
@@ -199,10 +199,10 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
 
                     // Take care of the sorting order
                     if ($scope.predicate['Main'] !== '') {
-                        displayedData = $filter('orderBy')(displayedData, $scope.predicate['Main'], $scope.reverse['Main']);
+                        $scope.displayedData = $filter('orderBy')($scope.displayedData, $scope.predicate['Main'], $scope.reverse['Main']);
                     }
 
-                    $scope.resultsCount['Main'] = displayedData.length;
+                    $scope.resultsCount['Main'] = $scope.displayedData.length;
 
                     if (!isUpdating) {
                         $scope.currentPage.value = 0;
@@ -253,17 +253,17 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 $scope.pagedItems = [];
 
                 if ($scope.itemsPerPage.value != 0) {
-                    for (var i = 0; i < displayedData.length; i++) {
+                    for (var i = 0; i < $scope.displayedData.length; i++) {
                         if (i % $scope.itemsPerPage.value == 0) {
-                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)] = [displayedData[i]];
+                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)] = [$scope.displayedData[i]];
                         }
                         else {
-                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)].push(displayedData[i]);
+                            $scope.pagedItems[Math.floor(i / $scope.itemsPerPage.value)].push($scope.displayedData[i]);
                         }
                     }
                 }
                 else {
-                    $scope.pagedItems[0] = displayedData;
+                    $scope.pagedItems[0] = $scope.displayedData;
                 }
             };
 
@@ -286,7 +286,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
             // Navigates to a specific page
             $scope.goToPage = function (number) {
                 var page = parseInt(number);
-                if (page > 0 && page < $scope.pagedItems.length - 1) {
+                if (page > 0 && page <= $scope.pagedItems.length) {
                     $scope.currentPage.value = (page - 1);
                 }
             }
@@ -353,7 +353,7 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                     $scope.showMsg.value = true;
                 }
                 else {
-                    $http.post('save', angular.toJson(data)).success(function (response) {
+                    $http.post('/save', angular.toJson(data)).success(function (response) {
                         console.debug(response);
                         var r = angular.fromJson(response);
                         document.getElementById("msg").innerHTML = r["msg"];
