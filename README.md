@@ -30,7 +30,19 @@ To run the iOS simulator, just click on the "play" button to the top-left hand c
 - After you have done that, you can either click "Your notes" or swipe to the right in the left area.  This will show a list of notes you currently have.
 - Click on "sync notes" once you have authorized to Dropbox in order to load the notes that you have from _Note, from using our desktop browser version.
 
-Running tests for iOS:
+How to run tests for server code:
+---
+Run server/server_tests.py on the command line
+
+How to run QUnit tests for web client:
+---
+On our production instance visit the url: /static/qunit.html
+
+How to run Selenium tests for web client:
+---
+
+
+How to run tests for iOS:
 ---
 To run the QUnit.m tests, you can open up the workspace file and in the panel to the left, click on the diamond with a line icon.  Here is where all the tests are held, and you can run them by clicking the mini-play button that appears when you hover over the test name.
 
