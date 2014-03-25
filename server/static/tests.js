@@ -215,6 +215,13 @@ test( "validation", function() {
     ctrlScope.keyPressed(ctrlScope);
     equal(ctrlScope.isValid, true);
 });
+/*
+test( "delete", function() {
+    //ajaxSave no title
+    equal(ctrlScope.deleteNote(), undefined);
+    equal(document.getElementById("msg").innerHTML, "You're missing the title.");
+    equal(ctrlScope.showMsg.value, true);
+}*/
 
 test( "save", function() {
     //ajaxSave no title
