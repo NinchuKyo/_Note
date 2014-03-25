@@ -138,6 +138,7 @@
     NSString *urlString = @"https://54.201.79.223:5000/lists";
     NSURL *url = [NSURL URLWithString:urlString];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setTimeoutInterval:5];
     NSURLResponse *urlResponse = nil;
     NSError *error = nil;
     
