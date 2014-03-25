@@ -84,8 +84,8 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 });
             }
 
-            $scope.grabNote = function (item) {
-                $http.get('/view_note/' + item.Title).success(function (response) {
+            $scope.grabNote = function (itemTitle) {
+                $http.get('/view_note/' + itemTitle).success(function (response) {
                     var response = angular.fromJson(response);
                     var editor;
                     if(response['success']) {

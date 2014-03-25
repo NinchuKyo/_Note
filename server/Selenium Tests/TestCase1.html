@@ -4,37 +4,37 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="https://localhost:5000/" />
-<title>Search for a Note</title>
+<title>Logging In</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Search for a Note</td></tr>
+<tr><td rowspan="1" colspan="3">Logging In</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/home</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=To Dropbox</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@type='text']</td>
-	<td>Note 1</td>
+	<td>name=login_email</td>
+	<td>ummuldeh@myumanitoba.ca</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@type='text']</td>
-	<td>Note </td>
+	<td>name=login_password</td>
+	<td>comp4350test</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>//input[@type='text']</td>
-	<td>Note 2</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>//input[@type='text']</td>
-	<td>1234</td>
+	<td>click</td>
+	<td>css=button.login-button.button-primary</td>
+	<td></td>
 </tr>
 
 </tbody></table>

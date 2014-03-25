@@ -4,37 +4,47 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="https://localhost:5000/" />
-<title>Logging in</title>
+<title>View a Note on another Page</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Logging in</td></tr>
+<tr><td rowspan="1" colspan="3">View a Note on another Page</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/</td>
+	<td>/home</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=To Dropbox</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=login_email</td>
-	<td>umeurich@myumanitoba.ca</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=login_password</td>
-	<td>comp4350test</td>
+	<td>select</td>
+	<td>//div[@id='mainContent']/div[4]/ul/li[2]/a/select</td>
+	<td>label=5</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>css=button.login-button.button-primary</td>
+	<td>link=Next Page</td>
 	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=td.ng-binding</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=button.EasyControl.ng-scope</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Prev Page</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//div[@id='mainContent']/div[4]/ul/li[2]/a/select</td>
+	<td>label=10</td>
 </tr>
 
 </tbody></table>

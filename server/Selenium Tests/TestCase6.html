@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="https://localhost:5000/" />
-<title>Editing a Note</title>
+<title>View a Searched Note</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Editing a Note</td></tr>
+<tr><td rowspan="1" colspan="3">View a Searched Note</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -17,8 +17,13 @@
 	<td></td>
 </tr>
 <tr>
+	<td>sendKeys</td>
+	<td>//input[@type='text']</td>
+	<td>1</td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>css=div.ng-scope &gt; div &gt; button.EasyControl</td>
+	<td>css=td.ng-binding</td>
 	<td></td>
 </tr>
 <tr>
@@ -27,14 +32,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>css=div.ng-scope &gt; div &gt; button.EasyControl</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>css=button.EasyControl.ng-scope</td>
-	<td></td>
+	<td>sendKeys</td>
+	<td>//input[@type='text']</td>
+	<td>${KEY_BACKSPACE}</td>
 </tr>
 
 </tbody></table>
