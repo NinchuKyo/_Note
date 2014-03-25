@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface TestNote : SenTestCase
+@interface TestTableViewController : SenTestCase
 
 @end

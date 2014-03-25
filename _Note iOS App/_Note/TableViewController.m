@@ -83,7 +83,7 @@
                                                             forIndexPath:indexPath];
     
     Note *note = [self notes][indexPath.row];
-    cell.textLabel.text = note.title;
+    cell.textLabel.text = note.getTitle;
     
     //change this if you have functionality for setting fonts
     cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
@@ -104,6 +104,26 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+}
+
+- (NSString *)getTitlesFromJson:(NSDictionary *)j
+{
+    // Get list of note titles from received json
+    NSString *success = [NSString stringWithFormat:@"%@", [j objectForKey:@"success"]];
+    NSString *success_criteria = @"1";
+    NSString *result = (@"Failed to parse JSON note title data from server");
+    
+    if ([success isEqualToString:success_criteria])
+    {
+        _titles = [j objectForKey: @"note_titles"];
+        result = (@"Parsed JSON note title data from server");
+    }
+    else
+    {
+        result = (@"Failed to parse JSON note title data from server");
+    }
+    
+    return result;
 }
 
 // Link to load list of notes from server
@@ -130,19 +150,7 @@
         NSLog(@"%@", _json);
         NSLog(@"Received JSON data from server in method");
         
-        // Get list of note titles from received json
-        NSString *success = [NSString stringWithFormat:@"%@", [_json objectForKey:@"success"]];
-        NSString *success_criteria = @"1";
-        
-        if ([success isEqualToString:success_criteria])
-        {
-            _titles = [_json objectForKey: @"note_titles"];
-            NSLog(@"Parsed JSON note title data from server");
-        }
-        else
-        {
-            NSLog(@"Failed to parse JSON note title data from server");
-        }
+        NSLog(@"%@", [self getTitlesFromJson:_json]);
     }
     
     if (_titles != nil)
@@ -241,6 +249,19 @@
     NSLog(@"Received JSON data from server");
 }
 
+- (Note *)getNoteFromJson:(NSData *)j
+{
+    NSDictionary *note_dictionary = [NSJSONSerialization JSONObjectWithData:j options:kNilOptions error:nil];
+    
+    NSString *content = [note_dictionary objectForKey:@"content"];
+    NSString *title = [note_dictionary objectForKey:@"title"];
+    
+    NSLog(@"Content: %@", content);
+    NSLog(@"Title: %@", title);
+    
+    return [Note noteTitle: [NSString stringWithFormat:@"%@", title] noteWithText: [NSString stringWithFormat:@"%@", content]];
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     // Parse through json for note content
@@ -250,15 +271,8 @@
     if (note_json != nil)
     {
         NSData *data = [note_json dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *note_dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         
-        NSString *content = [note_dictionary objectForKey:@"content"];
-        NSString *title = [note_dictionary objectForKey:@"title"];
-        
-        NSLog(@"Content: %@", content);
-        NSLog(@"Title: %@", title);
-        
-        Note *new_note = [Note noteTitle: [NSString stringWithFormat:@"%@", title] noteWithText: [NSString stringWithFormat:@"%@", content]];
+        Note *new_note = [self getNoteFromJson:data];
         [self.notes addObject:new_note];
     }
     

@@ -6,7 +6,7 @@
     </thead>
     <tbody>
         <tr ng-repeat="item in pagedItems[currentPage.value] | orderBy:predicate['Main']:reverse['Main'] | limitTo:numItemsDisplayed">
-            <td ng-click="grabNote('{{item.Title}}')">
+            <td ng-click="grabNote({{item}})">
                 {{item.Title}}
             </td>
         </tr>

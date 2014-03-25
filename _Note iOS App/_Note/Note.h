@@ -13,9 +13,10 @@
 + (Note*) noteTitle:(NSString *) title noteWithText:(NSString*)text;
 
 // Accessor methods
-- (NSString *) title;
-- (NSString *) contents;
-- (NSAttributedString *) htmlContents;
+- (NSString *) getTitle;
+- (NSString *) getContents;
+- (NSAttributedString *) getHTMLContents;
+
 
 // Mutator methods
 - (void) setTitle: (NSString *) newTitle;

@@ -9,35 +9,10 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>_NoteTests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>4788E1B918A1B0A3002FDA65</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4788E1DD18A1B0A4002FDA65</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C82DD4D918D7073B000BE0A7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C82DD4FC18D70CCF000BE0A7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C82DD51218D70D16000BE0A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

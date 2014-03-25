@@ -7,209 +7,207 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		126F9F7662AA46C589E17EB1 /* QUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB9325AF1D4E4AB79B75A723 /* QUnitTests.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		1BAD377720714C00BA71B7B6 /* libPods-QUnit.m.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9691828104E1412EA30D8C13 /* libPods-QUnit.m.a */; };
-		4EAE0C99E87A414C835AE6CB /* QUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FB900E95DAF4A78B9CA180A /* QUnit.h */; };
-		8947EE42495E4D9DBCE70700 /* Pods-QUnit.m-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 375FF5087D85492F91F0BF1A /* Pods-QUnit.m-dummy.m */; };
-		8B469EAB49CC488CA28D0D0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB84F8844B14901B0BD14C9 /* Foundation.framework */; };
-		8BE1125C852A470684BDCC4B /* QUnitTests.h in Headers */ = {isa = PBXBuildFile; fileRef = DDF5C570396C4FEEAE38A385 /* QUnitTests.h */; };
-		B374080F8F304BF089F6084B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61F0BC0E6248486D895CE832 /* SenTestingKit.framework */; };
-		B844C1EBB3C14EB4863805ED /* QUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9AA5043FE64465BE1BDAE6 /* QUnit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		BC3701269BF54235B4C788B6 /* QUWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = A45BA895715A445E9C54FCA2 /* QUWrap.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		EB39ED3497E24140ABC1D44D /* QUWrap.h in Headers */ = {isa = PBXBuildFile; fileRef = 08277470194A4709A5620991 /* QUWrap.h */; };
-		F196EBE22E074D6AAC7C86B9 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E81D446F78D94DFAB4268441 /* Pods-dummy.m */; };
-		FDAD7C0BDC1E4A9C87441BD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB84F8844B14901B0BD14C9 /* Foundation.framework */; };
+		4C949C3CC19549DB8D4E91FD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 619B2E84E948488E914A6968 /* SenTestingKit.framework */; };
+		51D7EB9CC75F466DB25EB663 /* Pods-QUnit.m-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFCA1B7F4F4023B3915743 /* Pods-QUnit.m-dummy.m */; };
+		548A607DB3E3427694BF1D46 /* QUWrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C5FA5876B23F4BF1AF1F4ABE /* QUWrap.h */; };
+		6B0522C0E4744A9DA044DA9B /* QUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A769DF688FE54ACB9B537222 /* QUnitTests.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		70A83D401ECC4A4D98CDED15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22375958F87645139E377211 /* Foundation.framework */; };
+		82858481D825463E8BFFAE22 /* QUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 078F03DCA9BC4A88971F09AF /* QUnit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		A0651524019B437E81C947B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22375958F87645139E377211 /* Foundation.framework */; };
+		A910FF9797F04BF99872A2B1 /* libPods-QUnit.m.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A25A592B654E67A7B8170B /* libPods-QUnit.m.a */; };
+		D38323FE19FC4C1AB2F81DBD /* QUnitTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 93AA24B1AAFF4C6D8FD8524E /* QUnitTests.h */; };
+		EA805DE151C24E3ABB04B1AB /* QUnit.h in Headers */ = {isa = PBXBuildFile; fileRef = B47D7F512A9B46778D5FC42B /* QUnit.h */; };
+		F57B445F4AE94243AD445117 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D52B114E4149CE900E789E /* Pods-dummy.m */; };
+		FB4BBBEFC0324384AB8CA36C /* QUWrap.m in Sources */ = {isa = PBXBuildFile; fileRef = AAAAA1180FE54FA9A8A7FE19 /* QUWrap.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C672D635679B472396487612 /* PBXContainerItemProxy */ = {
+		52671B00BA42499484E4D179 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E5EF68C3A05944B1BEAFA9C6 /* Project object */;
+			containerPortal = 3FA73BB2379043ECACB49E9A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = F372C9B63D2948BF9B244319;
+			remoteGlobalIDString = ACEDE8421DD844A99316C8DC;
 			remoteInfo = "Pods-QUnit.m";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02983BC47D5A4A18A1E27679 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		04B5403838C84D949F1B12FA /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		08277470194A4709A5620991 /* QUWrap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QUWrap.h; path = Classes/QUWrap.h; sourceTree = "<group>"; };
-		0F9AA5043FE64465BE1BDAE6 /* QUnit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QUnit.m; path = Classes/QUnit.m; sourceTree = "<group>"; };
-		0FB900E95DAF4A78B9CA180A /* QUnit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QUnit.h; path = Classes/QUnit.h; sourceTree = "<group>"; };
-		3333669CA02E4C92867D7455 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
-		33B1D053782E45F4A9EED4CD /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		375FF5087D85492F91F0BF1A /* Pods-QUnit.m-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QUnit.m-dummy.m"; sourceTree = "<group>"; };
-		476BAB46E84A4731A1E52D18 /* Pods-QUnit.m-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QUnit.m-Private.xcconfig"; sourceTree = "<group>"; };
-		61F0BC0E6248486D895CE832 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		7A931686413745E7A1BF253D /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		9691828104E1412EA30D8C13 /* libPods-QUnit.m.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QUnit.m.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A45BA895715A445E9C54FCA2 /* QUWrap.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QUWrap.m; path = Classes/QUWrap.m; sourceTree = "<group>"; };
-		BF92655F0AD44AE3AD97D107 /* Pods-QUnit.m-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QUnit.m-prefix.pch"; sourceTree = "<group>"; };
-		C8E3F75C18D70301002FAB63 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		CDB84F8844B14901B0BD14C9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D083973D26754E8E82F12B37 /* Pods-QUnit.m.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QUnit.m.xcconfig"; sourceTree = "<group>"; };
-		DB9325AF1D4E4AB79B75A723 /* QUnitTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QUnitTests.m; path = Classes/QUnitTests.m; sourceTree = "<group>"; };
-		DDF5C570396C4FEEAE38A385 /* QUnitTests.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QUnitTests.h; path = Classes/QUnitTests.h; sourceTree = "<group>"; };
-		DF5BE8E4F2094F169A68779D /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		E81D446F78D94DFAB4268441 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		FE9081A040B04585AC3EC6C0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A25A592B654E67A7B8170B /* libPods-QUnit.m.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-QUnit.m.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04B8B95CED6849739AA96FEA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		058C221A4295421191F7030C /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		078F03DCA9BC4A88971F09AF /* QUnit.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QUnit.m; path = Classes/QUnit.m; sourceTree = "<group>"; };
+		1DDF188949B84721AA4E47D7 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		22375958F87645139E377211 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3ECFCA1B7F4F4023B3915743 /* Pods-QUnit.m-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QUnit.m-dummy.m"; sourceTree = "<group>"; };
+		4F4D61B92C5449A48E7C4832 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		619B2E84E948488E914A6968 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		6EC69392F61048BF948B7700 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		93AA24B1AAFF4C6D8FD8524E /* QUnitTests.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QUnitTests.h; path = Classes/QUnitTests.h; sourceTree = "<group>"; };
+		A03415306EB54044ABBE8ED7 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A769DF688FE54ACB9B537222 /* QUnitTests.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QUnitTests.m; path = Classes/QUnitTests.m; sourceTree = "<group>"; };
+		AAAAA1180FE54FA9A8A7FE19 /* QUWrap.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = QUWrap.m; path = Classes/QUWrap.m; sourceTree = "<group>"; };
+		B47D7F512A9B46778D5FC42B /* QUnit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QUnit.h; path = Classes/QUnit.h; sourceTree = "<group>"; };
+		C5FA5876B23F4BF1AF1F4ABE /* QUWrap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QUWrap.h; path = Classes/QUWrap.h; sourceTree = "<group>"; };
+		D2D52B114E4149CE900E789E /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		D73CA408FB3A4F89A73B6469 /* Pods-QUnit.m.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QUnit.m.xcconfig"; sourceTree = "<group>"; };
+		E7F2963902B249AAA4CE5CEA /* Pods-QUnit.m-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-QUnit.m-prefix.pch"; sourceTree = "<group>"; };
+		E82F05D9DFC943F2A0A2B2F8 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		EC5724038E8C4BD6929A146F /* Pods-QUnit.m-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QUnit.m-Private.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D2FD40204BD4FE586B6A3C4 /* Frameworks */ = {
+		3D001B3976D34B749991AC48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B469EAB49CC488CA28D0D0C /* Foundation.framework in Frameworks */,
-				B374080F8F304BF089F6084B /* SenTestingKit.framework in Frameworks */,
+				70A83D401ECC4A4D98CDED15 /* Foundation.framework in Frameworks */,
+				A910FF9797F04BF99872A2B1 /* libPods-QUnit.m.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49ECF9DCEAF94EB89C626387 /* Frameworks */ = {
+		73CB54C3EC5042D39E39E2DB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDAD7C0BDC1E4A9C87441BD7 /* Foundation.framework in Frameworks */,
-				1BAD377720714C00BA71B7B6 /* libPods-QUnit.m.a in Frameworks */,
+				A0651524019B437E81C947B2 /* Foundation.framework in Frameworks */,
+				4C949C3CC19549DB8D4E91FD /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1960304F908C42148A7E6E89 /* Pods */ = {
+		10DF30EAA0F4401FA71AFDB3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2C9CA67D4F844690ADD588D6 /* QUnit.m */,
+				04B8B95CED6849739AA96FEA /* Pods.xcconfig */,
+				058C221A4295421191F7030C /* Pods-acknowledgements.markdown */,
+				6EC69392F61048BF948B7700 /* Pods-acknowledgements.plist */,
+				D2D52B114E4149CE900E789E /* Pods-dummy.m */,
+				E82F05D9DFC943F2A0A2B2F8 /* Pods-environment.h */,
+				1DDF188949B84721AA4E47D7 /* Pods-resources.sh */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		2C9CA67D4F844690ADD588D6 /* QUnit.m */ = {
+		143FDF5837AA4C478EFBD27F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				08277470194A4709A5620991 /* QUWrap.h */,
-				A45BA895715A445E9C54FCA2 /* QUWrap.m */,
-				0FB900E95DAF4A78B9CA180A /* QUnit.h */,
-				0F9AA5043FE64465BE1BDAE6 /* QUnit.m */,
-				DDF5C570396C4FEEAE38A385 /* QUnitTests.h */,
-				DB9325AF1D4E4AB79B75A723 /* QUnitTests.m */,
-				54040918236D41F8B3648779 /* Support Files */,
-			);
-			path = QUnit.m;
-			sourceTree = "<group>";
-		};
-		3FC8AD0917364809A64315C1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FE9081A040B04585AC3EC6C0 /* libPods.a */,
-				9691828104E1412EA30D8C13 /* libPods-QUnit.m.a */,
+				4F4D61B92C5449A48E7C4832 /* libPods.a */,
+				04A25A592B654E67A7B8170B /* libPods-QUnit.m.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		54040918236D41F8B3648779 /* Support Files */ = {
+		1B01F3E700B44B2BB9EE2666 /* QUnit.m */ = {
 			isa = PBXGroup;
 			children = (
-				D083973D26754E8E82F12B37 /* Pods-QUnit.m.xcconfig */,
-				476BAB46E84A4731A1E52D18 /* Pods-QUnit.m-Private.xcconfig */,
-				375FF5087D85492F91F0BF1A /* Pods-QUnit.m-dummy.m */,
-				BF92655F0AD44AE3AD97D107 /* Pods-QUnit.m-prefix.pch */,
+				C5FA5876B23F4BF1AF1F4ABE /* QUWrap.h */,
+				AAAAA1180FE54FA9A8A7FE19 /* QUWrap.m */,
+				B47D7F512A9B46778D5FC42B /* QUnit.h */,
+				078F03DCA9BC4A88971F09AF /* QUnit.m */,
+				93AA24B1AAFF4C6D8FD8524E /* QUnitTests.h */,
+				A769DF688FE54ACB9B537222 /* QUnitTests.m */,
+				AD5212C2254647E09FDF4CB6 /* Support Files */,
 			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
+			path = QUnit.m;
+			sourceTree = "<group>";
 		};
-		5E72CAC0A20D4DA993109490 = {
+		2045BED4A7FF4E9987C8E281 = {
 			isa = PBXGroup;
 			children = (
-				04B5403838C84D949F1B12FA /* Podfile */,
-				FDDE1E5B0073478BBE1B5BA4 /* Frameworks */,
-				1960304F908C42148A7E6E89 /* Pods */,
-				3FC8AD0917364809A64315C1 /* Products */,
-				87B758A0A5884D759D5E747C /* Targets Support Files */,
+				A03415306EB54044ABBE8ED7 /* Podfile */,
+				BAEC94025220433EA6F9E275 /* Frameworks */,
+				89A874DA165840F29FD712CC /* Pods */,
+				143FDF5837AA4C478EFBD27F /* Products */,
+				D6A4D354FAF6435CB3DE6062 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		87B758A0A5884D759D5E747C /* Targets Support Files */ = {
+		89A874DA165840F29FD712CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A31F85F4037549A4B098A159 /* Pods */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		A31F85F4037549A4B098A159 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3333669CA02E4C92867D7455 /* Pods.xcconfig */,
-				33B1D053782E45F4A9EED4CD /* Pods-acknowledgements.markdown */,
-				DF5BE8E4F2094F169A68779D /* Pods-acknowledgements.plist */,
-				E81D446F78D94DFAB4268441 /* Pods-dummy.m */,
-				02983BC47D5A4A18A1E27679 /* Pods-environment.h */,
-				7A931686413745E7A1BF253D /* Pods-resources.sh */,
+				1B01F3E700B44B2BB9EE2666 /* QUnit.m */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C5359EC3635E4FC2A91478C5 /* iOS */ = {
+		8A1FC8C8F01C4C9DBA073905 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				CDB84F8844B14901B0BD14C9 /* Foundation.framework */,
-				61F0BC0E6248486D895CE832 /* SenTestingKit.framework */,
+				22375958F87645139E377211 /* Foundation.framework */,
+				619B2E84E948488E914A6968 /* SenTestingKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		FDDE1E5B0073478BBE1B5BA4 /* Frameworks */ = {
+		AD5212C2254647E09FDF4CB6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				C8E3F75C18D70301002FAB63 /* SenTestingKit.framework */,
-				C5359EC3635E4FC2A91478C5 /* iOS */,
+				D73CA408FB3A4F89A73B6469 /* Pods-QUnit.m.xcconfig */,
+				EC5724038E8C4BD6929A146F /* Pods-QUnit.m-Private.xcconfig */,
+				3ECFCA1B7F4F4023B3915743 /* Pods-QUnit.m-dummy.m */,
+				E7F2963902B249AAA4CE5CEA /* Pods-QUnit.m-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		BAEC94025220433EA6F9E275 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A1FC8C8F01C4C9DBA073905 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D6A4D354FAF6435CB3DE6062 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				10DF30EAA0F4401FA71AFDB3 /* Pods */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		877E4A8CA5DC4C7AA3A8AA3E /* Headers */ = {
+		01382932782D493099835640 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB39ED3497E24140ABC1D44D /* QUWrap.h in Headers */,
-				4EAE0C99E87A414C835AE6CB /* QUnit.h in Headers */,
-				8BE1125C852A470684BDCC4B /* QUnitTests.h in Headers */,
+				548A607DB3E3427694BF1D46 /* QUWrap.h in Headers */,
+				EA805DE151C24E3ABB04B1AB /* QUnit.h in Headers */,
+				D38323FE19FC4C1AB2F81DBD /* QUnitTests.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B208601046764F27B9EB6D90 /* Pods */ = {
+		0B8BAB35F87C466B96095472 /* Pods */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 72F7CAB30DD5482FB5E39822 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = D3B1A16823B14440A4E1F1C7 /* Build configuration list for PBXNativeTarget "Pods" */;
 			buildPhases = (
-				0CE34BB5F09449BDB989B24D /* Sources */,
-				49ECF9DCEAF94EB89C626387 /* Frameworks */,
+				F5B847465ADD4F98A0911C74 /* Sources */,
+				3D001B3976D34B749991AC48 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				AF6078294AD44ADF913F04C7 /* PBXTargetDependency */,
+				65CF6ACB9B9E4CD38FB7C7F4 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = FE9081A040B04585AC3EC6C0 /* libPods.a */;
+			productReference = 4F4D61B92C5449A48E7C4832 /* libPods.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		F372C9B63D2948BF9B244319 /* Pods-QUnit.m */ = {
+		ACEDE8421DD844A99316C8DC /* Pods-QUnit.m */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20E6E29C9347465486CEA6F8 /* Build configuration list for PBXNativeTarget "Pods-QUnit.m" */;
+			buildConfigurationList = 7F6FD32A677D402D95950719 /* Build configuration list for PBXNativeTarget "Pods-QUnit.m" */;
 			buildPhases = (
-				449C346E636E4F268CD329C3 /* Sources */,
-				1D2FD40204BD4FE586B6A3C4 /* Frameworks */,
-				877E4A8CA5DC4C7AA3A8AA3E /* Headers */,
+				5051DBAD5F85444FB2E831F3 /* Sources */,
+				73CB54C3EC5042D39E39E2DB /* Frameworks */,
+				01382932782D493099835640 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -217,101 +215,72 @@
 			);
 			name = "Pods-QUnit.m";
 			productName = "Pods-QUnit.m";
-			productReference = 9691828104E1412EA30D8C13 /* libPods-QUnit.m.a */;
+			productReference = 04A25A592B654E67A7B8170B /* libPods-QUnit.m.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E5EF68C3A05944B1BEAFA9C6 /* Project object */ = {
+		3FA73BB2379043ECACB49E9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0500;
 			};
-			buildConfigurationList = 407C564E3E78417CB961E0D2 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 0C680EEFCD7640F0A2472CDB /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 5E72CAC0A20D4DA993109490;
-			productRefGroup = 3FC8AD0917364809A64315C1 /* Products */;
+			mainGroup = 2045BED4A7FF4E9987C8E281;
+			productRefGroup = 143FDF5837AA4C478EFBD27F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B208601046764F27B9EB6D90 /* Pods */,
-				F372C9B63D2948BF9B244319 /* Pods-QUnit.m */,
+				0B8BAB35F87C466B96095472 /* Pods */,
+				ACEDE8421DD844A99316C8DC /* Pods-QUnit.m */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0CE34BB5F09449BDB989B24D /* Sources */ = {
+		5051DBAD5F85444FB2E831F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F196EBE22E074D6AAC7C86B9 /* Pods-dummy.m in Sources */,
+				51D7EB9CC75F466DB25EB663 /* Pods-QUnit.m-dummy.m in Sources */,
+				FB4BBBEFC0324384AB8CA36C /* QUWrap.m in Sources */,
+				82858481D825463E8BFFAE22 /* QUnit.m in Sources */,
+				6B0522C0E4744A9DA044DA9B /* QUnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		449C346E636E4F268CD329C3 /* Sources */ = {
+		F5B847465ADD4F98A0911C74 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8947EE42495E4D9DBCE70700 /* Pods-QUnit.m-dummy.m in Sources */,
-				BC3701269BF54235B4C788B6 /* QUWrap.m in Sources */,
-				B844C1EBB3C14EB4863805ED /* QUnit.m in Sources */,
-				126F9F7662AA46C589E17EB1 /* QUnitTests.m in Sources */,
+				F57B445F4AE94243AD445117 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		AF6078294AD44ADF913F04C7 /* PBXTargetDependency */ = {
+		65CF6ACB9B9E4CD38FB7C7F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F372C9B63D2948BF9B244319 /* Pods-QUnit.m */;
-			targetProxy = C672D635679B472396487612 /* PBXContainerItemProxy */;
+			target = ACEDE8421DD844A99316C8DC /* Pods-QUnit.m */;
+			targetProxy = 52671B00BA42499484E4D179 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0AC9D86AE338466AABC1BBC7 /* Debug */ = {
+		11B828D0D1B44B67A666239F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 476BAB46E84A4731A1E52D18 /* Pods-QUnit.m-Private.xcconfig */;
+			baseConfigurationReference = EC5724038E8C4BD6929A146F /* Pods-QUnit.m-Private.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-QUnit.m-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		16E50167A2F240EDB5B40725 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 476BAB46E84A4731A1E52D18 /* Pods-QUnit.m-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -337,7 +306,92 @@
 			};
 			name = Release;
 		};
-		4CABF34632EC4DCEB08250F8 /* Debug */ = {
+		140E3BC0D36944F28661B6EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC5724038E8C4BD6929A146F /* Pods-QUnit.m-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-QUnit.m-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1B5A1B5C3E6C49CBA7615EAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C5361E50DB74374A6FD780E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04B8B95CED6849739AA96FEA /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4D996931053848AA9218F76A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -373,18 +427,13 @@
 			};
 			name = Debug;
 		};
-		4D3250E826864874AD372CF0 /* Release */ = {
+		7E11D3D476A045539B44DF62 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3333669CA02E4C92867D7455 /* Pods.xcconfig */;
+			baseConfigurationReference = 04B8B95CED6849739AA96FEA /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -407,99 +456,37 @@
 			};
 			name = Release;
 		};
-		C91029AA592646AFB43C4A77 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D7B93C28C13A4FDD9B1EEEBC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3333669CA02E4C92867D7455 /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		20E6E29C9347465486CEA6F8 /* Build configuration list for PBXNativeTarget "Pods-QUnit.m" */ = {
+		0C680EEFCD7640F0A2472CDB /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0AC9D86AE338466AABC1BBC7 /* Debug */,
-				16E50167A2F240EDB5B40725 /* Release */,
+				4D996931053848AA9218F76A /* Debug */,
+				1B5A1B5C3E6C49CBA7615EAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		407C564E3E78417CB961E0D2 /* Build configuration list for PBXProject "Pods" */ = {
+		7F6FD32A677D402D95950719 /* Build configuration list for PBXNativeTarget "Pods-QUnit.m" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4CABF34632EC4DCEB08250F8 /* Debug */,
-				C91029AA592646AFB43C4A77 /* Release */,
+				140E3BC0D36944F28661B6EB /* Debug */,
+				11B828D0D1B44B67A666239F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		72F7CAB30DD5482FB5E39822 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		D3B1A16823B14440A4E1F1C7 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7B93C28C13A4FDD9B1EEEBC /* Debug */,
-				4D3250E826864874AD372CF0 /* Release */,
+				4C5361E50DB74374A6FD780E /* Debug */,
+				7E11D3D476A045539B44DF62 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E5EF68C3A05944B1BEAFA9C6 /* Project object */;
+	rootObject = 3FA73BB2379043ECACB49E9A /* Project object */;
 }

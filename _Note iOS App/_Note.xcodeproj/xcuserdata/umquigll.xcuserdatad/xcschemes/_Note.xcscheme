@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ACEDE8421DD844A99316C8DC"
-               BuildableName = "libPods-QUnit.m.a"
-               BlueprintName = "Pods-QUnit.m"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "4788E1B918A1B0A3002FDA65"
+               BuildableName = "_Note.app"
+               BlueprintName = "_Note"
+               ReferencedContainer = "container:_Note.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,7 +28,26 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C82DD52B18D7103B000BE0A7"
+               BuildableName = "_NoteTests.octest"
+               BlueprintName = "_NoteTests"
+               ReferencedContainer = "container:_Note.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4788E1B918A1B0A3002FDA65"
+            BuildableName = "_Note.app"
+            BlueprintName = "_Note"
+            ReferencedContainer = "container:_Note.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -39,6 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4788E1B918A1B0A3002FDA65"
+            BuildableName = "_Note.app"
+            BlueprintName = "_Note"
+            ReferencedContainer = "container:_Note.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -48,6 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4788E1B918A1B0A3002FDA65"
+            BuildableName = "_Note.app"
+            BlueprintName = "_Note"
+            ReferencedContainer = "container:_Note.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

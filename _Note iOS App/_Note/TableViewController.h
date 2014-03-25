@@ -21,4 +21,6 @@
 @property NSURLRequest *request;
 @property BOOL authenticated;
 
+- (NSString *)getTitlesFromJson:(NSDictionary *)j;
+
 @end

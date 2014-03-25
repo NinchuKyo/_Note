@@ -49,11 +49,11 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    self.noteTitle.text = self.note.title;
+    self.noteTitle.text = self.note.getTitle;
     self.noteTitle.delegate = self;
     
     // HTML attributed text viewing
-    self.textView.attributedText = self.note.htmlContents;
+    self.textView.attributedText = self.note.getHTMLContents;
     self.textView.delegate = self;
 
     [self configureView];

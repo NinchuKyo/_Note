@@ -101,7 +101,7 @@ test( "search", function() {
     
     //query that returns all notes
     ctrlScope.query['Main'][0] = "_note";
-    ctrlScope.search('Main'); /////
+    ctrlScope.search('Main');
     equal(ctrlScope.resultsCount['Main'], 2);
     equal(ctrlScope.pagedItems[0].length, 2);
     

@@ -17,13 +17,13 @@
 		4788E1D118A1B0A4002FDA65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1CF18A1B0A4002FDA65 /* Main.storyboard */; };
 		4788E1D718A1B0A4002FDA65 /* NoteEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */; };
 		4788E1D918A1B0A4002FDA65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4788E1D818A1B0A4002FDA65 /* Images.xcassets */; };
+		51C9C2BE18DC9FAA00AC2B43 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51C9C2BD18DC9FAA00AC2B43 /* TestTableViewController.m */; };
 		C803372B18BF9AF70032AAC6 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C803372A18BF9AF70032AAC6 /* TableViewController.m */; };
 		C82DD52D18D7103B000BE0A7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1DF18A1B0A4002FDA65 /* XCTest.framework */; };
 		C82DD52E18D7103B000BE0A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1BD18A1B0A4002FDA65 /* Foundation.framework */; };
 		C82DD52F18D7103B000BE0A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4788E1C118A1B0A4002FDA65 /* UIKit.framework */; };
 		C82DD53518D7103B000BE0A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C82DD53318D7103B000BE0A7 /* InfoPlist.strings */; };
 		C82DD53F18D7106C000BE0A7 /* TestNote.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DD53E18D7106C000BE0A7 /* TestNote.m */; };
-		C86A23DA18D470D500326C41 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86A23D918D470D500326C41 /* SenTestingKit.framework */; };
 		C872A4AD18D4226E00EFE9BC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C872A4AC18D4226E00EFE9BC /* WebViewController.m */; };
 		C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D80D4818BE1CF200EEF35E /* Note.m */; };
 		C8E3F75918D6FE8D002FAB63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E3F75818D6FE8D002FAB63 /* libPods.a */; };
@@ -57,15 +57,16 @@
 		4788E1D618A1B0A4002FDA65 /* NoteEditorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoteEditorViewController.m; sourceTree = "<group>"; };
 		4788E1D818A1B0A4002FDA65 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4788E1DF18A1B0A4002FDA65 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		51C9C2BD18DC9FAA00AC2B43 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		51C9C2BF18DCA02800AC2B43 /* TestTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
 		B63025B278D04DBCBC8ECF58 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		C803372A18BF9AF70032AAC6 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		C82DD52C18D7103B000BE0A7 /* _NoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _NoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C82DD52C18D7103B000BE0A7 /* _NoteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = _NoteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C82DD53218D7103B000BE0A7 /* _NoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "_NoteTests-Info.plist"; sourceTree = "<group>"; };
 		C82DD53418D7103B000BE0A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C82DD53818D7103B000BE0A7 /* _NoteTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "_NoteTests-Prefix.pch"; sourceTree = "<group>"; };
 		C82DD53E18D7106C000BE0A7 /* TestNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNote.m; sourceTree = "<group>"; };
 		C82DD54018D71562000BE0A7 /* TestNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNote.h; sourceTree = "<group>"; };
-		C86A23D918D470D500326C41 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C872A4AB18D4226E00EFE9BC /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		C872A4AC18D4226E00EFE9BC /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		C872A4AF18D42BFF00EFE9BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = _Note/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8E3F75918D6FE8D002FAB63 /* libPods.a in Frameworks */,
-				C86A23DA18D470D500326C41 /* SenTestingKit.framework in Frameworks */,
 				47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */,
 				4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */,
 				4788E1C218A1B0A4002FDA65 /* UIKit.framework in Frameworks */,
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				4788E1BA18A1B0A4002FDA65 /* _Note.app */,
-				C82DD52C18D7103B000BE0A7 /* _NoteTests.xctest */,
+				C82DD52C18D7103B000BE0A7 /* _NoteTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,7 +125,6 @@
 		4788E1BC18A1B0A4002FDA65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C86A23D918D470D500326C41 /* SenTestingKit.framework */,
 				47516DB018B2D73000824AC1 /* CoreText.framework */,
 				4788E1BD18A1B0A4002FDA65 /* Foundation.framework */,
 				4788E1BF18A1B0A4002FDA65 /* CoreGraphics.framework */,
@@ -170,6 +169,8 @@
 		C82DD53018D7103B000BE0A7 /* _NoteTests */ = {
 			isa = PBXGroup;
 			children = (
+				51C9C2BF18DCA02800AC2B43 /* TestTableViewController.h */,
+				51C9C2BD18DC9FAA00AC2B43 /* TestTableViewController.m */,
 				C82DD54018D71562000BE0A7 /* TestNote.h */,
 				C82DD53E18D7106C000BE0A7 /* TestNote.m */,
 				C82DD53118D7103B000BE0A7 /* Supporting Files */,
@@ -224,7 +225,7 @@
 			);
 			name = _NoteTests;
 			productName = _NoteTests;
-			productReference = C82DD52C18D7103B000BE0A7 /* _NoteTests.xctest */;
+			productReference = C82DD52C18D7103B000BE0A7 /* _NoteTests.octest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -233,7 +234,8 @@
 		4788E1B218A1B0A3002FDA65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Lyndon Quigley";
 				TargetAttributes = {
 					C82DD52B18D7103B000BE0A7 = {
@@ -333,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C82DD53F18D7106C000BE0A7 /* TestNote.m in Sources */,
+				51C9C2BE18DC9FAA00AC2B43 /* TestTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +390,6 @@
 			baseConfigurationReference = B63025B278D04DBCBC8ECF58 /* Pods.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -427,7 +429,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -509,7 +510,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B63025B278D04DBCBC8ECF58 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/_Note.app/_Note";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -525,7 +525,7 @@
 				INFOPLIST_FILE = "_NoteTests/_NoteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -533,7 +533,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B63025B278D04DBCBC8ECF58 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/_Note.app/_Note";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -545,7 +544,7 @@
 				INFOPLIST_FILE = "_NoteTests/_NoteTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
@@ -577,6 +576,7 @@
 				C82DD53D18D7103B000BE0A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
