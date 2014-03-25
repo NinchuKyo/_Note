@@ -74,7 +74,7 @@ test( "ajax", function() {
     //grabNote
     jsonResponse = angular.toJson(ViewResponse);
     httpBackend.expectGET('/view_note/test_note').respond(jsonResponse);
-    ctrlScope.grabNote('test_note');
+    ctrlScope.grabNote({'Title':'test_note'});
     httpBackend.flush();
     ctrlScope.initEditor();
     equal(ctrlScope.note['title'], 'test_note', 'The note title was updated.');
