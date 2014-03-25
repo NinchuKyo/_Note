@@ -28,11 +28,13 @@ In order to use our app, open the _Note.xcworkspace file and run the simulator f
 To run the iOS simulator, just click on the "play" button to the top-left hand corner.
 - In order for you to load your notes into our app, you must first authorize to Dropbox at the initial starting screen by clicking on the "Load from Dropbox"
 - After you have done that, you can either click "Your notes" or swipe to the right in the left area.  This will show a list of notes you currently have.
-- Click on "load notes" once you have authorized to Dropbox in order to load the notes that you have from _Note, from using our desktop browser version.
+- Click on "sync notes" once you have authorized to Dropbox in order to load the notes that you have from _Note, from using our desktop browser version.
 
 Running tests for iOS:
 ---
-To run the QUnit.m tests, you can open up the workspace file and in the pannel to the left, click on the diamond with a line icon.  Here is where all the tests are held, and you can run them by clicking the mini-play button that appears when you hover over the test name.
+To run the QUnit.m tests, you can open up the workspace file and in the panel to the left, click on the diamond with a line icon.  Here is where all the tests are held, and you can run them by clicking the mini-play button that appears when you hover over the test name.
+
+To run the Frank tests, you need to go into the Frank directory of our iOS folder via a command-line interface and then type in 'cucumber'.  This will run all of the all of the acceptance tests for our iOS application. (Make sure you have frank-cucumber installed on your computer in order to run the frank tests which you can install by using 'sudo gem install frank-cucumber')
 
 Requirements (to run server):
 ---
