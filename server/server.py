@@ -164,21 +164,6 @@ def view_note(note_title):
 
     real_name = session.get('real_name', None)
     return json_response(True, '', note=json_content)
-
-@app.route('/delete_note/<note_title>')
-def delete_note2(note_title):
-    access_token = get_access_token()
-    if not access_token:
-        return json_response(False, 'You are not currently logged in through Dropbox.')
-    
-	client = DropboxClient(access_token)
-	try:
-		response = client.file_delete('/' + note_title)
-	except dropbox.rest.ErrorResponse as e:
-		app.logger.exception(e)
-        return json_response(False, 'An error occured while trying to retrieve your note from Dropbox.')
-	
-    return json_response(True, '', note=json_content)
 		
 @app.route('/delete', methods=['POST'])
 def delete():
@@ -208,8 +193,8 @@ def delete_note(access_token, data):
     	client = DropboxClient(access_token)
     	response = client.file_delete('/' + data['note']['title'])
     except dropbox.rest.ErrorResponse as e:
-		app.logger.exception(e)
-		return json_response(False, e.user_error_msg)
+	app.logger.exception(e)
+	return json_response(False, 'Failed to delete note')#e.user_error_msg)
         
     return json_response(True, 'Your note was deleted successfully.')
 

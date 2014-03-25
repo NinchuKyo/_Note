@@ -322,28 +322,6 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                 data["overwrite"] = $scope.overwrite;
                 data["note"] = note;
 				
-                //document.getElementById("title").value = "";
-                //tinyMCE.activeEditor.setContent('', { format: 'raw' });
-				
-				$http.get('/delete_note/' + document.getElementById("title").value).success(function (response) {
-                    var response = angular.fromJson(response);
-                    if(response['success']) {
-                        isUpdating = true;
-						$scope.search('Main');
-						isUpdating = false;
-						
-						$scope.switchView();
-                    }
-                    else {
-                        document.getElementById("msg").innerHTML = response["msg"];
-                        document.getElementById("msg").className = "alert alert-danger";
-                        $scope.showMsg.value = true;
-                    }
-               }).error(function (response){
-
-               });
-				
-				/*
 				if(!(!note["title"] || (/^[\w\s-]+$/.test(note["title"]) === false))) {
 					tinymce.util.XHR.send({
 						url : "/delete",
@@ -370,13 +348,14 @@ mainController.controller('MainCtrl', ['$scope', '$http', '$filter',
                         }
                     });
 				}
-
+				
                 isUpdating = true;
                 $scope.search('Main');
-                isUpdating = false;*/
+                isUpdating = false;
+				$scope.switchView();
+
 				
 				//$scope.grabLists();
-				//$scope.switchView();
 			}
 
             $scope.ajaxSave = function() {
