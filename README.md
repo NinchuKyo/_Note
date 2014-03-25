@@ -46,6 +46,7 @@ How to run Selenium tests for web client:
         User: ummuldeh@myumanitoba.ca
         Password: comp4350test
 - Delete the 'Apps' folder, if it exists
+- Log out of Dropbox (IMPORTANT! The Selenium tests start by logging into the app itself)
 - Open the Selenium IDE
 - Set the speed from 'Fast' to 'Slow'
 - Go to File --> Add Test Case... (CTRL + D)
