@@ -78,14 +78,54 @@
 - (void)testReceivingBadNoteTitles
 {
     NSError *e = nil;
-    NSString* jsonString =@"{\"msg\":\"\", \"note_titles\":[{\"Title\":\"H@@&e***//-++&&&&y\"}, {\"Title\":\"Hey\"}, {\"Title\":\"Y**#$$$#!@#%$*o%%&&u\"}, {\"Title\":\"You\"}], \"success\":\"1\" }";
+    NSString* jsonString =@"{\"msg\":\"\", \"note_titles\":[{\"Title\":\"H@@&e***(((&&&&y\"}, {\"Title\":\"Hey\"}, {\"Title\":\"Y**##@#%*o%&&u\"}, {\"Title\":\"You\"}], \"success\":\"1\" }";
     NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error: &e];
     TableViewController *t = [[TableViewController alloc] init];
     [t getTitlesFromJson:json];
     NSArray * titles= [t titles];
     equal([titles count], 4, @"No titles are rejected");
-    equal([[titles objectAtIndex:0] objectForKey:@"Title"], @"H@@&e***//-++&&&&y", @"Assume the server gives us correct titles so no changes are made");
+    equal([[titles objectAtIndex:0] objectForKey:@"Title"], @"H@@&e***(((&&&&y", @"Assume the server gives us correct titles so no changes are made");
+    equal([[titles objectAtIndex:1] objectForKey:@"Title" ], @"Hey", @"Normal titles should still be normal");
+    equal([[titles objectAtIndex:2] objectForKey:@"Title"], @"Y**##@#%*o%&&u", @"Assume the server gives us correct titles so no changes are made");
+    equal([[titles objectAtIndex:3] objectForKey:@"Title" ], @"You", @"Normal titles should still be normal");
+    
+    jsonString = @"{\"title\":\"Hey\", \"content\":\"hhhhh\"}";
+    jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    Note *n = [t getNoteFromJson:jsonData];
+    equal([n getTitle], @"Hey", @"Title should be the same");
+    
+    jsonString = @"{\"title\":\"H@@&e***(((&&&&y\", \"content\":\"hhhhh\"}";
+    jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    n = [t getNoteFromJson:jsonData];
+    equal([n getTitle], @"Hey", @"Title should be formatted");
+    
+}
+
+- (void)testOutOfBoundsCase
+{
+    NSError *e = nil;
+    NSString* jsonString =@"{\"msg\":\"\", \"note_titles\":[{\"Title\":\"H@@&e***(((&&&&y\"}, {\"Title\":\"Hey\"}, {\"Title\":\"Y**##@#%*o%&&u\"}, {\"Title\":\"You\"}], \"success\":\"1\" }";
+    NSData* jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error: &e];
+    TableViewController *t = [[TableViewController alloc] init];
+    [t getTitlesFromJson:json];
+    NSArray *titles= [t titles];
+    
+    equal([titles count], 4, @"No titles are rejected");
+    @try{
+        [titles objectAtIndex:6];
+        //dummy failure, should catch before this call fires
+        equal(1, 0, @"An out of bounds exception should be raised");
+    } @catch (NSException *re){
+    }
+    
+    @try {
+        [titles objectAtIndex:-3];
+        //dummy failure, should catch before this call fires
+        equal(1, 0, @"An out of bounds exception should be raised");
+    } @catch (NSException *re){
+    }
 }
 
 @end

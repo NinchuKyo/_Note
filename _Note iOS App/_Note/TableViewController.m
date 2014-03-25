@@ -9,7 +9,6 @@
 #import "TableViewController.h"
 #import "AppDelegate.h"
 #import "NoteEditorViewController.h"
-#import "Note.h"
 
 @interface TableViewController () {
     NSMutableArray *_objects;
