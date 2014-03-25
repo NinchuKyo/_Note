@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Note.h"
 @class NoteEditorViewController;
 
 @interface TableViewController : UITableViewController
@@ -22,5 +22,6 @@
 @property BOOL authenticated;
 
 - (NSString *)getTitlesFromJson:(NSDictionary *)j;
+- (Note *)getNoteFromJson:(NSData *)j;
 
 @end

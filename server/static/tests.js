@@ -1,125 +1,195 @@
-test( "hello test", function() {
-    ok( 1 == "1", "Passed!" );
-});
+var ListsResponse = {
+    'success': true,
+    'msg': '',
+    'note_titles': [{'Title': 'my_note'}, {'Title': 'your_note'}]
+};
 
-var appMocks = angular.module('appMocks', ['ngMock']);
+var emptyListsResponse = {
+    'success': true,
+    'msg': '',
+    'note_titles': []
+};
 
+var ViewResponse = {
+    'success': true,
+    'msg': '',
+    'note': '{"content":"<p>test content</p>", "title":"test_note"}'
+};
+
+//Mocks
 var httpBackend;
-var injector = angular.injector(['ng', 'mainApp', 'appMocks']);
 
-module('mainController', {
-    setup: function() {
-        // prepare something for all following tests
-        this.$scope = injector.get('$rootScope').$new();
-        this.$http = injector.get('$http');
-        httpBackend = injector.get('$httpBackend');
-        var $controller = injector.get('$controller');
-        $controller('MainCtrl', {
-            $scope: this.$scope,
-            $http: this.$http
+//Injector
+var injector;
+
+//Controller
+var ctrl;
+
+//Scope
+var ctrlScope;
+
+//Data
+var jsonResponse;
+
+module("mainController", {
+    setup: function () {
+        
+        var appMocks = angular.module("appMocks", ["ngMock"]);
+
+        appMocks.config(function ($provide) {
+            $provide.decorator('$httpBackend', angular.mock.e2e.$httpBackendDecorator);
         });
+
+        injector = angular.injector(['ng', 'mainApp', 'appMocks']);
+        
+        jsonResponse = angular.toJson(ListsResponse);
+
+        httpBackend = injector.get('$httpBackend');
+        httpBackend.expectGET('/lists').respond(jsonResponse);
+
+        //Creating a new scope
+        ctrlScope = injector.get('$rootScope').$new();
+
+        //Creating controller with assigning mocks instead of actual services
+        ctrl = injector.get('$controller')('MainCtrl', { $scope: ctrlScope });
     },
-    teardown: function() {
-        // clean up after each test
+    teardown: function () {
+
     }
 });
 
-test( "ajax", function() { //TODO: http://docs.angularjs.org/api/ngMock/service/$httpBackend
+test("Initially, there are 2 notes in the list", function () {
+    httpBackend.flush();
+    equal(ctrlScope.resultsCount['Main'], 2, 'There are 2 notes.');
+});
+
+test( "ajax", function() {
     //grabLists
-    console.log(httpBackend.expectGET('/lists'));
-    equal(this.$scope.grabLists(), undefined); //lots done in our server tests?
+    jsonResponse = angular.toJson(ListsResponse);
+    httpBackend.expectGET('/lists').respond(jsonResponse);
+    ctrlScope.grabLists();
+    httpBackend.flush();
+    equal(ctrlScope.resultsCount['Main'], 2, 'There are 2 notes.');
+
     //grabNote
-    console.log(httpBackend.expectGET('/view/'));
-    equal(this.$scope.grabNote(''), undefined); //also done in server tests?
-    console.log(httpBackend.expectGET('/view/asdf'));
-    equal(this.$scope.grabNote('asdf'), undefined); //also done in server tests?
+    jsonResponse = angular.toJson(ViewResponse);
+    httpBackend.expectGET('/view_note/test_note').respond(jsonResponse);
+    ctrlScope.grabNote({'Title':'test_note'});
+    httpBackend.flush();
+    ctrlScope.initEditor();
+    equal(ctrlScope.note['title'], 'test_note', 'The note title was updated.');
+    equal(ctrlScope.note['content'], '<p>test content</p>', 'The note content was updated.');
+});
+
+test( "empty list response", function() {
+    httpBackend.expectGET('/lists').respond(angular.toJson(emptyListsResponse));
+    ctrlScope.grabLists();
+    httpBackend.flush();
+    equal(ctrlScope.resultsCount['Main'], 0);
 });
 
 test( "search", function() {
-    //testing search
-    equal(this.$scope.search('Main'), undefined);
-    //TODO: more tests for search
-    //httpBackend.expectGET('/lists').respond({ note_titles: ['asdf', 'asdf2']});
-    //console.log(this.$http.get('/lists'));
-    //equal(this.$scope.resultsCount['Main'], 2);
+    httpBackend.flush();
+    equal(ctrlScope.resultsCount['Main'], 2);
+    equal(ctrlScope.pagedItems[0].length, 2);
+    
+    //empty query
+    ctrlScope.query['Main'][0] = "";
+    ctrlScope.search('Main');
+    equal(ctrlScope.resultsCount['Main'], 2);
+    equal(ctrlScope.pagedItems[0].length, 2);
+    
+    //query that returns all notes
+    ctrlScope.query['Main'][0] = "_note";
+    ctrlScope.search('Main');
+    equal(ctrlScope.resultsCount['Main'], 2);
+    equal(ctrlScope.pagedItems[0].length, 2);
+    
+    //query that returns 1 note
+    ctrlScope.query['Main'][0] = "my";
+    ctrlScope.search('Main');
+    equal(ctrlScope.resultsCount['Main'], 1);
+    equal(ctrlScope.pagedItems[0].length, 1);
 });
 
 test( "sort", function() {
+    httpBackend.flush();
+    
     //check that icon changes
-    equal(this.$scope.sort_by('Title', 'Main'), undefined);
-    equal(this.$scope.predicate['Main'], 'Title');
-    equal(this.$scope.setChar, '\u25bc');
-    //TODO: check items are sorted
-    
+    equal(ctrlScope.sort_by('Title', 'Main'), undefined);
+    equal(ctrlScope.predicate['Main'], 'Title');
+    equal(ctrlScope.setChar, '\u25bc');
+    equal(ctrlScope.reverse['Main'], true);
+
     //reverse
-    this.$scope.sort_by('Title', 'Main');
-    equal(this.$scope.predicate['Main'], 'Title');
-    equal(this.$scope.setChar, '\u25b2');
-    //TODO: check items sorted in reverse
-    
+    ctrlScope.sort_by('Title', 'Main');
+    equal(ctrlScope.predicate['Main'], 'Title');
+    equal(ctrlScope.setChar, '\u25b2');
+    equal(ctrlScope.reverse['Main'], false);
+
     //not a column
-    equal(this.$scope.sort_by('notAnActualColumn', 'Main'), undefined);
-    equal(this.$scope.predicate['Main'], 'notAnActualColumn'); //working as intended?
+    equal(ctrlScope.sort_by('notAnActualColumn', 'Main'), undefined);
+    equal(ctrlScope.predicate['Main'], 'notAnActualColumn'); //working as intended?
     //not a table and not a column
-    //this.$scope.sort_by('Title', 'Main');
-    //equal(this.$scope.sort_by('notAnActualColumn', 'notAnActualTable'), undefined); //this breaks it. TODO: fix it
-    //equal(this.$scope.predicate['Main'], 'Title');
+    //ctrlScope.sort_by('Title', 'Main');
+    //equal(ctrlScope.sort_by('notAnActualColumn', 'notAnActualTable'), undefined); //this breaks it. TODO: fix it
+    //equal(ctrlScope.predicate['Main'], 'Title');
 });
 
 test( "paginate", function() {
     //groupToPages (test DOM)
-    equal(this.$scope.groupToPages(), undefined);
-    
+    equal(ctrlScope.groupToPages(), undefined);
+ 
     //typical nextPage
-    this.$scope.currentPage.value = 0;
-    this.$scope.pagedItems.length = 5;
-    equal(this.$scope.nextPage(), undefined);
-    equal(this.$scope.currentPage.value, 1);
+    ctrlScope.currentPage.value = 0;
+    ctrlScope.pagedItems.length = 5;
+    equal(ctrlScope.nextPage(), undefined);
+    equal(ctrlScope.currentPage.value, 1);
     //TODO: test something about $scope.newPage
     //nextPage when last
-    this.$scope.currentPage.value = 4;
-    this.$scope.pagedItems.length = 5;
-    this.$scope.nextPage();
-    equal(this.$scope.currentPage.value, 4);
+    ctrlScope.currentPage.value = 4;
+    ctrlScope.pagedItems.length = 5;
+    ctrlScope.nextPage();
+    equal(ctrlScope.currentPage.value, 4);
     //TODO: test something about $scope.newPage
-    
+ 
     //typical prevPage
-    this.$scope.currentPage.value = 4;
-    this.$scope.pagedItems.length = 5;
-    equal(this.$scope.prevPage(), undefined);
-    equal(this.$scope.currentPage.value, 3);
+    ctrlScope.currentPage.value = 4;
+    ctrlScope.pagedItems.length = 5;
+    equal(ctrlScope.prevPage(), undefined);
+    equal(ctrlScope.currentPage.value, 3);
     //TODO: test something about $scope.newPage
     //prevPage when first
-    this.$scope.currentPage.value = 0;
-    this.$scope.pagedItems.length = 5;
-    this.$scope.prevPage();
-    equal(this.$scope.currentPage.value, 0);
+    ctrlScope.currentPage.value = 0;
+    ctrlScope.pagedItems.length = 5;
+    ctrlScope.prevPage();
+    equal(ctrlScope.currentPage.value, 0);
     //TODO: test something about $scope.newPage
-    
+ 
     //typical goToPage
-    this.$scope.currentPage.value = 0;
-    this.$scope.pagedItems.length = 5;
-    equal(this.$scope.goToPage(3), undefined);
-    equal(this.$scope.currentPage.value, 2);
+    ctrlScope.currentPage.value = 0;
+    ctrlScope.pagedItems.length = 5;
+    equal(ctrlScope.goToPage(3), undefined);
+    equal(ctrlScope.currentPage.value, 2);
     //TODO: test something about $scope.newPage
     //goToPage when page doesn't exist
-    this.$scope.currentPage.value = 0;
-    this.$scope.pagedItems.length = 5;
-    this.$scope.goToPage(100);
-    //equal(this.$scope.currentPage.value, 0); //TODO: fix this in mainController.js
+    ctrlScope.currentPage.value = 0;
+    ctrlScope.pagedItems.length = 5;
+    ctrlScope.goToPage(100);
+    equal(ctrlScope.currentPage.value, 0);
     //TODO: test something about $scope.newPage
 });
 
 test( "display limit and results per page", function() {
     //increaseDisplayLimit
-    equal(this.$scope.numItemsDisplayed, 100);
-    equal(this.$scope.increaseDisplayLimit(), undefined);
-    equal(this.$scope.numItemsDisplayed, 125);
-    
+    equal(ctrlScope.numItemsDisplayed, 100);
+    equal(ctrlScope.increaseDisplayLimit(), undefined);
+    equal(ctrlScope.numItemsDisplayed, 125);
+ 
     //changeResultsPerPage
-    equal(this.$scope.changeResultsPerPage(), undefined);
-    equal(this.$scope.numItemsDisplayed, 100);
-    
+    equal(ctrlScope.changeResultsPerPage(), undefined);
+    equal(ctrlScope.numItemsDisplayed, 100);
+ 
     //possible DOM tests?
     //increaseDisplayLimit + 25
     //increaseDisplayLimit + something >25
@@ -131,45 +201,51 @@ test( "display limit and results per page", function() {
 
 test( "tinymce init", function() {
     //initEditor (test DOM?)
-    equal(this.$scope.initEditor(), undefined);
+    equal(ctrlScope.initEditor(), undefined);
 });
 
 test( "validation", function() {
     //keyPressed valid character
-    this.$scope.title = '%';
-    this.$scope.keyPressed(this.$scope);
-    equal(this.$scope.isValid, false);
-    
+    ctrlScope.title = '%';
+    ctrlScope.keyPressed(ctrlScope);
+    equal(ctrlScope.isValid, false);
+ 
     //keyPressed invalid character
-    this.$scope.title = 's';
-    this.$scope.keyPressed(this.$scope);
-    equal(this.$scope.isValid, true);
+    ctrlScope.title = 's';
+    ctrlScope.keyPressed(ctrlScope);
+    equal(ctrlScope.isValid, true);
 });
 
 test( "save", function() {
-    //ajaxSave no title (test DOM?)
-    equal(this.$scope.ajaxSave(), undefined);
+    //ajaxSave no title
+    equal(ctrlScope.ajaxSave(), undefined);
     equal(document.getElementById("msg").innerHTML, "You're missing the title.");
-    equal(this.$scope.showMsg.value, true);
+    equal(ctrlScope.showMsg.value, true);
     
-    //ajaxSave invalid character (test DOM?)
+    //ajaxSave invalid character
     document.getElementById("title").value = 'this is not a valid title!';
-    this.$scope.ajaxSave();
+    ctrlScope.ajaxSave();
     equal(document.getElementById("msg").innerHTML, "Allowed characters: A-Z, a-z, 0-9, -, _");
-    equal(this.$scope.showMsg.value, true);
+    equal(ctrlScope.showMsg.value, true);
     
-    //ajaxSave valid title (test DOM?)
+    //ajaxSave valid title
+    ctrlScope.initEditor();
+    var note = angular.toJson({"content":"","title":"this is a valid title"});
+    var postRequest = angular.toJson({"overwrite":false,"note":note});
     document.getElementById("title").value = 'this is a valid title';
-    this.$scope.ajaxSave();
-    console.log(httpBackend.expectGET('/save'));
+    httpBackend.expectPOST('/save').respond(angular.toJson({'success': true, 'msg': 'Your note was saved successfully.'}));
+    httpBackend.expectGET('/lists').respond(jsonResponse);
+    ctrlScope.ajaxSave();
+    httpBackend.flush();
+    equal(document.getElementById("msg").innerHTML, "Your note was saved successfully.");
 });
 
 test( "switchView", function() {
     //switchView
-    equal(this.$scope.viewingList.value, true);
-    equal(this.$scope.switchView(), undefined);
-    equal(this.$scope.viewingList.value, false);
-    equal(this.$scope.showMsg.value, false);
-    
+    equal(ctrlScope.viewingList.value, true);
+    equal(ctrlScope.switchView(), undefined);
+    equal(ctrlScope.viewingList.value, false);
+    equal(ctrlScope.showMsg.value, false);
+ 
     //DOM tests to come
 });

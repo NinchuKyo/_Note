@@ -26,7 +26,7 @@
 		C82DD53F18D7106C000BE0A7 /* TestNote.m in Sources */ = {isa = PBXBuildFile; fileRef = C82DD53E18D7106C000BE0A7 /* TestNote.m */; };
 		C872A4AD18D4226E00EFE9BC /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C872A4AC18D4226E00EFE9BC /* WebViewController.m */; };
 		C8D80D4A18BE1CF200EEF35E /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D80D4818BE1CF200EEF35E /* Note.m */; };
-		C8E3F75918D6FE8D002FAB63 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E3F75818D6FE8D002FAB63 /* libPods.a */; };
+		C95AA36E18E2078600D8A695 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E3F75818D6FE8D002FAB63 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8E3F75918D6FE8D002FAB63 /* libPods.a in Frameworks */,
+				C95AA36E18E2078600D8A695 /* libPods.a in Frameworks */,
 				47516DB118B2D73000824AC1 /* CoreText.framework in Frameworks */,
 				4788E1C018A1B0A4002FDA65 /* CoreGraphics.framework in Frameworks */,
 				4788E1C218A1B0A4002FDA65 /* UIKit.framework in Frameworks */,
@@ -475,6 +475,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
+					"$(FRANK_LIBRARY_SEARCH_PATHS)",
+					"/home/student/umquigll/Desktop/comp4350group1/_Note\\ iOS\\ App",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(FRANK_LDFLAGS)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
@@ -499,6 +505,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/duongnguyen/Documents/Git\\ Repository/comp4350group1/_Note\\ iOS\\ App",
+					"/home/student/umquigll/Desktop/comp4350group1/_Note\\ iOS\\ App",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
