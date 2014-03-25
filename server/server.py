@@ -158,6 +158,10 @@ def view_note(note_title):
     try:
         f, metadata = client.get_file_and_metadata('/' + note_title)
         json_content = f.read().replace('\n', '')
+	note_title.replace("%20"," ")
+	jNote = json.loads(json_content)
+	content = jNote['content']
+	json_content = "{\"content\": \"" + content + "\", \"title\": \"" + note_title + "\"}"
     except dropbox.rest.ErrorResponse as e:
         app.logger.exception(e)
         return json_response(False, 'An error occured while trying to retrieve your note from Dropbox.')
