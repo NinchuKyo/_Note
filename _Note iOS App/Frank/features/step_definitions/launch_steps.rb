@@ -4,7 +4,6 @@ end
 
 Given /^I launch the app$/ do
   # latest sdk and iphone by default
-  # launch_app app_path
   launch_app app_path, nil, "ipad"
 end
 
@@ -19,5 +18,3 @@ end
 Given /^I launch the app using iOS (\d\.\d) and the (iphone|ipad) simulator$/ do |sdk, version|
   launch_app app_path, sdk, version
 end
-
-

@@ -41,10 +41,13 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     
+    /* Local add and delete note functionality
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    */
+    
     self.noteEditorViewController = (NoteEditorViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -55,14 +58,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+/* Local add note functionality
 - (void)insertNewObject:(id)sender
 {
     Note *newNote = [Note noteTitle: @"New Note" noteWithText:@"This is a new note."];
     [[self notes] addObject:newNote];
     [self.tableView reloadData];
 }
-
+*/
 
 #pragma mark - Table View
 
@@ -175,6 +178,7 @@
             NSURL *url = [NSURL URLWithString:urlString];
             NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
             NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self startImmediately:YES];
+            NSLog(@"%@", connection);
         }
     }
     
