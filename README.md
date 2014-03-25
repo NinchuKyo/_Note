@@ -58,7 +58,9 @@ How to run tests for iOS:
 ---
 To run the QUnit.m tests, you can open up the workspace file and in the panel to the left, click on the diamond with a line icon.  Here is where all the tests are held, and you can run them by clicking the mini-play button that appears when you hover over the test name.
 
-To run the Frank tests, you need to go into the Frank directory of our iOS folder via a command-line interface and then type in 'cucumber'.  This will run all of the all of the acceptance tests for our iOS application. (Make sure you have frank-cucumber installed on your computer in order to run the frank tests which you can install by using 'sudo gem install frank-cucumber')
+To run the Frank tests, you need to go into the Frank directory of our iOS folder via a command-line interface and then type in 'cucumber'.  This will run all of the all of the acceptance tests for our iOS application. (Make sure you have frank-cucumber installed on your computer in order to run the frank tests which you can install by using 'sudo gem install frank-cucumber' an dmake sure that when you do this that your current rspec version is 2.14.1).
+
+If you don't have rspec, then you can install it by using 'sudo gem install rspec 2.14.1'.
 
 Requirements (to run server):
 ---

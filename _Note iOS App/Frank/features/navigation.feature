@@ -4,15 +4,15 @@ Feature: Viewing the default notes
 
 Scenario: Moving from the 'Home' screen to view the default notes
 Given I launch the app
-Then I should be on the Home screen
+Then I should see a navigation bar titled "Welcome to _Note!"
 
-When I navigate to viewing my notes
-Then I should see a side panel table with a list of notes
+When I touch the button marked "View your notes"
+Then I should see an element of class "UITableView"
 And I should see a "Sync Notes" button
-And I should see a single note
+And I should see an element of class "UITableViewCell"
 
-When I click on the "Sync Notes" button
-Then I should expect nothing to happen
+When I touch the first table cell
+Then I should see “Default Notes”
+And I should see “Currently, creating notes is disabled until rich-text editing is implemented.”
+And I should see a “Link to Dropbox” button
 
-When I click on the single note
-Then I should see the note with a specific content
