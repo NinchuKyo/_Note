@@ -14,5 +14,4 @@ And I should see an element of class "UITableViewCell"
 When I touch the first table cell
 Then I should see “Default Notes”
 And I should see “Currently, creating notes is disabled until rich-text editing is implemented.”
-And I should see a “Link to Dropbox” button
 

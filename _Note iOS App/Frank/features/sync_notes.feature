@@ -7,8 +7,9 @@ Given I launch the app
 Then I should see a navigation bar titled "Welcome to _Note!"
 And I should see a "Link to Dropbox" button
 
-When I touch the button marked "Link to Dropbox" button
+When I press the Link to Dropbox button
 Then I should see an element of class “UIWebView”
+
 And I enter my username and password
 And I close the pop-up after logging in
 
