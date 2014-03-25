@@ -40,7 +40,19 @@ On our production instance visit the url: /static/qunit.html
 
 How to run Selenium tests for web client:
 ---
-
+- Turn on the _Note server (Type in 'python server.py' where server.py is located)
+- Open Firefox
+- Go to dropbox.com, log in as:
+        User: ummuldeh@myumanitoba.ca
+        Password: comp4350test
+- Delete the 'Apps' folder, if it exists
+- Open the Selenium IDE
+- Set the speed from 'Fast' to 'Slow'
+- Go to File --> Add Test Case... (CTRL + D)
+- Highlight all test cases located in the Selenium Tests folder and click Open
+- Right click the 'Untitled' test case and click Delete
+- Make sure that the test cases are ordered from 1 to 9
+- Click 'Play entire test suite'
 
 How to run tests for iOS:
 ---
