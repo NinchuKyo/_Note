@@ -37,6 +37,7 @@ Run server/server_tests.py on the command line
 How to run QUnit tests for web client:
 ---
 On our production instance visit the url: /static/qunit.html
+Note: Clear your cache to make sure you have the most up to date JavaScript files. 
 
 How to run Selenium tests for web client:
 ---
