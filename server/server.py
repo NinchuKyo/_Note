@@ -10,8 +10,8 @@ from flask import Flask, request, session, redirect, url_for, abort, \
      render_template, _app_ctx_stack
 from dropbox.client import DropboxClient, DropboxOAuth2Flow
 from sqlite3 import dbapi2 as sqlite3
-from OpenSSL import SSL
 import os, uuid, dropbox, json, re
+import ssl
 
 # configuration
 DEBUG = True
@@ -24,9 +24,11 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 # setup SSL
-context = SSL.Context(SSL.SSLv23_METHOD)
-context.use_privatekey_file('ssl/server.key')
-context.use_certificate_file('ssl/server.crt')
+# context = SSL.Context(SSL.SSLv23_METHOD)
+context = ssl.SSLContext(ssl.PROTOCOL_SSLv23)
+# context.use_privatekey_file('ssl/server.key')
+# context.use_certificate_file('ssl/server.crt')
+context.load_cert_chain('ssl/server.cert', 'ssl/server.key')
 
 # constants
 TITLE_RE = re.compile(r'[\w -]+$')
@@ -218,5 +220,5 @@ def logout():
     return redirect(url_for('splash'))
 
 if __name__ == "__main__":
-    init_db()
+    init_db() 
     app.run(host='0.0.0.0', ssl_context=context)
